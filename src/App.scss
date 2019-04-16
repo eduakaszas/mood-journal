@@ -1,0 +1,16 @@
+//COLOURS
+$background: #F7F4EF;
+
+// FONTS
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700');
+$font: 'PT Serif', serif;
+
+* {
+    margin:0;
+    padding:0;
+}
+
+html, body {
+    background-color: $background;
+    font-family: $font;
+}

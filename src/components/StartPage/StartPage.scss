@@ -1,0 +1,38 @@
+.moodChooser {
+    margin-top: 10rem !important;
+}
+
+.moodChooser h1 {
+    display: inline !important;
+}
+
+img.toEditor {
+    width: 3rem;
+    height: auto;
+    cursor: pointer;
+    //-webkit-animation: slide-right 0.3s ease-in-out 0.15s 4 alternate both;
+    //animation: slide-right 0.3s ease-in-out 0.15s 4 alternate both;
+}
+
+/*
+@-webkit-keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(0);
+            transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(30px);
+                transform: translateX(30px);
+    }
+    }
+    @keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+    }
+    100% {
+        -webkit-transform: translateX(30px);
+                transform: translateX(30px);
+    }
+}
+*/

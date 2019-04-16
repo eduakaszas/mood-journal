@@ -1,0 +1,10 @@
+.moodList {
+    list-style: none;
+}
+
+li.mood {
+    display: inline-block;
+    height: 7rem;
+    width: 7rem;
+    cursor: pointer;
+}
