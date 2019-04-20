@@ -44,7 +44,7 @@ class TextEditor extends React.Component {
     
     // Define a new handler which prints the key that was pressed.
     onKeyDown = ( event, editor, next ) => {
-        console.log( event.key )
+        //console.log( event.key )
         if ( !event.ctrlKey ) return next();
 
         //Decide what to do based on the key code
@@ -104,7 +104,6 @@ class TextEditor extends React.Component {
                 return next()
         }
     }
-
 
     render() {
         return (

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import { MoodPicker, RightArrow } from '../../components/compIndex'
+import { MoodPicker, RightArrow, LineChart } from '../../components/compIndex'
 import './StartPage.scss'
 
 class StartPage extends Component {
@@ -28,6 +28,8 @@ class StartPage extends Component {
                 <div className="text-center">
                     <Link to="/editor"> { this.showRightArrow() } </Link>
                 </div>
+                <Link to="/barchart"> BarChart </Link><br/>
+                <Link to="/linechart"> LineChart </Link>
             </Container>
         )
     }

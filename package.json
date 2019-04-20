@@ -18,7 +18,8 @@
     "react-scripts": "2.1.8",
     "react-spring": "^8.0.19",
     "slate": "^0.45.0",
-    "slate-react": "^0.21.20"
+    "slate-react": "^0.21.20",
+    "victory": "^32.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
