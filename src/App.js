@@ -11,32 +11,27 @@ let moodList = [
     { 
         src: Awesome,
         activeSrc: AwesomeActive,
-        label: "Awesome",
-        count: 0
+        label: "Awesome"
     },
     { 
         src: Happy,
         activeSrc: HappyActive,
-        label: "Happy",
-        count: 0
+        label: "Happy"
     },
     { 
         src: Okay,
         activeSrc: OkayActive,
-        label: "Okay",
-        count: 0
+        label: "Okay"
     },
     { 
         src: Angry,
         activeSrc: AngryActive,
-        label: "Angry",
-        count: 0
+        label: "Angry"
     },
     { 
         src: Sad,
         activeSrc: SadActive,
-        label: "Sad",
-        count: 0
+        label: "Sad"
     }
 ];
 
@@ -70,20 +65,20 @@ class App extends Component {
             return { x: entry.date, y: entry.mood }
         })
     }
-
+    
     storeItems = ( ) => {
         const { chosenMood } = this.state
-
+        
         let moodDatas = this.getMoodLog()
         const newMoodItem = { mood: chosenMood, date: Date.now() }
         
         if ( moodDatas === null ) {
             moodDatas = [ ]
         }
-
+        
         moodDatas.push( newMoodItem )
-        localStorage.setItem('moodLog', JSON.stringify( moodDatas ))
-
+        localStorage.setItem( 'moodLog', JSON.stringify( moodDatas ))
+        
         this.moodCounter()
     }
     
@@ -97,9 +92,25 @@ class App extends Component {
                 return true
             } 
         })
-
+        
         //const moodCount = moodLog.filter( e => e.mood === chosenMood )
-        console.log( moodCount.length )
+        console.log( moodCount.length ) 
+    }
+
+    prepareBarChart = () => {
+        const { moodList } = this.state
+
+        const moodLog = this.getMoodLog()
+
+        return moodList.map( entry => {
+            const moods = moodLog.filter( item => {
+                if ( entry.label === item.mood ) {
+                    return true
+                }
+            })
+
+            return { x: entry.label, y: moods.length }
+        })
     }
 
     render() {
@@ -108,10 +119,10 @@ class App extends Component {
         return (
             <Container>
                     <Route exact path="/" render={ (props) => <StartPage 
-                                chooseMood={ this.chooseMood } 
-                                moodList={ moodList }
-                                chosenMood={ chosenMood }
-                                storeItems={ this.storeItems }
+                            chooseMood={ this.chooseMood } 
+                            moodList={ moodList }
+                            chosenMood={ chosenMood }
+                            storeItems={ this.storeItems }
                     />} />
                     <Route path="/editor" 
                             component={ TextEditor }
@@ -120,6 +131,7 @@ class App extends Component {
                             component={ BarChart }
                             storeItems={ this.storeItems }
                             moodCounter={ this.moodCounter }
+                            data={ this.prepareBarChart() }
                     />} />
                     <Route path="/linechart" render={ (props) => <LineChart 
                             component={ LineChart }
