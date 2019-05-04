@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import { MoodPicker, RightArrow, LineChart } from '../../components/compIndex'
+import { MoodPicker, RightArrow, LineChart, BurgerMenu } from '../../components/compIndex'
 import './StartPage.scss'
 
 class StartPage extends Component {
@@ -17,7 +17,7 @@ class StartPage extends Component {
         const { chooseMood, moodList, chosenMood  } = this.props;
 
         return (
-            <Container>
+            <React.Fragment>
                 <div className="moodChooser text-center mt-5 pt-5">
                     <h1 className="mb-5"> How are you feeling? </h1>
                     <MoodPicker chooseMood={ chooseMood } 
@@ -30,7 +30,7 @@ class StartPage extends Component {
                 </div>
                 <Link to="/barchart"> BarChart </Link><br/>
                 <Link to="/linechart"> LineChart </Link>
-            </Container>
+            </React.Fragment>
         )
     }
 }

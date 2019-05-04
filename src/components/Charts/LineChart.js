@@ -2,7 +2,6 @@ import React from 'react';
 
 import { VictoryLine, VictoryChart } from 'victory';
 
-
 class LineChart extends React.Component {
 
     render() {
@@ -13,7 +12,7 @@ class LineChart extends React.Component {
                 <VictoryChart>
                     <VictoryLine
                         interpolation="natural"
-                        data={data}
+                        data={ data }
                     />
                 </VictoryChart>
             </div>
