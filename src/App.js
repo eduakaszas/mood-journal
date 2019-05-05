@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Route } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import { BurgerMenu, BarChart, TextEditor, StartPage, LineChart } from './components/compIndex.js';
+import { BarChart, TextEditor, StartPage, LineChart } from './components/compIndex.js';
 import { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive } from './components/compIndex.js';
 import './App.scss';
 
@@ -40,7 +40,8 @@ class App extends Component {
 
         this.state = {
             chosenMood: null,
-            moodList: moodList
+            moodList: moodList,
+            pickedDate: new Date()
         };
         
     };
@@ -61,10 +62,10 @@ class App extends Component {
     
     // stores mood and date of mood item that is clicked on
     storeItems = ( ) => {
-        const { chosenMood } = this.state
+        const { chosenMood, pickedDate } = this.state
         
         let moodDatas = this.getMoodLog()
-        const newMoodItem = { mood: chosenMood, date: Date.now() }
+        const newMoodItem = { mood: chosenMood, date: pickedDate.toLocaleDateString('en-GB') }
         
         // is localStorage is empty, create an array
         if ( moodDatas === null ) {
@@ -118,15 +119,24 @@ class App extends Component {
         const moodLog = this.getMoodLog()
         console.log( this.getMoodLog() )
 
+
         return moodLog.map( entry => {
-            let fullDate = Date( entry.date ).split(" ")
+            let fullDate = entry.date.split("/")
             console.log( fullDate )
-            return { x: (fullDate[2]), y: entry.mood }
+            return { x: ( fullDate[0] ), y: entry.mood }
         })
     };
+    
+    handleChange = ( date ) => {
+        this.setState({
+            pickedDate: date
+        }, () => {
+            console.log( this.state.pickedDate )
+        })
+    }
 
     render() {
-        const { moodList, chosenMood } = this.state
+        const { moodList, chosenMood, pickedDate } = this.state
         
         return (
             <Container>
@@ -135,6 +145,8 @@ class App extends Component {
                             moodList={ moodList }
                             chosenMood={ chosenMood }
                             storeItems={ this.storeItems }
+                            pickedDate={ pickedDate }
+                            onChange={ this.handleChange }
                     />} />
                     <Route path="/editor" 
                             component={ TextEditor }

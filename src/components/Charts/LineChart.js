@@ -11,7 +11,7 @@ class LineChart extends React.Component {
             <div>
                 <VictoryChart>
                     <VictoryLine
-                        interpolation="natural"
+                        //y={["okay", "sad"]}
                         data={ data }
                     />
                 </VictoryChart>
