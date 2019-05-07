@@ -106,6 +106,8 @@ class TextEditor extends React.Component {
     }
 
     render() {
+        const { storeItems } = this.props
+        console.log( this.state.value.document.text )
         return (
             <Container>
                 <div>
@@ -120,6 +122,7 @@ class TextEditor extends React.Component {
                     />
                 </div>
                 <div className="text-center mt-5">
+                    <button onClick={ storeItems }> Save </button><br />
                     <Link to="/"><img src={ LeftArrow } alt='leftArrow' className='goBack' /></Link>
                 </div>
             </Container>

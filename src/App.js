@@ -148,9 +148,9 @@ class App extends Component {
                             pickedDate={ pickedDate }
                             onChange={ this.handleChange }
                     />} />
-                    <Route path="/editor" 
-                            component={ TextEditor }
-                    />
+                    <Route path="/editor" render={ (props) => <TextEditor 
+                            storeItems={ this.storeItems }
+                    />} />
                     <Route path="/barchart" render={ (props) => <BarChart
                             component={ BarChart }
                             storeItems={ this.storeItems }

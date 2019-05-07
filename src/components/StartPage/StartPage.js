@@ -10,7 +10,7 @@ class StartPage extends Component {
         const { chosenMood, storeItems } = this.props;
 
         if ( chosenMood !== null )
-            return <img src={ RightArrow } onClick={ storeItems } className='toEditor mt-2' alt='arrow'/> 
+            return <img src={ RightArrow } className='toEditor mt-2' alt='arrow'/> 
     }
 
     render() {
