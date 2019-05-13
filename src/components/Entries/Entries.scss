@@ -1,0 +1,28 @@
+ul.entries {
+    //text-align: center;
+    margin-left: 10rem;
+}
+
+li.entry {
+    width: 40rem;
+    list-style: none;
+    background-color: #FCFBF8;
+    box-shadow: #E5DDD0 0px 3px 5px 0px;
+    border-radius: 4px;
+}
+
+#entryMoodImg {
+    width: 5rem;
+    float: left;
+    margin-right: 3rem;
+}
+
+.dateEntry {
+    float: right;
+    font-size: 1.2rem;
+}
+
+.noteEntry {
+    font-size: 1.9rem;
+}
+

@@ -35,6 +35,7 @@ class StartPage extends Component {
                     <Link to="/editor"> { this.showRightArrow() } </Link>
                 </div>
 
+                <Link to="/entries"> Entries </Link><br/>
                 <Link to="/barchart"> BarChart </Link><br/>
                 <Link to="/linechart"> LineChart </Link>
             </React.Fragment>

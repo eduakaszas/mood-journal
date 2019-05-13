@@ -9,6 +9,9 @@ import MoodDatePicker from './MoodDatePicker/MoodDatePicker';
 import MoodPicker from './Moods/MoodPicker';
 import BarChart from './Charts/BarChart';
 import LineChart from './Charts/LineChart';
+import EntryLogger from './EntryLogger';
+import Entries from './Entries/Entries';
+
 
 import Awesome from './img/awesome.svg'
 import Happy from './img/happy.svg'
@@ -22,5 +25,5 @@ import SadActive from './img/sad_blue.svg'
 import AngryActive from './img/angry_red.svg'
 import RightArrow from './img/right_arrow.svg'
 
-export { MoodDatePicker, BarChart, LineChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock, BurgerMenu };
+export { Entries, EntryLogger, MoodDatePicker, BarChart, LineChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock, BurgerMenu };
 export { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive, RightArrow }
