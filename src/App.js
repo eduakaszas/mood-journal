@@ -34,6 +34,29 @@ let moodList = [
     }
 ];
 
+let basicTags = [
+    { 
+        label: "Fucking shit up",
+        id: "id1"
+    },
+    { 
+        label: "Eating",
+        id: "id2"
+    },
+    { 
+        label: "Sleeping",
+        id: "id3"
+    },
+    { 
+        label: "Watching porn",
+        id: "id4"
+    },
+    { 
+        label: "Spending hours on Youtube",
+        id: "id5"
+    },
+]
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +64,8 @@ class App extends Component {
         this.state = {
             chosenMood: null,
             moodList: moodList,
-            pickedDate: new Date()
+            pickedDate: new Date(),
+            pickedTags: []
         };
         
     };
@@ -104,6 +128,29 @@ class App extends Component {
             return { x: ( fullDate[0] ), y: entry.mood }
         })
     };
+
+    showTags = () => {
+        return basicTags.map( ( tag ) => {
+            return <button className="tag p-2 m-2" 
+                            id={ tag.id } 
+                            key={ tag.id } 
+                            onClick={ this.pickTags }
+                    > 
+                        { tag.label } 
+                    </button>
+        })
+    }
+
+    pickTags = (e) => {
+        let clickedTag = e.target.id
+        console.log( clickedTag )
+
+/*         this.setState({
+            pickedTags: this.state.pickedTags.push( clickedTag )
+        }, () => {
+            console.log( this.state.pickedTags )
+        })  */
+    } 
     
     handleChange = ( date ) => {
         this.setState({
@@ -115,7 +162,6 @@ class App extends Component {
 
     render() {
         const { moodList, chosenMood, pickedDate } = this.state
-        
         return (
             <Container>
                     <Route exact path="/" render={ (props) => <StartPage 
@@ -148,6 +194,7 @@ class App extends Component {
                             pickedDate={ pickedDate }
                             moodCounter={ this.moodCounter }
                             getMoodLog={ this.getMoodLog }
+                            showTags={ this.showTags }
                     />
             </Container>
         );

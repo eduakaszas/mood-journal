@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import { Editor } from 'slate-react';
 import { Link } from "react-router-dom";
 import './TextEditor.scss';
+import { Tags } from '../../components/compIndex'
 import LeftArrow from '../img/left_arrow.svg'
 class TextEditor extends React.Component {
     render() {
@@ -21,6 +22,7 @@ class TextEditor extends React.Component {
                         renderMark={ this.props.renderMark }
                     />
                 </div>
+                <Tags showTags={ this.props.showTags } />
                 <div className="text-center mt-5">
                     <button onClick={ storeItems }> Save </button><br />
                     <Link to="/"><img src={ LeftArrow } alt='leftArrow' className='goBack' /></Link>

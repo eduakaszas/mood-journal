@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 import { Value } from 'slate';
 import { Route } from "react-router-dom";
-import { TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock } from './compIndex.js';
+import { Tags, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock } from './compIndex.js';
 import './TextEditor/TextEditor.scss';
 
 const initialValue = Value.fromJSON({
@@ -44,7 +44,7 @@ class EntryLogger extends Component {
         const { textEditorNote } = this.state
         
         let moodDatas = this.props.getMoodLog()
-        const newMoodItem = { mood: chosenMood, date: pickedDate.toLocaleDateString('en-GB'), notes: textEditorNote }
+        const newMoodItem = { mood: chosenMood, date: pickedDate.toLocaleDateString('en-GB'), notes: textEditorNote, tags: [] }
         
         // if localStorage is empty, create an array
         if ( moodDatas === null ) {
@@ -64,7 +64,6 @@ class EntryLogger extends Component {
             textEditorNote: note
         })
     }
-
 
     // Define a new handler which prints the key that was pressed.
     onKeyDown = ( event, editor, next ) => {
@@ -140,6 +139,7 @@ class EntryLogger extends Component {
                         onKeyDown={ this.onKeyDown }
                         renderNode={ this.renderNode }
                         renderMark={ this.renderMark }
+                        showTags={ this.props.showTags }
                 />} />
             </Container>
         )
