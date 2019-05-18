@@ -11,7 +11,6 @@ class LineChart extends React.Component {
             <div>
                 <VictoryChart>
                     <VictoryLine
-                        //y={["okay", "sad"]}
                         data={ data }
                     />
                 </VictoryChart>

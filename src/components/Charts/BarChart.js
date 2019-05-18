@@ -4,7 +4,7 @@ import { VictoryBar, VictoryChart } from 'victory';
 
 class BarChart extends React.Component {
     render() {
-        const { moodList, data } = this.props
+        const { data } = this.props
         
         return (
             <div>

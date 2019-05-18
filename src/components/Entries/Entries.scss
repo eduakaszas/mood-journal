@@ -1,9 +1,9 @@
 ul.entries {
-    //text-align: center;
     margin-left: 10rem;
 }
 
 li.entry {
+    min-height: 7.5rem;
     width: 40rem;
     list-style: none;
     background-color: #FCFBF8;
@@ -11,10 +11,8 @@ li.entry {
     border-radius: 4px;
 }
 
-#entryMoodImg {
-    width: 5rem;
-    float: left;
-    margin-right: 3rem;
+.entryMoodImg {
+    width: 5.5rem;
 }
 
 .dateEntry {
