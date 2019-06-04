@@ -1,14 +1,19 @@
-.tag {
+.activity {
     background: transparent;
     border-radius: 25px;
     border: 1.2px solid #fcd1b0;
     font-size: 0.9rem;
 }
 
-.tag:focus {
+.activity:focus {
 	background: #fcd1b0;
     border-radius: 25px;
     border: 1.2px solid #fcd1b0;
     outline: 0;
     pointer-events: none;
+}
+
+.activityTitle {
+    margin-left: 11rem !important;
+    font-size: 1.3rem;
 }

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 import { Value } from 'slate';
 import { Route } from "react-router-dom";
-import { Tags, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock } from './compIndex.js';
+import { TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock } from './compIndex.js';
 import './TextEditor/TextEditor.scss';
 
 const initialValue = Value.fromJSON({
@@ -16,9 +16,9 @@ const initialValue = Value.fromJSON({
                     {
                         object: 'text',
                         leaves: [
-                            {
+/*                             {
                                 text: 'Bitch ass paragraph.',
-                            },
+                            },  */
                         ],
                     },
                 ],
@@ -40,11 +40,11 @@ class EntryLogger extends Component {
 
     // stores mood and date of mood item that is clicked on
     storeItems = ( ) => {
-        const { chosenMood, pickedDate } = this.props
+        const { chosenMood, pickedDate, chosenActivities } = this.props
         const { textEditorNote } = this.state
         
         let moodDatas = this.props.getMoodLog()
-        const newMoodItem = { mood: chosenMood, date: pickedDate.toLocaleDateString('en-GB'), notes: textEditorNote, tags: [] }
+        const newMoodItem = { mood: chosenMood, date: pickedDate.toLocaleDateString('en-GB'), notes: textEditorNote, activities: chosenActivities }
         
         // if localStorage is empty, create an array
         if ( moodDatas === null ) {
@@ -57,11 +57,20 @@ class EntryLogger extends Component {
         localStorage.setItem( 'moodLog', JSON.stringify( moodDatas ))
         
         this.props.moodCounter()
+
+        // resetting value
+        this.resetValues()
     };
 
     storeCurrentNote = ( note ) => {
         this.setState({
             textEditorNote: note
+        })
+    }
+    
+    resetValues = () => {
+        this.setState({
+            value: initialValue
         })
     }
 
@@ -129,6 +138,7 @@ class EntryLogger extends Component {
     }
 
     render() {
+        const { basicActivities, pickActivities } = this.props
         return (
             <Container>
                 <Route path="/editor" render={ (props) => <TextEditor 
@@ -139,7 +149,8 @@ class EntryLogger extends Component {
                         onKeyDown={ this.onKeyDown }
                         renderNode={ this.renderNode }
                         renderMark={ this.renderMark }
-                        showTags={ this.props.showTags }
+                        basicActivities={ basicActivities }
+                        pickActivities={ pickActivities }
                 />} />
             </Container>
         )

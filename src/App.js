@@ -34,7 +34,7 @@ let moodList = [
     }
 ];
 
-let basicTags = [
+let basicActivities = [
     { 
         label: "Fucking shit up",
         id: "id1"
@@ -65,7 +65,7 @@ class App extends Component {
             chosenMood: null,
             moodList: moodList,
             pickedDate: new Date(),
-            pickedTags: []
+            chosenActivities: []
         };
         
     };
@@ -101,6 +101,18 @@ class App extends Component {
         //const moodCount = moodLog.filter( e => e.mood === chosenMood )
         console.log( moodCount.length ) 
     };
+
+    pickActivities = ( e ) => {
+        const { chosenActivities } = this.state
+
+        let clickedActivity = e.target.id
+
+        this.setState({
+            chosenActivities: chosenActivities.push( clickedActivity )
+        }, () => {
+            console.log( this.state.chosenActivities )
+        })  
+    } 
     
     prepareBarChart = () => {
         const { moodList } = this.state
@@ -129,29 +141,6 @@ class App extends Component {
         })
     };
 
-    showTags = () => {
-        return basicTags.map( ( tag ) => {
-            return <button className="tag p-2 m-2" 
-                            id={ tag.id } 
-                            key={ tag.id } 
-                            onClick={ this.pickTags }
-                    > 
-                        { tag.label } 
-                    </button>
-        })
-    }
-
-    pickTags = (e) => {
-        let clickedTag = e.target.id
-        console.log( clickedTag )
-
-/*         this.setState({
-            pickedTags: this.state.pickedTags.push( clickedTag )
-        }, () => {
-            console.log( this.state.pickedTags )
-        })  */
-    } 
-    
     handleChange = ( date ) => {
         this.setState({
             pickedDate: date
@@ -161,7 +150,8 @@ class App extends Component {
     }
 
     render() {
-        const { moodList, chosenMood, pickedDate } = this.state
+        const { moodList, chosenMood, pickedDate, chosenActivities } = this.state
+        
         return (
             <Container>
                     <Route exact path="/" render={ (props) => <StartPage 
@@ -194,7 +184,9 @@ class App extends Component {
                             pickedDate={ pickedDate }
                             moodCounter={ this.moodCounter }
                             getMoodLog={ this.getMoodLog }
-                            showTags={ this.showTags }
+                            basicActivities={ basicActivities }
+                            chosenActivities={ chosenActivities }
+                            pickActivities={ this.pickActivities }
                     />
             </Container>
         );

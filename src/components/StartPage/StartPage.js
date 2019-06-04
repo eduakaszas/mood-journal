@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 
 import { Link } from "react-router-dom";
-import Container from 'react-bootstrap/Container';
-import { MoodPicker, MoodDatePicker, RightArrow, LineChart, BurgerMenu } from '../../components/compIndex'
+import { MoodPicker, MoodDatePicker, RightArrow } from '../../components/compIndex'
 import './StartPage.scss'
 
 class StartPage extends Component {
     showRightArrow = () => {
-        const { chosenMood, storeItems } = this.props;
+        const { chosenMood } = this.props;
 
         if ( chosenMood !== null )
             return <img src={ RightArrow } className='toEditor mt-2' alt='arrow'/> 

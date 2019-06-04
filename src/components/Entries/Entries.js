@@ -32,7 +32,7 @@ class Entries extends Component {
                     )
                 }) 
                     return (
-                        <li key={ entry.mood } className="entry mt-4 ml-5 p-3">
+                        <li key={ entry.notes } className="entry mt-4 ml-5 p-3">
                             <h1 className="imgEntry" > { displayedImage } </h1>
                             <h1 className="dateEntry" > { entry.date } </h1>
                             <h1 className="moodEntry mt-4"> { entry.mood } </h1>
