@@ -1,10 +1,22 @@
 .moodList {
+    //@include on-circle($item-count: 6, $circle-size: 15em, $item-size: 8rem); 
+    //margin: 5em auto 0;
+    //border: solid 5px tomato;
     list-style: none;
 }
 
 li.mood {
     display: inline-block;
-    height: 7.5rem;
-    width: 7.5rem;
+    height: 8rem;
+    width: 8rem;
     cursor: pointer;
 }
+
+li.mood:hover {
+    transition-duration: 0.3s;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+

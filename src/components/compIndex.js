@@ -23,8 +23,10 @@ import AwesomeActive from './img/awesome_green.svg'
 import HappyActive from './img/happy_yellow.svg'
 import OkayActive from './img/okay_orange.svg'
 import SadActive from './img/sad_blue.svg'
+import Other from './img/other.svg'
+import OtherActive from './img/other_grey.svg'
 import AngryActive from './img/angry_red.svg'
 import RightArrow from './img/right_arrow.svg'
 
 export { Tags, Entries, EntryLogger, MoodDatePicker, BarChart, LineChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock, BurgerMenu };
-export { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive, RightArrow }
+export { Awesome, Happy, Okay, Sad, Angry, Other, OtherActive, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive, RightArrow }

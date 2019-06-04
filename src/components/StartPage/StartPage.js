@@ -18,7 +18,7 @@ class StartPage extends Component {
 
         return (
             <React.Fragment>
-                <div className="moodChooser text-center mt-5 pt-5">
+                <div className="moodChooser text-center">
                     <h1> How are you feeling? </h1>
                     <MoodDatePicker 
                             pickedDate={ pickedDate }
