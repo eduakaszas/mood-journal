@@ -139,6 +139,7 @@ class EntryLogger extends Component {
 
     render() {
         const { basicActivities, pickActivities } = this.props
+        
         return (
             <Container>
                 <Route path="/editor" render={ (props) => <TextEditor 

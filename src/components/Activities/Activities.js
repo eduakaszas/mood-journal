@@ -3,17 +3,19 @@ import React, { Component } from 'react'
 import './Activities.scss'
 
 class Activities extends Component {
-    displayActivities = () => {
+    displayActivities() {
         const { basicActivities, pickActivities } = this.props
 
         return basicActivities.map( ( activity ) => {
-            return <button className="activity p-2 m-2" 
-                            id={ activity.id } 
-                            key={ activity.id } 
-                            onClick={ pickActivities }
+            return <div id={ activity.label } 
+                        key={ activity.num } 
+                        onClick={ pickActivities }
+                        className="d-inline"
                     > 
-                        { activity.label } 
-                    </button>
+                        <button className="activity p-2 m-2">
+                            { activity.label } 
+                        </button>
+                    </div>
         })
     }
 

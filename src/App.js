@@ -37,23 +37,23 @@ let moodList = [
 let basicActivities = [
     { 
         label: "Fucking shit up",
-        id: "id1"
+        num: "id1"
     },
     { 
         label: "Eating",
-        id: "id2"
+        num: "id2"
     },
     { 
         label: "Sleeping",
-        id: "id3"
+        num: "id3"
     },
     { 
         label: "Watching porn",
-        id: "id4"
+        num: "id4"
     },
     { 
         label: "Spending hours on Youtube",
-        id: "id5"
+        num: "id5"
     },
 ]
 
@@ -65,7 +65,7 @@ class App extends Component {
             chosenMood: null,
             moodList: moodList,
             pickedDate: new Date(),
-            chosenActivities: []
+            chosenActivities: null
         };
         
     };
@@ -103,12 +103,10 @@ class App extends Component {
     };
 
     pickActivities = ( e ) => {
-        const { chosenActivities } = this.state
-
         let clickedActivity = e.target.id
 
         this.setState({
-            chosenActivities: chosenActivities.push( clickedActivity )
+            chosenActivities: clickedActivity 
         }, () => {
             console.log( this.state.chosenActivities )
         })  
@@ -175,7 +173,6 @@ class App extends Component {
                     />} />
                     <Route path="/linechart" render={ (props) => <LineChart 
                             component={ LineChart }
-                            storeItems={ this.storeItems }
                             data={ this.prepareLineChart() }
                     />} />
                     <EntryLogger 
