@@ -14,7 +14,10 @@ class Activities extends Component {
                     >
                         <ToggleButtonGroup type="checkbox"> 
                             <ToggleButton id={ activity.label }
-                                        onClick={ pickActivities }
+                                        onClick={ ( event ) => {
+                                            pickActivities( event )
+                                            event.preventDefault()
+                                        } }
                                         className="activity m-2"
                             >
                                 { activity.label } 

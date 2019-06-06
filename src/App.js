@@ -72,7 +72,7 @@ class App extends Component {
         this.state = {
             chosenMood: null,
             moodList: moodList,
-            pickedDate: new Date(),
+            pickedDate: Date.now(),
             chosenActivities: []
         };
         
@@ -114,6 +114,10 @@ class App extends Component {
         const { chosenActivities } = this.state 
 
         let clickedActivity = e.target.id
+
+        console.log( "chosenActivities" )
+        console.log( chosenActivities )
+        console.log( clickedActivity )
 
         if ( chosenActivities.includes( clickedActivity ) ) {
             let uniqueActivities = chosenActivities.filter( ( activity ) => {
@@ -160,10 +164,9 @@ class App extends Component {
     
     prepareLineChart = () => {
         const moodLog = this.getMoodLog()
-        console.log( this.getMoodLog() )
 
         return moodLog.map( entry => {
-            let fullDate = entry.date.split("/")
+            let fullDate = new Date(entry.date).toLocaleDateString().split("/")
             console.log( fullDate )
             return { x: ( fullDate[0] ), y: entry.mood }
         })
@@ -171,7 +174,7 @@ class App extends Component {
 
     handleChange = ( date ) => {
         this.setState({
-            pickedDate: date
+            pickedDate: Date.parse( date )
         }, () => {
             console.log( this.state.pickedDate )
         })

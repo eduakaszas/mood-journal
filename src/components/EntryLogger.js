@@ -44,13 +44,15 @@ class EntryLogger extends Component {
         const { textEditorNote } = this.state
         
         let moodDatas = this.props.getMoodLog()
-        const newMoodItem = { mood: chosenMood, date: pickedDate.toLocaleDateString('en-GB'), notes: textEditorNote, activities: chosenActivities }
+        const newMoodItem = { mood: chosenMood, date: pickedDate, notes: textEditorNote, activities: chosenActivities }
         
         // if localStorage is empty, create an array
         if ( moodDatas === null ) {
             moodDatas = [ ]
         }
         
+        console.log( "pickedDate" )
+        console.log( pickedDate )
         // push new mood item to localStorage
         moodDatas.push( newMoodItem )
         // update MoodLog by setting it
