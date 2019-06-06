@@ -1,5 +1,7 @@
 ul.entries {
+    position: absolute;
     margin-left: 10rem;
+    margin-top: 5rem;
 }
 
 li.entry {
@@ -12,15 +14,24 @@ li.entry {
 }
 
 .entryMoodImg {
-    width: 5.5rem;
+    width: 4.5rem;
 }
 
 .dateEntry {
     float: right;
-    font-size: 1.2rem;
+    font-size: 1rem;
+}
+
+.moodEntry {
+    font-size: 2.3rem;
 }
 
 .noteEntry {
-    font-size: 1.9rem;
+    font-size: 1.5rem;
+}
+
+.activityEntry {
+    float: right;
+    font-size: 1rem;
 }
 

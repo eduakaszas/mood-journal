@@ -1,14 +1,20 @@
 .moodChooser {
-    margin-top: 10rem !important;
-}
+    margin-top: 14rem !important;
+    margin-left: 14rem !important;
+} 
 
-.moodChooser h1 {
+h1 {
     display: inline !important;
 }
 
-img.toEditor {
-    width: 3rem;
+img.nextButton {
+    position: absolute;
+    margin-top: 20rem !important;
+    margin-left: 8rem !important;
+    width: 3.5rem;
     height: auto;
     cursor: pointer;
 }
+
+
 

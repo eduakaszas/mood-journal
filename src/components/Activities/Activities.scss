@@ -1,19 +1,36 @@
 .activity {
     background: transparent;
-    border-radius: 25px;
+    padding: 0.6rem;
+    border-radius: 20px;
+    color: #fcd1b0;
     border: 1.2px solid #fcd1b0;
     font-size: 0.9rem;
 }
 
-.activity:focus {
-	background: #fcd1b0;
-    border-radius: 25px;
-    border: 1.2px solid #fcd1b0;
-    outline: 0;
-    pointer-events: none;
+.activity:hover {
+    background: #fadac2 !important;
+    //color: white !important;
+    outline: none !important;
+    border: 1.2px solid #fcd1b0 !important;
+}
+.activity:active, .activity:focus {
+    background: #fcd1b0 !important;
+    color: white !important;
+    outline: none !important;
+    border: 1.2px solid #fcd1b0 !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active {
+    background: #fcd1b0;
+    border: 1.2px solid #fcd1b0 !important;
+    outline: none !important;
 }
 
 .activityTitle {
-    margin-left: 11rem !important;
+    margin-left: 10rem !important;
     font-size: 1.3rem;
+}
+
+.activityContainer {
+    margin-left: 10rem !important;
 }

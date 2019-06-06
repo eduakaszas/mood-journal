@@ -11,25 +11,29 @@ class TextEditor extends React.Component {
         
         return (
             <Container>
-                <div>
-                    <div className="title ml-5 mb-2"> Thoughts </div>
-                    <Editor 
-                        className="textEditor p-4 ml-5"
-                        value={ this.props.value } 
-                        placeholder="Enter your goddamn thoughts"
-                        onChange={ this.props.onChange } 
-                        onKeyDown={ this.props.onKeyDown }
-                        renderNode={ this.props.renderNode }
-                        renderMark={ this.props.renderMark }
-                    />
-                </div>
-                <Activities 
-                        pickActivities={ pickActivities }
-                        basicActivities={ basicActivities }
-                />
-                <div className="text-center mt-5">
-                    <Link to="/"><button onClick={ storeItems }> Save </button><br /></Link>
+                <div className="float-left">
                     <Link to="/"><img src={ LeftArrow } alt='leftArrow' className='goBack' /></Link>
+                </div>
+                <div className="editorContainer ml-5 position-absolute">
+                    <div>
+                        <div className="title mb-2"> Thoughts </div>
+                        <Editor 
+                            className="textEditor p-4"
+                            value={ this.props.value } 
+                            placeholder="Enter your goddamn thoughts"
+                            onChange={ this.props.onChange } 
+                            onKeyDown={ this.props.onKeyDown }
+                            renderNode={ this.props.renderNode }
+                            renderMark={ this.props.renderMark }
+                        />
+                    </div>
+                    <Activities 
+                            pickActivities={ pickActivities }
+                            basicActivities={ basicActivities }
+                    />
+                    <div className="text-center mt-5 ml-5">
+                        <Link to="/"><button onClick={ storeItems } className="save"> Save </button></Link>
+                    </div>
                 </div>
             </Container>
         );

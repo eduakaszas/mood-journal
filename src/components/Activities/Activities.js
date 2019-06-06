@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
+import ToggleButton from 'react-bootstrap/ToggleButton'
 import './Activities.scss'
 
 class Activities extends Component {
@@ -7,26 +9,29 @@ class Activities extends Component {
         const { basicActivities, pickActivities } = this.props
 
         return basicActivities.map( ( activity ) => {
-            return <div id={ activity.label } 
-                        key={ activity.num } 
-                        onClick={ pickActivities }
+            return <div key={ activity.num } 
                         className="d-inline"
-                    > 
-                        <button className="activity p-2 m-2">
-                            { activity.label } 
-                        </button>
+                    >
+                        <ToggleButtonGroup type="checkbox"> 
+                            <ToggleButton id={ activity.label }
+                                        onClick={ pickActivities }
+                                        className="activity m-2"
+                            >
+                                { activity.label } 
+                            </ToggleButton>
+                        </ToggleButtonGroup>
                     </div>
         })
     }
 
     render() {
         return (
-            <div>
+            <>
                 <div className="activityTitle mt-5"> Activities </div>
-                <div className="activityContainer m-2 text-center">
+                <div className="activityContainer text-center">
                     { this.displayActivities() }
                 </div>
-            </div>
+            </>
         )
     }
 }

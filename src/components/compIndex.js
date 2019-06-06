@@ -7,11 +7,15 @@ import BurgerMenu from './BurgerMenu/BurgerMenu';
 import StartPage from './StartPage/StartPage';
 import MoodDatePicker from './MoodDatePicker/MoodDatePicker';
 import MoodPicker from './Moods/MoodPicker';
-import BarChart from './Charts/BarChart';
-import LineChart from './Charts/LineChart';
+import BarChart from './Stats/BarChart';
+import LineChart from './Stats/LineChart';
 import EntryLogger from './EntryLogger';
 import Entries from './Entries/Entries';
 import Activities from './Activities/Activities';
+import Navigation from './Navigation/Navigation';
+import Stats from './Stats/Stats';
+
+
 
 
 import Awesome from './img/awesome.svg'
@@ -26,5 +30,5 @@ import SadActive from './img/sad_blue.svg'
 import AngryActive from './img/angry_red.svg'
 import RightArrow from './img/right_arrow.svg'
 
-export { Activities, Entries, EntryLogger, MoodDatePicker, BarChart, LineChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock, BurgerMenu };
+export { Stats, Navigation, Activities, Entries, EntryLogger, MoodDatePicker, BarChart, LineChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock, BurgerMenu };
 export { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive, RightArrow }

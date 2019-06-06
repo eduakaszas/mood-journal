@@ -59,7 +59,8 @@ class EntryLogger extends Component {
         this.props.moodCounter()
 
         // resetting value
-        this.resetValues()
+        this.props.resetValues()
+        this.resetEditor()
     };
 
     storeCurrentNote = ( note ) => {
@@ -68,7 +69,7 @@ class EntryLogger extends Component {
         })
     }
     
-    resetValues = () => {
+    resetEditor = () => {
         this.setState({
             value: initialValue
         })

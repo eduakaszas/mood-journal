@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
-
 //import { AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive } from '../compIndex.js';
 import './Entries.scss'
 
@@ -35,8 +34,9 @@ class Entries extends Component {
                         <li key={ entry.notes } className="entry mt-4 ml-5 p-3">
                             <h1 className="imgEntry" > { displayedImage } </h1>
                             <h1 className="dateEntry" > { entry.date } </h1>
-                            <h1 className="moodEntry mt-4"> { entry.mood } </h1>
-                            <h1 className="noteEntry mb-4"> { entry.notes } </h1>
+                            <h1 className="moodEntry mt-4"> { entry.mood } </h1><br />
+                            <h1 className="noteEntry mb-4 ml-1"> { entry.notes } </h1><br />
+                            <div className="activityEntry ml-5 pl-5"> { entry.activities.join(", ") } </div>
                         </li>
                     )
             })

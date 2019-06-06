@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Route } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import { Entries, EntryLogger, BarChart, StartPage, LineChart } from './components/compIndex.js';
+import { Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
 import { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive } from './components/compIndex.js';
 import './App.scss';
 
@@ -36,25 +36,33 @@ let moodList = [
 
 let basicActivities = [
     { 
-        label: "Fucking shit up",
-        num: "id1"
+        label: "Work",
+        num: "1"
     },
     { 
-        label: "Eating",
-        num: "id2"
+        label: "Sport",
+        num: "2"
     },
     { 
-        label: "Sleeping",
-        num: "id3"
+        label: "Friends",
+        num: "3"
     },
     { 
-        label: "Watching porn",
-        num: "id4"
+        label: "Good meal",
+        num: "4"
     },
     { 
-        label: "Spending hours on Youtube",
-        num: "id5"
+        label: "Shopping",
+        num: "5"
     },
+    { 
+        label: "Relax",
+        num: "6"
+    },
+    { 
+        label: "Reading",
+        num: "7"
+    }
 ]
 
 class App extends Component {
@@ -65,7 +73,7 @@ class App extends Component {
             chosenMood: null,
             moodList: moodList,
             pickedDate: new Date(),
-            chosenActivities: null
+            chosenActivities: []
         };
         
     };
@@ -103,14 +111,36 @@ class App extends Component {
     };
 
     pickActivities = ( e ) => {
+        const { chosenActivities } = this.state 
+
         let clickedActivity = e.target.id
 
-        this.setState({
-            chosenActivities: clickedActivity 
-        }, () => {
-            console.log( this.state.chosenActivities )
-        })  
+        if ( chosenActivities.includes( clickedActivity ) ) {
+            let uniqueActivities = chosenActivities.filter( ( activity ) => {
+                return activity !== clickedActivity
+            })
+
+            this.setState({
+                chosenActivities: uniqueActivities
+            })
+
+        } else {
+            let updatedActivities = chosenActivities.concat( clickedActivity )
+
+            this.setState({
+                chosenActivities: updatedActivities
+            }, () => {
+                console.log( this.state.chosenActivities )
+            })  
+        }
     } 
+
+    resetValues = () => {
+        this.setState({
+            chosenMood: null,
+            chosenActivities: []
+        })
+    }
     
     prepareBarChart = () => {
         const { moodList } = this.state
@@ -152,39 +182,38 @@ class App extends Component {
         
         return (
             <Container>
-                    <Route exact path="/" render={ (props) => <StartPage 
-                            chooseMood={ this.chooseMood } 
-                            moodList={ moodList }
-                            chosenMood={ chosenMood }
-                            pickedDate={ pickedDate }
-                            onChange={ this.handleChange }
-                    />} />
-                    <Route exact path="/entries" render={ (props) => <Entries 
-                            component={ Entries } 
-                            getMoodLog={ this.getMoodLog }
-                            moodList={ moodList }
-                            chosenMood={ chosenMood }
-                            pickedDate={ pickedDate }
-                    />} />
-                    <Route path="/barchart" render={ (props) => <BarChart
-                            component={ BarChart }
-                            moodCounter={ this.moodCounter }
-                            data={ this.prepareBarChart() }
-                    />} />
-                    <Route path="/linechart" render={ (props) => <LineChart 
-                            component={ LineChart }
-                            data={ this.prepareLineChart() }
-                    />} />
-                    <EntryLogger 
-                            moodList={ moodList }
-                            chosenMood={ chosenMood }
-                            pickedDate={ pickedDate }
-                            moodCounter={ this.moodCounter }
-                            getMoodLog={ this.getMoodLog }
-                            basicActivities={ basicActivities }
-                            chosenActivities={ chosenActivities }
-                            pickActivities={ this.pickActivities }
-                    />
+                <Navigation />
+                <Route exact path="/" render={ (props) => <StartPage 
+                        chooseMood={ this.chooseMood } 
+                        moodList={ moodList }
+                        chosenMood={ chosenMood }
+                        pickedDate={ pickedDate }
+                        onChange={ this.handleChange }
+                />} />
+                <Route exact path="/entries" render={ (props) => <Entries 
+                        component={ Entries } 
+                        getMoodLog={ this.getMoodLog }
+                        moodList={ moodList }
+                        chosenMood={ chosenMood }
+                        pickedDate={ pickedDate }
+                />} />
+                <Route path="/stats" render={ (props) => <Stats
+                        component={ Stats }
+                        moodCounter={ this.moodCounter }
+                        barData={ this.prepareBarChart() }
+                        lineData={ this.prepareLineChart() }
+                />} />
+                <EntryLogger 
+                        moodList={ moodList }
+                        chosenMood={ chosenMood }
+                        pickedDate={ pickedDate }
+                        moodCounter={ this.moodCounter }
+                        getMoodLog={ this.getMoodLog }
+                        basicActivities={ basicActivities }
+                        chosenActivities={ chosenActivities }
+                        pickActivities={ this.pickActivities }
+                        resetValues={ this.resetValues }
+                />
             </Container>
         );
     }

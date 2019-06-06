@@ -5,11 +5,11 @@ import { MoodPicker, MoodDatePicker, RightArrow } from '../../components/compInd
 import './StartPage.scss'
 
 class StartPage extends Component {
-    showRightArrow = () => {
+    showNextButton = () => {
         const { chosenMood } = this.props;
 
         if ( chosenMood !== null )
-            return <img src={ RightArrow } className='toEditor mt-2' alt='arrow'/> 
+            return <img src={ RightArrow } className='nextButton mt-5' alt='arrow'/> 
     }
 
     render() {
@@ -17,7 +17,7 @@ class StartPage extends Component {
 
         return (
             <React.Fragment>
-                <div className="moodChooser text-center mt-5 pt-5">
+                <div className="moodChooser text-center position-absolute">
                     <h1> How are you feeling? </h1>
                     <MoodDatePicker 
                             pickedDate={ pickedDate }
@@ -30,13 +30,9 @@ class StartPage extends Component {
                     />
                 </div>
 
-                <div className="text-center">
-                    <Link to="/editor"> { this.showRightArrow() } </Link>
+                <div className="float-right">
+                    <Link to="/editor"> { this.showNextButton() } </Link>
                 </div>
-
-                <Link to="/entries"> Entries </Link><br/>
-                <Link to="/barchart"> BarChart </Link><br/>
-                <Link to="/linechart"> LineChart </Link>
             </React.Fragment>
         )
     }
