@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
-//import { AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive } from '../compIndex.js';
-import './Entries.scss'
+
+import '../../scss/main.scss'
 
 class Entries extends Component {
     displayEntryItems() {
@@ -11,14 +11,14 @@ class Entries extends Component {
         console.log( moodData )
 
         if ( moodData === null ) {
-            return <h1> There's nothing to see here, get out! </h1>
+            return <h1> No entries </h1>
         } else {
             let displayedEntries = moodData
             .sort(( a, b ) => {
                 if ( a.date > b.date ) {
-                    return 1
-                } else if ( a.date < b.date ) {
                     return -1
+                } else if ( a.date < b.date ) {
+                    return 1
                 } else {
                     return 0
                 }
@@ -35,7 +35,7 @@ class Entries extends Component {
                     }
 
                     return(
-                        <div key={ item.label }>
+                        <div key={ item.srcActive }>
                             <img src={ src } 
                                 className="entryMoodImg float-left mr-4"
                                 alt={ item.label } 
@@ -50,7 +50,7 @@ class Entries extends Component {
                         <h1 className="dateEntry" > { new Date( entry.date ).toLocaleDateString('en-GB') } </h1>
                         <h1 className="moodEntry mt-4"> { entry.mood } </h1><br />
                         <h1 className="noteEntry mb-4 ml-1"> { entry.notes } </h1><br />
-                        <div className="activityEntry ml-5 pl-5"> { entry.activities.join(", ") } </div>
+                        <div className="activityEntry ml-5 pl-5"> { entry.activities.join("\xa0\xa0\xa0\xa0") } </div>
                     </li>
                 )
             })

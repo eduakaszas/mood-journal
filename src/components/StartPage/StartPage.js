@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Link } from "react-router-dom";
 import { MoodPicker, MoodDatePicker, RightArrow } from '../../components/compIndex'
-import './StartPage.scss'
+import '../../scss/main.scss'
 
 class StartPage extends Component {
     showNextButton = () => {

@@ -1,16 +1,26 @@
 import React, { Component } from 'react'
 
-import { BarChart, LineChart } from '../../components/compIndex'
+import Container from 'react-bootstrap/Container';
+import { BarChart } from '../../components/compIndex'
 
 class Stats extends Component {
     render() {
-        const { barData, lineData } = this.props
+        const { barData, moodLog } = this.props
         
         return (
-            <div>
-                <BarChart barData={ barData } />
-                <LineChart lineData={ lineData } />
-            </div>
+            <Container>
+                <div>
+                    {
+                        !moodLog 
+                        ? <h1> No data, GTFO </h1> 
+                        : (
+                            <>
+                                <BarChart barData={ barData } />
+                            </>
+                        )
+                    }
+                </div>
+            </Container>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Container from 'react-bootstrap/Container';
-import './MoodPicker.scss'
+import '../../scss/main.scss'
 
 class MainMoods extends Component {
     displayMoodList() {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
-import './Activities.scss'
+import '../../scss/main.scss'
 
 class Activities extends Component {
     displayActivities() {
@@ -14,10 +14,7 @@ class Activities extends Component {
                     >
                         <ToggleButtonGroup type="checkbox"> 
                             <ToggleButton id={ activity.label }
-                                        onClick={ ( event ) => {
-                                            pickActivities( event )
-                                            event.preventDefault()
-                                        } }
+                                        onClick={ pickActivities }
                                         className="activity m-2"
                             >
                                 { activity.label } 

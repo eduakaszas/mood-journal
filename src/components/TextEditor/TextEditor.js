@@ -2,9 +2,10 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import { Editor } from 'slate-react';
 import { Link } from "react-router-dom";
-import './TextEditor.scss';
+import './TextEditor.scss'
 import { Activities } from '../../components/compIndex'
 import LeftArrow from '../img/left_arrow.svg'
+
 class TextEditor extends React.Component {
     render() {
         const { storeItems, basicActivities, pickActivities } = this.props
@@ -20,7 +21,7 @@ class TextEditor extends React.Component {
                         <Editor 
                             className="textEditor p-4"
                             value={ this.props.value } 
-                            placeholder="Enter your goddamn thoughts"
+                            placeholder="Enter thoughts"
                             onChange={ this.props.onChange } 
                             onKeyDown={ this.props.onKeyDown }
                             renderNode={ this.props.renderNode }

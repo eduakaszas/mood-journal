@@ -1,17 +1,12 @@
-//COLOURS
-$background: #fff4eb;
-
-// FONTS
-@import url('https://fonts.googleapis.com/css?family=Rubik:400,700');
-$font: 'Rubik', sans-serif;;
+@import 'scss/main.scss';
 
 * {
-    margin:0;
-    padding:0;
-    font-family: $font;
+    margin: 0;
+    padding: 0;
+    font-family: $main-font;
 }
 
 html, body {
     background-color: $background;
-    font-family: $font;
+    font-family: $main-font;
 }

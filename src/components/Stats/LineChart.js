@@ -9,7 +9,7 @@ class LineChart extends React.Component {
 
         return (
             <div>
-                <VictoryChart>
+                <VictoryChart style={{ parent: { width: "700px" } }}>
                     <VictoryLine
                         data={ lineData }
                     />

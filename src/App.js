@@ -78,7 +78,6 @@ class App extends Component {
         
     };
     
-    // update state by clicking on a mood item
     chooseMood = ( e ) => {
         let clickedMood = e.target.id
         
@@ -89,7 +88,7 @@ class App extends Component {
         })
     };
 
-    //separate funxtion just for getting moodLog from the localStorage
+    //function for getting moodLog from the localStorage
     getMoodLog = () => JSON.parse(localStorage.getItem( 'moodLog' ));
     
     // count how many times a mood item is clicked on
@@ -100,34 +99,29 @@ class App extends Component {
         
         // if mood item in localStorage is the same as the item I clicked on,
         // ( aka the state ), return it 
-        const moodCount = moodLog.filter( entry => {
-            if ( entry.mood === chosenMood ) {
-                return true
-            } 
-        })
-        
-        //const moodCount = moodLog.filter( e => e.mood === chosenMood )
+        const moodCount = moodLog.filter( e => e.mood === chosenMood )
         console.log( moodCount.length ) 
     };
 
     pickActivities = ( e ) => {
         const { chosenActivities } = this.state 
-
+        
+        
         let clickedActivity = e.target.id
-
-        console.log( "chosenActivities" )
-        console.log( chosenActivities )
-        console.log( clickedActivity )
+        
+        // Cannot prevent default because event needs to bubble up for bootstrap, instead return
+        //e.preventDefault()
+        if ( clickedActivity === "" ) return
 
         if ( chosenActivities.includes( clickedActivity ) ) {
             let uniqueActivities = chosenActivities.filter( ( activity ) => {
                 return activity !== clickedActivity
             })
-
+            
             this.setState({
                 chosenActivities: uniqueActivities
             })
-
+            
         } else {
             let updatedActivities = chosenActivities.concat( clickedActivity )
 
@@ -151,6 +145,19 @@ class App extends Component {
         
         const moodLog = this.getMoodLog()
         
+        if ( moodLog === null ) {
+            return moodList.map( entry => {
+                return { x: entry.label, y: 0 }
+            })
+
+            /*
+                if in oneliner you want to return an object, wrap it in '()',
+                otherwise the {} of the object will clash with the {} of the function
+                
+                return moodList.map( entry => ( { x: entry.label, y : 0 } ) )
+            */
+        }
+
         return moodList.map( entry => {
             const moods = moodLog.filter( item => {
                 if ( entry.label === item.mood ) {
@@ -162,15 +169,21 @@ class App extends Component {
         })
     };
     
+    /*     
     prepareLineChart = () => {
         const moodLog = this.getMoodLog()
 
-        return moodLog.map( entry => {
+        if ( !moodLog ) {
+            return []
+        }
+
+        return moodLog.map( entry => {            
             let fullDate = new Date(entry.date).toLocaleDateString().split("/")
-            console.log( fullDate )
-            return { x: ( fullDate[0] ), y: entry.mood }
+
+            return { x: ( fullDate[1] ), y: entry.mood }
         })
-    };
+    }; 
+    */
 
     handleChange = ( date ) => {
         this.setState({
@@ -186,26 +199,41 @@ class App extends Component {
         return (
             <Container>
                 <Navigation />
-                <Route exact path="/" render={ (props) => <StartPage 
-                        chooseMood={ this.chooseMood } 
-                        moodList={ moodList }
-                        chosenMood={ chosenMood }
-                        pickedDate={ pickedDate }
-                        onChange={ this.handleChange }
-                />} />
-                <Route exact path="/entries" render={ (props) => <Entries 
-                        component={ Entries } 
-                        getMoodLog={ this.getMoodLog }
-                        moodList={ moodList }
-                        chosenMood={ chosenMood }
-                        pickedDate={ pickedDate }
-                />} />
-                <Route path="/stats" render={ (props) => <Stats
-                        component={ Stats }
-                        moodCounter={ this.moodCounter }
-                        barData={ this.prepareBarChart() }
-                        lineData={ this.prepareLineChart() }
-                />} />
+                <Route 
+                    exact 
+                    path="/" 
+                    render={ (props) => 
+                        <StartPage 
+                            chooseMood={ this.chooseMood } 
+                            moodList={ moodList }
+                            chosenMood={ chosenMood }
+                            pickedDate={ pickedDate }
+                            onChange={ this.handleChange }
+                        />
+                    } 
+                />
+                <Route 
+                    exact 
+                    path="/entries" 
+                    render={ (props) => 
+                        <Entries 
+                            getMoodLog={ this.getMoodLog }
+                            moodList={ moodList }
+                            chosenMood={ chosenMood }
+                            pickedDate={ pickedDate }
+                        />
+                    } 
+                />
+                <Route 
+                    path="/stats" 
+                    render={ (props) => 
+                        <Stats
+                            moodCounter={ this.moodCounter }
+                            moodLog={ this.getMoodLog() }
+                            barData={ this.prepareBarChart() }
+                        />
+                    } 
+                />
                 <EntryLogger 
                         moodList={ moodList }
                         chosenMood={ chosenMood }

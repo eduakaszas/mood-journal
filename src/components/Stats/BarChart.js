@@ -8,9 +8,11 @@ class BarChart extends React.Component {
         
         return (
             <div>
-                <VictoryChart domainPadding={ 25 } domain={{ y: [0, 10] }}>
-                    <VictoryBar
-                        data={ barData }/>
+                <VictoryChart domainPadding={ 30 } 
+                            domain={{ y: [0, 10] }}
+                            style={{ parent: { width: "55em", paddingTop: "8em" } }}
+                >
+                    <VictoryBar data={ barData }/>
                 </VictoryChart>
             </div>
         )

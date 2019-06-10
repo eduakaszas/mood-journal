@@ -8,8 +8,8 @@ li.entry {
     min-height: 7.5rem;
     width: 40rem;
     list-style: none;
-    background-color: #FCFBF8;
-    box-shadow: #E5DDD0 0px 3px 5px 0px;
+    background-color: $white;
+    box-shadow: $white-box-shadow 0px 3px 5px 0px;
     border-radius: 4px;
 }
 
@@ -17,7 +17,7 @@ li.entry {
     width: 4.5rem;
 }
 
-.dateEntry {
+.dateEntry, .activityEntry {
     float: right;
     font-size: 1rem;
 }
@@ -28,10 +28,5 @@ li.entry {
 
 .noteEntry {
     font-size: 1.5rem;
-}
-
-.activityEntry {
-    float: right;
-    font-size: 1rem;
 }
 

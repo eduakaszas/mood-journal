@@ -2,28 +2,21 @@
     background: transparent;
     padding: 0.6rem;
     border-radius: 20px;
-    color: #fcd1b0;
-    border: 1.2px solid #fcd1b0;
+    color: $orange;
+    border: 1.2px solid $orange;
     font-size: 0.9rem;
 }
 
 .activity:hover {
     background: #fadac2 !important;
-    //color: white !important;
     outline: none !important;
-    border: 1.2px solid #fcd1b0 !important;
+    border: 1.2px solid $orange !important;
 }
 .activity:active, .activity:focus {
-    background: #fcd1b0 !important;
+    background: $orange !important;
     color: white !important;
     outline: none !important;
-    border: 1.2px solid #fcd1b0 !important;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active {
-    background: #fcd1b0;
-    border: 1.2px solid #fcd1b0 !important;
-    outline: none !important;
+    border: 1.2px solid $orange !important;
 }
 
 .activityTitle {
