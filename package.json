@@ -2,8 +2,8 @@
   "name": "mood-journal",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://kaszasedua.github.io/mood-journal",
   "dependencies": {
-    "homepage":"https://kaszasedua.github.io/mood-journal",
     "@fullpage/react-fullpage": "^0.1.13",
     "bootstrap": "^4.3.1",
     "gh-pages": "^2.0.1",
