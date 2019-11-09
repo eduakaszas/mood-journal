@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import '../../scss/main.scss'
+import './MoodDatePicker.scss'
 
-class MoodDatePicker extends Component {
+export class MoodDatePicker extends Component {
     render() {
         const { pickedDate, handleChange } = this.props
         return (
@@ -19,5 +19,3 @@ class MoodDatePicker extends Component {
         )
     }
 }
-
-export default  MoodDatePicker;

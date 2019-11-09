@@ -26,7 +26,7 @@ const initialValue = Value.fromJSON({
         ],
     },
 })
-class EntryLogger extends Component {
+export class EntryLogger extends Component {
     // Set initial value when app is first constructed
     state = {
         value: initialValue,
@@ -160,5 +160,3 @@ class EntryLogger extends Component {
         )
     }
 }
-
-export default EntryLogger;

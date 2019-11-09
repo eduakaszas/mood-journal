@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
-import '../../scss/main.scss'
+import './Activities.scss'
 
-class Activities extends Component {
+export class Activities extends Component {
     displayActivities() {
         const { basicActivities, pickActivities } = this.props
 
@@ -35,5 +35,3 @@ class Activities extends Component {
         )
     }
 }
-
-export default Activities;

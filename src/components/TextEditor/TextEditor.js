@@ -6,7 +6,7 @@ import './TextEditor.scss'
 import { Activities } from '../../components/compIndex'
 import LeftArrow from '../img/left_arrow.svg'
 
-class TextEditor extends React.Component {
+export class TextEditor extends React.Component {
     render() {
         const { storeItems, basicActivities, pickActivities } = this.props
         
@@ -40,5 +40,3 @@ class TextEditor extends React.Component {
         );
     }
 };
-
-export default TextEditor;

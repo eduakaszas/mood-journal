@@ -1,9 +1,7 @@
 import React from 'react'
 
-const CodeBlock = props => (
+export const CodeBlock = props => (
     <pre { ...props.attributes }>
         <code> { props.children } </code>
     </pre>
 );
-
-export default CodeBlock;

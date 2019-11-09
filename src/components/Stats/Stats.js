@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 import { BarChart } from '../../components/compIndex'
 
-class Stats extends Component {
+export class Stats extends Component {
     render() {
         const { barData, moodLog } = this.props
         
@@ -24,5 +24,3 @@ class Stats extends Component {
         )
     }
 }
-
-export default Stats;

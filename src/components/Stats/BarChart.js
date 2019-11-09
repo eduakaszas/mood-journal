@@ -2,7 +2,7 @@ import React from 'react';
 
 import { VictoryBar, VictoryChart } from 'victory';
 
-class BarChart extends React.Component {
+export class BarChart extends React.Component {
     render() {
         const { barData } = this.props
         
@@ -19,4 +19,3 @@ class BarChart extends React.Component {
     }
 }
 
-export default BarChart;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 
-import '../../scss/main.scss'
+import './Entries.scss'
 
-class Entries extends Component {
+export class Entries extends Component {
     displayEntryItems() {
         const { moodList } = this.props
 
@@ -37,20 +37,20 @@ class Entries extends Component {
                     return(
                         <div key={ item.srcActive }>
                             <img src={ src } 
-                                className="entryMoodImg float-left mr-4"
+                                className="entry-mood-img float-left mr-4"
                                 alt={ item.label } 
                             />
                         </div>
                     )
-                }) 
+                })
 
                 return (
-                    <li key={ entry.notes } className="entry mt-4 ml-5 p-3">
-                        <h1 className="imgEntry" > { displayedImage } </h1>
-                        <h1 className="dateEntry" > { new Date( entry.date ).toLocaleDateString('en-GB') } </h1>
-                        <h1 className="moodEntry mt-4"> { entry.mood } </h1><br />
-                        <h1 className="noteEntry mb-4 ml-1"> { entry.notes } </h1><br />
-                        <div className="activityEntry ml-5 pl-5"> { entry.activities.join("\xa0\xa0\xa0\xa0") } </div>
+                    <li key={ entry.notes } className="entry mt-4 p-2">
+                        <h1 className="img-entry" > { displayedImage } </h1>
+                        <h1 className="date-entry" > { new Date( entry.date ).toLocaleDateString('en-GB') } </h1>
+                        <h1 className="mood-entry mt-4"> { entry.mood } </h1><br />
+                        <h1 className="note-entry mb-4 ml-1"> { entry.notes } </h1><br />
+                        <div className="activity-entry ml-5 pl-5"> { entry.activities.join("\xa0\xa0\xa0\xa0") } </div>
                     </li>
                 )
             })
@@ -62,12 +62,10 @@ class Entries extends Component {
     render() {
         return (
             <Container>
-                <ul className="entries">
+                <div className="entries d-flex flex-column pt-5 w-100 m-4">
                     { this.displayEntryItems() }
-                </ul>
+                </div>
             </Container>
         )
     }
 }
-
-export default Entries;

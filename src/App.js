@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Route } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import { Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
+import { InitialThought as ThoughtDetangler, Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
 import { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive } from './components/compIndex.js';
 import './App.scss';
 
@@ -73,7 +73,11 @@ class App extends Component {
             chosenMood: null,
             moodList: moodList,
             pickedDate: Date.now(),
-            chosenActivities: []
+            chosenActivities: [], 
+            initialThought: "",
+            prosOfThought: "",
+            consOfThought: "", 
+            balancedThought: ""
         };
         
     };
@@ -168,22 +172,6 @@ class App extends Component {
             return { x: entry.label, y: moods.length }
         })
     };
-    
-    /*     
-    prepareLineChart = () => {
-        const moodLog = this.getMoodLog()
-
-        if ( !moodLog ) {
-            return []
-        }
-
-        return moodLog.map( entry => {            
-            let fullDate = new Date(entry.date).toLocaleDateString().split("/")
-
-            return { x: ( fullDate[1] ), y: entry.mood }
-        })
-    }; 
-    */
 
     handleChange = ( date ) => {
         this.setState({
@@ -193,9 +181,15 @@ class App extends Component {
         })
     }
 
+    onChange = ( e ) => {
+        this.setState({
+            initialThought: e.target.value
+        })
+    } 
+
     render() {
-        const { moodList, chosenMood, pickedDate, chosenActivities } = this.state
-        
+        const { moodList, chosenMood, pickedDate, chosenActivities, initialThought, isThoughtSubmitted } = this.state
+        console.log( this.state.initialThought )
         return (
             <Container>
                 <Navigation />
@@ -209,6 +203,18 @@ class App extends Component {
                             chosenMood={ chosenMood }
                             pickedDate={ pickedDate }
                             onChange={ this.handleChange }
+                        />
+                    } 
+                />
+                <Route 
+                    exact 
+                    path="/thought-detangler" 
+                    render={ (props) => 
+                        <ThoughtDetangler
+                            initialThought={ initialThought }
+                            isThoughtSubmitted={ isThoughtSubmitted }
+                            onChange={ this.onChange }
+                            onSubmit={ this.onSubmit }
                         />
                     } 
                 />

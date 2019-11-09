@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
 import Container from 'react-bootstrap/Container';
-import '../../scss/main.scss'
+import './MoodPicker.scss'
 
-class MainMoods extends Component {
+
+export class MoodPicker extends Component {
     displayMoodList() {
         const { chooseMood, moodList, chosenMood } = this.props
 
@@ -38,5 +39,3 @@ class MainMoods extends Component {
         )
     }
 }
-
-export default MainMoods;
