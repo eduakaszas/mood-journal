@@ -1,0 +1,5 @@
+1. what to do with compindex.js? 
+2. shall I import each component ndividually via their index.js?
+3. shall I put image files in the folder of the component they are imported to?
+4. ThoughtDetangler --> 1 file that has the states? 
+5. entrylogger?

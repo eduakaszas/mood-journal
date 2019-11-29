@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Route } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import { InitialThought as ThoughtDetangler, Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
+import { ThoughtDetangler, Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
 import { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive } from './components/compIndex.js';
 import './App.scss';
 
@@ -73,11 +73,7 @@ class App extends Component {
             chosenMood: null,
             moodList: moodList,
             pickedDate: Date.now(),
-            chosenActivities: [], 
-            initialThought: "",
-            prosOfThought: "",
-            consOfThought: "", 
-            balancedThought: ""
+            chosenActivities: []
         };
         
     };
@@ -109,7 +105,6 @@ class App extends Component {
 
     pickActivities = ( e ) => {
         const { chosenActivities } = this.state 
-        
         
         let clickedActivity = e.target.id
         
@@ -173,20 +168,6 @@ class App extends Component {
         })
     };
 
-    handleChange = ( date ) => {
-        this.setState({
-            pickedDate: Date.parse( date )
-        }, () => {
-            console.log( this.state.pickedDate )
-        })
-    }
-
-    onChange = ( e ) => {
-        this.setState({
-            initialThought: e.target.value
-        })
-    } 
-
     render() {
         const { moodList, chosenMood, pickedDate, chosenActivities, initialThought, isThoughtSubmitted } = this.state
         console.log( this.state.initialThought )
@@ -210,12 +191,7 @@ class App extends Component {
                     exact 
                     path="/thought-detangler" 
                     render={ (props) => 
-                        <ThoughtDetangler
-                            initialThought={ initialThought }
-                            isThoughtSubmitted={ isThoughtSubmitted }
-                            onChange={ this.onChange }
-                            onSubmit={ this.onSubmit }
-                        />
+                        <ThoughtDetangler />
                     } 
                 />
                 <Route 
