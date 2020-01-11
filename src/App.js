@@ -169,8 +169,8 @@ class App extends Component {
     };
 
     render() {
-        const { moodList, chosenMood, pickedDate, chosenActivities, initialThought, isThoughtSubmitted } = this.state
-        console.log( this.state.initialThought )
+        const { moodList, chosenMood, pickedDate, chosenActivities } = this.state
+
         return (
             <Container>
                 <Navigation />

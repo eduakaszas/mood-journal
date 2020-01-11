@@ -1,26 +1,29 @@
 import React, { Component } from 'react'
 
-import { ThoughtAdder } from './ThoughtAdder'
-import { ProsCons } from './ProsCons'
+import { SituationForm, InitialThought, Pros, Cons, BalancedThought } from '../../components/compIndex.js'
+
+const initialState = {
+    situation: '',
+    initialThought: '',
+    pros: '',
+    cons: '', 
+    balancedThought: ''
+}
 
 export class ThoughtDetangler extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            initialThought: "",
-            pros: [],
-            cons: [], 
-            balancedThought: ""
-        };
+        this.state = initialState
     };
 
     addThought = ( ) => {
-        const { initialThought, pros, cons, balancedThought } = this.state
+        const { situation, initialThought, pros, cons, balancedThought } = this.state
         
         localStorage.setItem( 
             'thoughts', 
             JSON.stringify( { 
+                situation,
                 initialThought,
                 pros, 
                 cons, 
@@ -29,65 +32,78 @@ export class ThoughtDetangler extends Component {
         )
     } 
 
-    handleChange = ( date ) => {
-        this.setState({
-            pickedDate: Date.parse( date )
-        }, () => {
-            console.log( this.state.pickedDate )
-        })
-    }
+    onChange = e => {
+        let contentOfInput = e.target.value
+        let nameOfInput = e.target.name
 
-    onChange = ( e ) => {
-        this.setState({
-            initialThought: e.target.value
-        })
-    } 
+        console.log( contentOfInput )
+        //console.log( nameOfInput )
+    }  
 
-    addProsCons = ( e ) => {
+    onClick = e => {
         e.preventDefault()
 
-        if ( e.target.id == 'pro-adder' ) {
-            this.setState({
-                pros: this.state.pros.concat( e.target.value ) 
-            }, () => { 
-                console.log( this.state.pros )
-            }) 
-        } 
+        let submitInput = document.getElementById('submit-input')
+        let contentOfInput = submitInput.value
+        let nameOfInput = e.target.name
+
+        console.log( contentOfInput )
+        console.log( nameOfInput )
+
+        this.setState({
+            [nameOfInput]: contentOfInput
+        }, () => { 
+            this.addThought()
+        })
     }
 
     render() {
-        const { pros, cons } = this.state
+        const { situation, initialThought, pros } = this.state
 
         return (
-            <div>
-                <form className="text-center float-left mt-5 pt-5 w-100" onSubmit={ this.onSubmit }>
-                
-{/*                     <ThoughtAdder
-                        title="What is the thought that you are dwelling on?"
-                        onSubmit={ initialThought => this.setState({initialThought})}
-                    />
+            <div className='text-center float-left mt-5 pt-5 w-100'>
+                { situation == '' ? 
+                    <SituationForm
+                        title='Identify the situation (where? when? who?)'
+                        name='situation'
+                        onChange={ this.onChange }
+                        onSubmit={ this.onSubmit }
+                        onClick={ this.onClick }
+                    /> :
+                    <InitialThought
+                        title='What thought went through your head initially?'
+                        name='initialThought'
+                        onChange={ this.onChange }
+                        onSubmit={ this.onSubmit }
+                        onClick={ this.onClick }
+                    /> 
+                }
 
-                    <ThoughtAdder
-                        title="What would be a more balanced thought?"
-                        onSubmit={ balancedThought => this.setState({balancedThought})}
-                    /> */}
-
-                    <ProsCons
+                { initialThought == '' ? null :
+                    <Pros
                         title="What is in favour of this thought?"
-                        category="pros"
-                        pros={ pros }
-                        cons={ cons }
-                        addProsCons= { this.addProsCons }
-                    />
+                        name='pros'
+                        onChange={ this.onChange }
+                        onSubmit={ this.onSubmit }
+                        onClick={ this.onClick }
+                    /> 
+                }
 
-{/*                     <ProsCons
+                { pros == '' ? null :
+                    <Cons
                         title="What is against this thought?"
-                        category="cons"
-                    /> */}
+                        name='cons'
+                        onChange={ this.onChange }
+                        onSubmit={ this.onSubmit }
+                        onClick={ this.onClick }
+                    /> 
+                }
 
-                    <input className="initial-thought-input" type="text" onChange={ this.onChange }></input>
-                    <button type="button"> Next </button>
-                </form>
+{/*                 <BalancedThought
+                    title='Come up with a statement that is between these two extremes'
+                    onChange={ this.onChange }
+                    onSubmit={ this.onSubmit }
+                />  */}
             </div>
         )
     }

@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
 
-export class BalancedThought extends Component {
+export class Cons extends Component {
     render() {
-        const { title, onChange, onSubmit } = this.props
+        const { title, onClick, onChange, name  } = this.props
 
         return (
-            <div className="balanced-thought-adder mb-4" onSubmit={ onSubmit }>
-                <form className='balanced-thought-form'>
+            <div className="con-adder mb-4">
+                <form className='con-form'>
                     <label>
                         { title }
                         <input 
-                            name='balancedThought'
+                            id='submit-input'
                             type='text'
                             onChange={ onChange }
                         />
                         <input 
-                            type='submit'
+                            type='button'
+                            name={ name }
+                            id='submitButton'
                             value='Add'
+                            onClick={ onClick }
                         />
                     </label>
                 </form>
@@ -24,3 +27,4 @@ export class BalancedThought extends Component {
         )
     }
 }
+

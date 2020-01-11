@@ -11,8 +11,11 @@ $background: #fff4eb;
 
 html, body {
     background-color: $background;
+    background-color: #fff4eb;
+    background-image: linear-gradient(180deg, #fff4eb 0%, #ffe6c9 70%);
     font-family: $main-font;
     width: 100%;
+    height: 100%;
 }
 
 /* xs < 768 */
@@ -42,3 +45,4 @@ html, body {
         font-size: 1.3em;
     }
 }
+

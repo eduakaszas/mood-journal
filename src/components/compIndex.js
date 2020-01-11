@@ -13,6 +13,11 @@ import { Activities } from './Activities/Activities';
 import { Navigation } from './Navigation/Navigation';
 import { Stats } from './Stats/Stats';
 import { ThoughtDetangler } from './ThoughtDetangler/ThoughtDetangler';
+import { SituationForm } from './ThoughtDetangler/SituationForm';
+import { InitialThought } from './ThoughtDetangler/InitialThought';
+import { Pros } from './ThoughtDetangler/Pros';
+import { Cons } from './ThoughtDetangler/Cons';
+import { BalancedThought } from './ThoughtDetangler/BalancedThought';
 
 import Awesome from './img/awesome.svg'
 import Happy from './img/happy.svg'
@@ -25,5 +30,5 @@ import OkayActive from './img/okay_orange.svg'
 import SadActive from './img/sad_blue.svg'
 import AngryActive from './img/angry_red.svg'
 
-export { ThoughtDetangler, Stats, Navigation, Activities, Entries, EntryLogger, MoodDatePicker, BarChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock };
+export { ThoughtDetangler, SituationForm, InitialThought, Pros, Cons, BalancedThought, Stats, Navigation, Activities, Entries, EntryLogger, MoodDatePicker, BarChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock };
 export { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive }

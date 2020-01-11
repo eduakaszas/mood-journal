@@ -30,7 +30,7 @@ export class Entries extends Component {
                     if ( entry.mood === item.label ) {
                         src = item.activeSrc
                     } else {
-                        
+
                         return;
                     }
 
