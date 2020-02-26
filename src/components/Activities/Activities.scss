@@ -1,6 +1,7 @@
 $orange: #FCD1B0;
 
-.activity {
+//PHONE
+.btn-primary {
     background: transparent;
     padding: 0.6rem;
     border-radius: 20px;
@@ -9,23 +10,44 @@ $orange: #FCD1B0;
     font-size: 0.9rem;
 }
 
-.activity:hover {
+.btn-primary:active {
+    background: #fadac2 !important;
+}
+.btn-primary:focus {
+    box-shadow: transparent !important;
+}
+
+.btn-primary:hover {
     background: #fadac2 !important;
     outline: none !important;
     border: 1.2px solid $orange !important;
 }
-.activity:active, .activity:focus {
+.btn.active.btn-primary {
     background: $orange !important;
     color: white !important;
     outline: none !important;
     border: 1.2px solid $orange !important;
 }
 
+.focus.btn.btn-primary, .focus.btn.active.btn-primary {
+    outline: none;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active{
+    outline: none;
+}
+
 .activityTitle {
-    margin-left: 10rem !important;
     font-size: 1.3rem;
 }
 
-.activityContainer {
-    margin-left: 10rem !important;
+//TABLET
+@media (min-width: 768px) {
+    .activityTitle {
+        font-size: 1.4rem;
+    }
+    
+    .btn-primary {
+        font-size: 1.1rem;
+    }
 }

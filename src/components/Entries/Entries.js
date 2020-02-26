@@ -37,7 +37,7 @@ export class Entries extends Component {
                     return(
                         <div key={ item.srcActive }>
                             <img src={ src } 
-                                className="entry-mood-img float-left mr-4"
+                                className="entry-mood-img"
                                 alt={ item.label } 
                             />
                         </div>
@@ -45,12 +45,17 @@ export class Entries extends Component {
                 })
 
                 return (
-                    <li key={ entry.notes } className="entry mt-4 p-2">
-                        <h1 className="img-entry" > { displayedImage } </h1>
-                        <h1 className="date-entry" > { new Date( entry.date ).toLocaleDateString('en-GB') } </h1>
-                        <h1 className="mood-entry mt-4"> { entry.mood } </h1><br />
-                        <h1 className="note-entry mb-4 ml-1"> { entry.notes } </h1><br />
-                        <div className="activity-entry ml-5 pl-5"> { entry.activities.join("\xa0\xa0\xa0\xa0") } </div>
+                    <li key={ entry.notes } className="entry mt-5 p-3">
+                        <div className="date-entry float-left" > 
+                            { new Date( entry.date ).toLocaleDateString('en-GB') } 
+                            
+                        </div>
+                        <div className="text w-50">
+                            <div className="note-entry"> { entry.notes } </div><br />
+                            <div className="activity-entry"> { entry.activities.join("\xa0\xa0\xa0\xa0") } </div><br />
+                        </div>
+                        <div className="img-entry float-right" > { displayedImage } </div>
+                        {/*<h1 className="mood-entry mt-4"> { entry.mood } </h1><br /> */}
                     </li>
                 )
             })
@@ -62,7 +67,7 @@ export class Entries extends Component {
     render() {
         return (
             <Container>
-                <div className="entries d-flex flex-column pt-5 w-100 m-4">
+                <div className="entries float-left">
                     { this.displayEntryItems() }
                 </div>
             </Container>

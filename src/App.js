@@ -78,8 +78,13 @@ class App extends Component {
         
     };
     
-    chooseMood = ( e ) => {
+    chooseMood = e => {
+        const { chosenMood } = this.state
         let clickedMood = e.target.id
+        
+        if ( chosenMood == clickedMood ) {
+            clickedMood = null
+        }
         
         this.setState({
             chosenMood: clickedMood
@@ -138,6 +143,12 @@ class App extends Component {
             chosenActivities: []
         })
     }
+
+    handleDateChange = date => {
+        this.setState({
+            pickedDate: date
+        })
+    }
     
     prepareBarChart = () => {
         const { moodList } = this.state
@@ -183,7 +194,7 @@ class App extends Component {
                             moodList={ moodList }
                             chosenMood={ chosenMood }
                             pickedDate={ pickedDate }
-                            onChange={ this.handleChange }
+                            onChange={ this.handleDateChange }
                         />
                     } 
                 />

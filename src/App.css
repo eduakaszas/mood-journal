@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+html, body {
+  background-color: #fff4eb;
+  background-color: #fff4eb;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #fff4eb), color-stop(70%, #ffe6c9));
+  background-image: linear-gradient(180deg, #fff4eb 20%, #ffe6c9 70%);
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+/* sm */
+@media (min-width: 576px) {
+  body {
+    font-size: 1em;
+  }
+}
+
+/* md */
+@media (min-width: 768px) {
+  body {
+    font-size: 1.2em;
+  }
+}
+
+/* lg */
+@media (min-width: 992px) {
+  body {
+    font-size: 1.3em;
+  }
+}
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768pxx and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+*/
+/*# sourceMappingURL=App.css.map */

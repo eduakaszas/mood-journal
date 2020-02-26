@@ -1,0 +1,25 @@
+li.entry {
+  list-style: none;
+  background-color: #FCFBF8;
+  -webkit-box-shadow: #E5DDD0 0px 3px 5px 0px;
+          box-shadow: #E5DDD0 0px 3px 5px 0px;
+  border-radius: 4px;
+}
+
+.entry-mood-img {
+  width: 4.5rem;
+}
+
+.date-entry, .activity-entry {
+  float: right;
+  font-size: 1rem;
+}
+
+.mood-entry {
+  font-size: 2.3rem;
+}
+
+.note-entry {
+  font-size: 1.5rem;
+}
+/*# sourceMappingURL=Entries.css.map */

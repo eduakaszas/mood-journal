@@ -1,29 +1,7 @@
-.container {
-    div.title {
-        font-size: 1.9em;
-        
-        @media (min-width: 768px) {
-            font-size: 2.1em;
-        }
-    }
-
-    .date {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        text-align: center;
-    }
-
-    img.next-button {
-        width: 2.1em;
-        cursor: pointer;
-
-        @media (min-width: 768px) {
-            width: 2.2em;
-        }
-    }
+.nextButton {
+  width: 3rem;
+  cursor: pointer;
 }
-
 
 /*
 Extra small (xs) devices (portrait phones, less than 576px)
@@ -42,5 +20,4 @@ Extra (xl) large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
 
 */
-
-
+/*# sourceMappingURL=StartPage.css.map */

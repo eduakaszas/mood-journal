@@ -15,7 +15,7 @@ export class Activities extends Component {
                         <ToggleButtonGroup type="checkbox"> 
                             <ToggleButton id={ activity.label }
                                         onClick={ pickActivities }
-                                        className="activity m-2"
+                                        className="m-2"
                             >
                                 { activity.label } 
                             </ToggleButton>
@@ -27,8 +27,8 @@ export class Activities extends Component {
     render() {
         return (
             <>
-                <div className="activityTitle mt-5"> Activities </div>
-                <div className="activityContainer text-center">
+                <div className="activityTitle mt-5 mb-3"> Activities </div>
+                <div className="activityContainer">
                     { this.displayActivities() }
                 </div>
             </>

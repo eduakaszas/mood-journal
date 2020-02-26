@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./ThoughtDetangler.scss"
 
 export class BalancedThought extends Component {
     render() {
@@ -8,13 +9,15 @@ export class BalancedThought extends Component {
             <div className="balanced-thought-adder mb-4" onSubmit={ onSubmit }>
                 <form className='balanced-thought-form'>
                     <label>
-                        { title }
+                        <h4 className="title mb-3"> { title } </h4>
                         <input 
+                            className="input-field p-1 mt-3 mb-3"
                             name='balancedThought'
                             type='text'
                             onChange={ onChange }
                         />
                         <input 
+                            className="submit-button m-5"
                             type='submit'
                             value='Add'
                         />

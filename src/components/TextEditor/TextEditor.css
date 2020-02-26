@@ -1,0 +1,66 @@
+.editorContainer .title {
+  font-size: 1.3rem;
+}
+
+.editorContainer .textEditor {
+  font-size: 1.2rem;
+  background-color: #FCFBF8;
+  overflow: auto;
+  max-height: 50px;
+  -webkit-box-shadow: #E5DDD0 0px 3px 5px 0px;
+          box-shadow: #E5DDD0 0px 3px 5px 0px;
+  border-radius: 4px;
+}
+
+img.goBack {
+  width: 2rem;
+  height: auto;
+  cursor: pointer;
+}
+
+.save {
+  background: #fcd1b0;
+  color: white;
+  outline: none;
+  border: 1.2px solid #fcd1b0;
+  padding: 0.6rem;
+  border-radius: 20px;
+}
+
+.save:focus, .save:active {
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  .editorContainer .title {
+    font-size: 1.3rem;
+  }
+  .editorContainer .textEditor {
+    font-size: 1.2rem;
+    background-color: #FCFBF8;
+    overflow: auto;
+    max-height: 150px;
+    -webkit-box-shadow: #E5DDD0 0px 3px 5px 0px;
+            box-shadow: #E5DDD0 0px 3px 5px 0px;
+    border-radius: 4px;
+  }
+}
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768pxx and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+
+*/
+/*# sourceMappingURL=TextEditor.css.map */

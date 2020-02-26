@@ -57,53 +57,50 @@ export class ThoughtDetangler extends Component {
         })
     }
 
-    render() {
-        const { situation, initialThought, pros } = this.state
+    displayComponent = () => {
+        const { situation, initialThought, pros, cons, balancedThought } = this.state
 
-        return (
-            <div className='text-center float-left mt-5 pt-5 w-100'>
-                { situation == '' ? 
-                    <SituationForm
+        if ( situation == '' ) {
+            return <SituationForm 
                         title='Identify the situation (where? when? who?)'
                         name='situation'
                         onChange={ this.onChange }
                         onSubmit={ this.onSubmit }
                         onClick={ this.onClick }
-                    /> :
-                    <InitialThought
+                    />
+        } else if ( situation !== '' && initialThought == '' ) {
+            return <InitialThought 
                         title='What thought went through your head initially?'
                         name='initialThought'
                         onChange={ this.onChange }
                         onSubmit={ this.onSubmit }
                         onClick={ this.onClick }
-                    /> 
-                }
-
-                { initialThought == '' ? null :
-                    <Pros
+                    />
+        } else if ( initialThought !== '' && pros == '' ) {
+            return <Pros 
                         title="What is in favour of this thought?"
                         name='pros'
                         onChange={ this.onChange }
                         onSubmit={ this.onSubmit }
                         onClick={ this.onClick }
                     /> 
-                }
-
-                { pros == '' ? null :
-                    <Cons
+        } else if ( pros !== '' && cons == '' ) {
+            return <Cons
                         title="What is against this thought?"
                         name='cons'
                         onChange={ this.onChange }
                         onSubmit={ this.onSubmit }
                         onClick={ this.onClick }
-                    /> 
-                }
+                    />
+        } else if ( cons !== '' && balancedThought == '' ) {
+            return <BalancedThought />
+        }
+    }
 
-{/*                 <BalancedThought
-                    title='Come up with a statement that is between these two extremes'
-                    onChange={ this.onChange }
-                    onSubmit={ this.onSubmit }
-                />  */}
+    render() {
+        return (
+            <div className='text-center float-left mt-5 pt-5 w-100'>
+                { this.displayComponent() }
             </div>
         )
     }
