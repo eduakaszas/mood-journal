@@ -1,13 +1,15 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import './MoodPicker.scss'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
+import './MoodPicker.scss';
 
 export class MoodPicker extends Component {
     displayMoodList() {
-        const { chooseMood, moodList, chosenMood } = this.props
+        const { chooseMood, moodList, chosenMood, chosenActivities } = this.props;
 
-        let displayedMoods = moodList.map( mood => {
+        const displayedMoods = moodList.map( mood => {
             let src;
 
             if ( mood.label === chosenMood ) {
@@ -17,26 +19,29 @@ export class MoodPicker extends Component {
             }
             
             return (
-                <li key={ mood.label } className="mood p-2">
-                    <img src={ src } 
-                        id={ mood.label } 
-                        alt={ mood.label } 
-                        onClick={ chooseMood }
-                    />
-                </li>
+                <Col xs={4} md={2} key={ `${ mood.label }_${ src }` }> 
+                    <Link to='/editor'>
+                        <img src={ src }
+                            id={ mood.label } 
+                            alt={ mood.label } 
+                            onClick={ chooseMood }
+                            className="mood-img mt-2"
+                        />
+                    </Link>
+                </Col>
             ) 
         })
 
-        return displayedMoods
-    }
+        return displayedMoods;
+    };
 
     render() {
         return (
-            <Container>
-                <ul className="mood-list mt-4">
+            <Container fluid>
+                <Row className="justify-content-center mt-3">
                     { this.displayMoodList() }
-                </ul>
+                </Row>
             </Container>
         )
     }
-}
+};

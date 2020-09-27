@@ -1,28 +1,29 @@
-.container {
-    div.title {
-        font-size: 1.9em;
+// .container {
+//     div.title {
+//         font-size: 1.8em;
+//         font-weight: 500;
         
-        @media (min-width: 768px) {
-            font-size: 2.1em;
-        }
-    }
+//         @media (min-width: 768px) {
+//             font-size: 2em;
+//         }
+//     }
 
-    .date {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        text-align: center;
-    }
+//     .date {
+//         display: flex;
+//         flex-direction: row;
+//         justify-content: center;
+//         text-align: center;
+//     }
 
-    img.next-button {
-        width: 2.1em;
-        cursor: pointer;
+//     img.next-button {
+//         width: 2.1em;
+//         cursor: pointer;
 
-        @media (min-width: 768px) {
-            width: 2.2em;
-        }
-    }
-}
+//         @media (min-width: 768px) {
+//             width: 2.2em;
+//         }
+//     }
+// }
 
 
 /*

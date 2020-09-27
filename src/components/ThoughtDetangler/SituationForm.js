@@ -4,7 +4,7 @@ import "./ThoughtDetangler.scss"
 
 export class SituationForm extends Component {
     render() {
-        const { title, onSubmit, onClick, onChange, name } = this.props
+        const { title, onClick, onChange, name } = this.props
 
         return (
             <div className="situation-adder mb-4" >

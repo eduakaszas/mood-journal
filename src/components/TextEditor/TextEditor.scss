@@ -1,34 +1,32 @@
 $white: #FCFBF8;
-$white-box-shadow: #E5DDD0;
+$gray: #E0E2E7;
+$pink: #E36372;
 
-//PHONE
-.title {
-    font-size: 1.3rem;
-}
-
-.textEditor {
-    font-size: 1.2rem;
-    background-color: $white;
+.text-editor {
+    height: 5em;
+    max-height: 7em;
+    padding: .5em;
+    font-size: 1.1rem;
     overflow: scroll;
-    min-height: 70px;
-    max-height: 70px;
-    box-shadow: $white-box-shadow 0px 3px 5px 0px;
-    border-radius: 4px;
+    border: 1px solid $gray;
+    border-radius: 5px;
 }
 
-img.back-button {
-    width: 2rem;
-    height: auto;
-    cursor: pointer;
-}
-
-.save-button {
-    background: #fcd1b0;
-    color: white;
+.save-button, .back-button {
+    margin: .2em;
+    padding: 0.5rem 1.2rem;
     outline: none;
-    border: 1.2px solid #fcd1b0; 
-    padding: 0.6rem;
-    border-radius: 20px;
+    border: none; 
+    border-radius: 5px;
+    border: 1px solid $pink;
+    background: $pink;
+    color: white;
+}
+
+.back-button {
+    margin: .2em;
+    color: $pink;
+    background-color: transparent;
 }
 
 .save-button:focus, .save-button:active {
@@ -42,24 +40,17 @@ img.back-button {
         font-size: 1.4rem;
     }
     
-    .textEditor {
+    .text-editor {
         font-size: 1.3rem;
-        background-color: $white;
         overflow: auto;
         min-height: 100px;
         max-height: 100px;
-        box-shadow: $white-box-shadow 0px 3px 5px 0px;
+        border: 1px solid #E0E2E7;
         border-radius: 4px;
     }
 
     .save-button {
         margin-top: 30px;
-    }
-
-    img.back-button {
-        width: 2.8rem;
-        height: auto;
-        cursor: pointer;
     }
 }
 

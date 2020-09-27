@@ -1,37 +1,42 @@
 import React, { Component } from 'react'
 
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
-import ToggleButton from 'react-bootstrap/ToggleButton'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 import './Activities.scss'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBriefcase, faVolleyballBall, faUsers, faUtensils, faShoppingCart, faHeart, faBook } from '@fortawesome/free-solid-svg-icons'
+
+library.add( faBriefcase, faVolleyballBall, faUsers, faUtensils, faShoppingCart, faHeart, faBook )
 
 export class Activities extends Component {
     displayActivities() {
-        const { basicActivities, pickActivities } = this.props
+        const { basicActivities, pickActivities, chosenActivities } = this.props
 
-        return basicActivities.map( ( activity ) => {
-            return <div key={ activity.num } 
-                        className="d-inline"
-                    >
-                        <ToggleButtonGroup type="checkbox"> 
+        return basicActivities.map( activity => {
+            return  <Col xs={3} md={1}>
+                        <ToggleButtonGroup type="checkbox" key={ activity.num }> 
                             <ToggleButton id={ activity.label }
                                         onClick={ pickActivities }
-                                        className="m-2"
+                                        className="activity-icon-background"
                             >
-                                { activity.label } 
+                                <FontAwesomeIcon icon={ activity.faClass } className="activity-icon"/>
                             </ToggleButton>
                         </ToggleButtonGroup>
-                    </div>
+                    </Col>
         })
     }
 
     render() {
         return (
-            <>
-                <div className="activityTitle mt-5 mb-3"> Activities </div>
-                <div className="activityContainer">
+            <Container className="text-center">
+                <Row className="justify-content-center">
                     { this.displayActivities() }
-                </div>
-            </>
+                </Row>
+            </Container>
         )
     }
 }

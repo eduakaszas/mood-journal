@@ -39,29 +39,48 @@ export class EntryLogger extends Component {
     }
 
     // stores mood and date of mood item that is clicked on
-    storeItems = ( ) => {
-        const { chosenMood, pickedDate, chosenActivities } = this.props
+    storeItems = () => {
+        const { chosenMood, pickedDate, chosenActivities, entries, editEntry, entryId } = this.props
         const { textEditorNote } = this.state
         
         let moodDatas = this.props.getMoodLog()
+
         const newMoodItem = { 
-                                mood: chosenMood, 
-                                date: pickedDate, 
-                                notes: textEditorNote, 
-                                activities: chosenActivities 
-                            }
+            mood: chosenMood, 
+            date: pickedDate, 
+            notes: textEditorNote, 
+            activities: chosenActivities 
+        }
         
         // if localStorage is empty, create an array
         if ( moodDatas === null ) {
             moodDatas = [ ]
         }
+
+        let index;
         
-        console.log( 'pickedDate' )
-        console.log( pickedDate )
-        // push new mood item to localStorage
-        moodDatas.push( newMoodItem )
+        if ( entryId ) {
+            index = moodDatas.findIndex( entry => entryId == `${entry.date}_${entry.mood}`);
+
+            if ( index !== -1 ) {
+                moodDatas[index] = newMoodItem;
+            }
+        }
+        console.log( index )
+
+        if ( !entryId || index === -1 ) {
+            console.log( 'pickedDate' )
+            console.log( pickedDate )
+            // push new mood item to localStorage
+            moodDatas.push( newMoodItem )
+        }
+        
         // update MoodLog by setting it
-        localStorage.setItem( 'moodLog', JSON.stringify( moodDatas ))
+        const entryItems = localStorage.setItem( 'moodLog', JSON.stringify( moodDatas ))
+
+        this.setState({
+            entries: entryItems
+        })
         
         this.props.moodCounter()
 
@@ -70,7 +89,7 @@ export class EntryLogger extends Component {
         this.resetEditor()
     };
 
-    storeCurrentNote = ( note ) => {
+    storeCurrentNote = note => {
         this.setState({
             textEditorNote: note
         })
@@ -146,7 +165,7 @@ export class EntryLogger extends Component {
     }
 
     render() {
-        const { basicActivities, pickActivities } = this.props
+        const { basicActivities, pickActivities, chosenActivities, entryId } = this.props
         
         return (
             <Container>
@@ -160,6 +179,9 @@ export class EntryLogger extends Component {
                         renderMark={ this.renderMark }
                         basicActivities={ basicActivities }
                         pickActivities={ pickActivities }
+                        chosenActivities={ chosenActivities }
+                        entryId={ entryId }
+                        storeOrEditEntry={ this.storeOrEditEntry }
                 />} />
             </Container>
         )

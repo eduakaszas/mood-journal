@@ -4,17 +4,21 @@ import { Editor } from 'slate-react';
 import { Link } from "react-router-dom";
 import './TextEditor.scss'
 import { Activities } from '../../components/compIndex'
-import LeftArrow from '../img/left_arrow.svg'
 
 export class TextEditor extends React.Component {
     render() {
-        const { storeItems, basicActivities, pickActivities } = this.props
+        const { storeItems, basicActivities, pickActivities, chosenActivities, storeOrEditEntry } = this.props
         
         return (
-            <Container className="float-left mt-5">
-                <div className="title mb-3"> Thoughts </div>
+            <Container fluid>
+                <div className="page-title mb-4"> What have you been up to? </div>
+                <Activities 
+                    pickActivities={ pickActivities }
+                    basicActivities={ basicActivities }
+                    chosenActivities={ chosenActivities }
+                />
                 <Editor 
-                    className="textEditor p-2 m-2"
+                    className="text-editor mt-4 mb-4"
                     value={ this.props.value } 
                     placeholder="Enter thoughts"
                     onChange={ this.props.onChange } 
@@ -22,16 +26,11 @@ export class TextEditor extends React.Component {
                     renderNode={ this.props.renderNode }
                     renderMark={ this.props.renderMark }
                 />
-                <Activities 
-                    pickActivities={ pickActivities }
-                    basicActivities={ basicActivities }
-                />
                 <div className="text-center">
-                    <Link to="/"><button onClick={ storeItems } className="save-button mt-3"> Save </button></Link>                </div>
-                <div className="text-center">
-                    <Link to="/"><img src={ LeftArrow } alt='leftArrow' className="back-button mt-5" /></Link>
+                    <Link to="/"><button onClick={ storeItems } className="save-button"> Save </button></Link>                
+                    <Link to="/"><button className="back-button"> Back </button></Link>
                 </div>
             </Container>
         ); 
     }
-};
+}; 

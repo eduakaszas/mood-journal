@@ -34,7 +34,7 @@ export class ThoughtDetangler extends Component {
 
     onChange = e => {
         let contentOfInput = e.target.value
-        let nameOfInput = e.target.name
+        //let nameOfInput = e.target.name
 
         console.log( contentOfInput )
         //console.log( nameOfInput )

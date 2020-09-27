@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { VictoryBar, VictoryChart } from 'victory';
+import { VictoryBar, VictoryChart, VictoryGroup } from 'victory';
 
 export class BarChart extends React.Component {
     render() {
@@ -10,9 +10,12 @@ export class BarChart extends React.Component {
             <div>
                 <VictoryChart domainPadding={ 30 } 
                             domain={{ y: [0, 10] }}
-                            style={{ parent: { width: "55em", paddingTop: "8em" } }}
+                            style={{ parent: { width: "45em" } }}
+                            
                 >
-                    <VictoryBar data={ barData }/>
+                    <VictoryGroup colorScale={["tomato", "orange", "gold"]}>
+                        <VictoryBar data={ barData }/>
+                    </VictoryGroup>
                 </VictoryChart>
             </div>
         )

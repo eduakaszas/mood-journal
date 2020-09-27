@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
-
+import { ActivityLogo, OptionsMenu } from '../../components/compIndex.js';
 import './Entries.scss'
 
 export class Entries extends Component {
     displayEntryItems() {
-        const { moodList } = this.props
+        const { moodList, basicActivities, getColorOfMood, deleteEntry, editEntry } = this.props
 
         let moodData = this.props.getMoodLog()
         console.log( moodData )
@@ -23,39 +23,57 @@ export class Entries extends Component {
                     return 0
                 }
             })
-            .map( ( entry ) => {
-                let displayedImage = moodList.map( ( item ) => {
+            .map( entry => {
+                let displayedImage = moodList.map( item => {
                     let src;
 
                     if ( entry.mood === item.label ) {
                         src = item.activeSrc
                     } else {
-
                         return;
                     }
 
                     return(
-                        <div key={ item.srcActive }>
-                            <img src={ src } 
-                                className="entry-mood-img"
-                                alt={ item.label } 
-                            />
-                        </div>
+                        <img src={ src } 
+                            className="entry-mood-img"
+                            alt={ item.label } 
+                            key={ `${item.label}_${src}` }
+                        />
                     )
                 })
 
                 return (
-                    <li key={ entry.notes } className="entry mt-5 p-3">
-                        <div className="date-entry float-left" > 
-                            { new Date( entry.date ).toLocaleDateString('en-GB') } 
-                            
+                    <li key={ `${entry.date}_${entry.mood}` } className="entry mb-3 p-3">
+                        <OptionsMenu 
+                            deleteEntry={ () => deleteEntry(`${entry.date}_${entry.mood}`) } 
+                            editEntry={ () => editEntry(`${entry.date}_${entry.mood}`) } 
+                        />
+                        <div className="entry-img d-inline-block align-top"> { displayedImage } </div>
+                        <div className="entry-text-content d-inline-block w-75 ml-3">
+                            <div className="entry-date mb-2"> 
+                                { new Date( entry.date ).toLocaleDateString('en-GB') } 
+                            </div>
+                            <div className="entry-mood mb-2" style={{ color: getColorOfMood(entry.mood) }}> { entry.mood } </div>
+                            <div className="activity-entry"> 
+                                { entry.activities.map(x => <ActivityLogo
+                                                                key={`${entry.date}_${x}`}
+                                                                activity={x} 
+                                                                basicActivities={ basicActivities }
+                                                                />
+                                                                )}
+                                {/* { entry.activities.join("\xa0\xa0\xa0\xa0") }  */}
+                            </div>
+                            { entry.notes 
+                                ?  <div className="entry-note mt-3" value={ entry.notes }> { entry.notes } </div>
+                                : null
+                            }
                         </div>
-                        <div className="text w-50">
-                            <div className="note-entry"> { entry.notes } </div><br />
-                            <div className="activity-entry"> { entry.activities.join("\xa0\xa0\xa0\xa0") } </div><br />
-                        </div>
-                        <div className="img-entry float-right" > { displayedImage } </div>
-                        {/*<h1 className="mood-entry mt-4"> { entry.mood } </h1><br /> */}
+                        {/* <button className="delete-button inline float-right align-top"
+                                type="button"
+                                onClick={ () => deleteEntry(`${entry.date}_${entry.mood}`) }
+                        > 
+                            x 
+                        </button> */}
                     </li>
                 )
             })
@@ -66,11 +84,11 @@ export class Entries extends Component {
 
     render() {
         return (
-            <Container>
-                <div className="entries float-left">
+            <Container fluid>
+                <ul className="entries">
                     { this.displayEntryItems() }
-                </div>
+                </ul>
             </Container>
         )
-    }
+    } 
 }

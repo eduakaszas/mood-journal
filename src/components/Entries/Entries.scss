@@ -1,146 +1,173 @@
-$white: #FCFBF8;
-$white-box-shadow: #E5DDD0;
+$gray: #E0E2E7;
 
-// PHONE and up
-.entries {
+li.entry {
     width: 100%;
+    height: auto;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    list-style: none;
 
-    li.entry {
-        position: relative;
-        list-style: none;
-        background-color: $white;
-        box-shadow: $white-box-shadow 0px 3px 5px 0px;
-        border-radius: 4px;
-        min-height: 140px;
-        max-height: 140px;
-        width: 100%;
-        overflow: hidden;
-        overflow-wrap: break-word;
+    .entry-img {
+        .entry-mood-img {
+            width: 3em;
+        }
+    }
 
-        .date-entry {
-            font-size: 0.5rem;
+    .entry-text-content {
+        .entry-date {
+            font-size: 0.8em;
+            color: #666666;
         }
 
-        .text {
-            position: absolute;
-            height: 80%;
-            margin-left: 25%;
-
-            .note-entry {
-                font-size: 1rem;
-                overflow: auto;
-                height: 70%;
-                width: 80%;
-            }
-
-            .activity-entry {
-                height: 30%;
-                font-size: 0.5rem;
-            }
-        }
-
-        .img-entry {
-            .entry-mood-img {
-                margin-top: 70%;
-                width: 3rem;
-            }
+        .entry-mood {
+            font-size: 1.2em;
+            text-transform: uppercase;
         }
     }
 }
 
-// TABLET and up 
-@media (min-width: 768px) {
-    .entries {
-        width: 100%;
-    
-        li.entry {
-            position: relative;
-            list-style: none;
-            background-color: $white;
-            box-shadow: $white-box-shadow 0px 3px 5px 0px;
-            border-radius: 4px;
-            min-height: 140px;
-            max-height: 140px;
-            width: 80%;
-            overflow: hidden;
-            overflow-wrap: break-word;
-            margin-left: 10%;
-    
-            .date-entry {
-                font-size: 0.7rem;
-            }
-    
-            .text {
-                height: 80%;
-                margin-left: 20%;
-    
-                .note-entry {
-                    position: absolute;
-                    font-size: 1.2rem;
-                    overflow: auto;
-                    width: 100%;
-                }
-    
-                .activity-entry {
-                    font-size: 0.7rem;
-                    margin-top: 25%;
-                }
-            }
-    
-            .img-entry {
-                .entry-mood-img {
-                    margin-top: 40%;
-                    width: 4rem;
-                }
-            }
-        }
-    }
-}
+// .dropdown-toggle.btn.btn-success {
+//     background-color: transparent;
+//     border: none;
+// }
 
-// DEKSTOP and up
-@media (min-width: 992px) {
-    .entries {
-        width: 100%;
+// .entries {
+//     width: 100%;
+
+//     li.entry { 
+//         position: relative;
+//         list-style: none;
+//         overflow: hidden;
+//         overflow-wrap: break-word;
+//         height: 5em;
+//         max-height: 7em;
+//         padding: .5em;
+//         font-size: 1.1rem;
+//         border: 1px solid #E0E2E7;
+//         border-radius: 5px;
+
+//         .date-entry {
+//             font-size: 0.5rem;
+//         }
+
+//         .text {
+//             position: absolute;
+//             margin-left: 20%;
+
+//             .note-entry {
+//                 font-size: 1rem;
+//                 overflow: auto;
+//                 height: 70%;
+//             }
+
+//             .activity-entry {
+//                 height: 30%;
+//                 font-size: 0.5rem;
+//             }
+//         }
+
+//         .img-entry {
+//             .entry-mood-img {
+//                 margin-top: 20%;
+//                 width: 3rem;
+//             }
+//         }
+//     }
+// }
+
+// // TABLET and up 
+// @media (min-width: 768px) {
+//     .entries {
+//         width: 100%;
     
-        li.entry {
-            position: relative;
-            list-style: none;
-            background-color: $white;
-            box-shadow: $white-box-shadow 0px 3px 5px 0px;
-            border-radius: 4px;
-            min-height: 160px;
-            max-height: 160px;
-            width: 80%;
-            overflow: hidden;
-            overflow-wrap: break-word;
-            margin-left: 10%;
+//         li.entry {
+//             position: relative;
+//             list-style: none;
+//             background-color: $white;
+//             box-shadow: $white-box-shadow 0px 3px 5px 0px;
+//             border-radius: 4px;
+//             min-height: 140px;
+//             max-height: 140px;
+//             width: 80%;
+//             overflow: hidden;
+//             overflow-wrap: break-word;
+//             margin-left: 10%;
     
-            .date-entry {
-                font-size: 0.7rem;
-            }
+//             .date-entry {
+//                 font-size: 0.7rem;
+//             }
     
-            .text {
-                height: 80%;
-                margin-left: 20%;
+//             .text {
+//                 height: 80%;
+//                 margin-left: 20%;
     
-                .note-entry {
-                    font-size: 1.4rem;
-                    overflow: auto;
-                    width: 100%;
-                }
+//                 .note-entry {
+//                     position: absolute;
+//                     font-size: 1.2rem;
+//                     overflow: auto;
+//                     width: 100%;
+//                 }
     
-                .activity-entry {
-                    margin-top: 20%;
-                    font-size: 0.7rem;
-                }
-            }
+//                 .activity-entry {
+//                     font-size: 0.7rem;
+//                     margin-top: 25%;
+//                 }
+//             }
     
-            .img-entry {
-                .entry-mood-img {
-                    margin-top: 35%;
-                    width: 4.5rem;
-                }
-            }
-        }
-    }
-}
+//             .img-entry {
+//                 .entry-mood-img {
+//                     margin-top: 40%;
+//                     width: 4rem;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// // DEKSTOP and up
+// @media (min-width: 992px) {
+//     .entries {
+//         width: 100%;
+    
+//         li.entry {
+//             position: relative;
+//             list-style: none;
+//             background-color: $white;
+//             box-shadow: $white-box-shadow 0px 3px 5px 0px;
+//             border-radius: 4px;
+//             min-height: 160px;
+//             max-height: 160px;
+//             width: 80%;
+//             overflow: hidden;
+//             overflow-wrap: break-word;
+//             margin-left: 10%;
+    
+//             .date-entry {
+//                 font-size: 0.7rem;
+//             }
+    
+//             .text {
+//                 height: 80%;
+//                 margin-left: 20%;
+    
+//                 .note-entry {
+//                     font-size: 1.4rem;
+//                     overflow: auto;
+//                     width: 100%;
+//                 }
+    
+//                 .activity-entry {
+//                     margin-top: 20%;
+//                     font-size: 0.7rem;
+//                 }
+//             }
+    
+//             .img-entry {
+//                 .entry-mood-img {
+//                     margin-top: 35%;
+//                     width: 4.5rem;
+//                 }
+//             }
+//         }
+//     }
+// }

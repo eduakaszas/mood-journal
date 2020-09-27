@@ -2,85 +2,100 @@ import React, { Component } from 'react';
 
 import { Route } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import { ThoughtDetangler, Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
+import { Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
 import { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive } from './components/compIndex.js';
 import './App.scss';
 
 let moodList = [
     { 
-        src: Awesome,
+        src: AwesomeActive,
         activeSrc: AwesomeActive,
-        label: "Awesome"
+        label: "Awesome",
+        color: "#A2C084"
     },
     { 
-        src: Happy,
+        src: HappyActive,
         activeSrc: HappyActive,
-        label: "Happy"
+        label: "Happy",
+        color: "#F6EC65"
     },
     { 
-        src: Okay,
+        src: OkayActive,
         activeSrc: OkayActive,
-        label: "Okay"
+        label: "Okay",
+        color: "#FFBB5B"
     },
     { 
-        src: Angry,
+        src: AngryActive,
         activeSrc: AngryActive,
-        label: "Angry"
+        label: "Angry",
+        color: "#E36371"
     },
     { 
-        src: Sad,
+        src: SadActive,
         activeSrc: SadActive,
-        label: "Sad"
+        label: "Sad",
+        color: "#92AEC7"
     }
 ];
 
 let basicActivities = [
     { 
         label: "Work",
-        num: "1"
+        num: "1",
+        faClass: "briefcase"
     },
     { 
         label: "Sport",
-        num: "2"
+        num: "2",
+        faClass: "volleyball-ball"
     },
     { 
         label: "Friends",
-        num: "3"
+        num: "3", 
+        faClass: "users"
     },
     { 
         label: "Good meal",
-        num: "4"
+        num: "4", 
+        faClass: "utensils"
     },
     { 
         label: "Shopping",
-        num: "5"
+        num: "5", 
+        faClass: "shopping-cart"
     },
     { 
-        label: "Relax",
-        num: "6"
+        label: "Date",
+        num: "6",
+        faClass: "heart"
     },
     { 
         label: "Reading",
-        num: "7"
+        num: "7", 
+        faClass: "book"
     }
-]
+];
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            chosenMood: null,
             moodList: moodList,
+            chosenMood: null,
             pickedDate: Date.now(),
-            chosenActivities: []
+            chosenActivities: [],
+            entryNote: null,
+            entries: null,
+            entryId: null
         };
         
     };
     
     chooseMood = e => {
-        const { chosenMood } = this.state
-        let clickedMood = e.target.id
+        const { chosenMood } = this.state;
+        let clickedMood = e.target.id;
         
         if ( chosenMood == clickedMood ) {
             clickedMood = null
@@ -98,30 +113,30 @@ class App extends Component {
     
     // count how many times a mood item is clicked on
     moodCounter = () => {
-        const { chosenMood } = this.state
+        const { chosenMood } = this.state;
         
-        const moodLog = this.getMoodLog()
+        const moodLog = this.getMoodLog();
         
-        // if mood item in localStorage is the same as the item I clicked on,
+        // if mood item in localStorage is the same as the item that is clicked,
         // ( aka the state ), return it 
         const moodCount = moodLog.filter( e => e.mood === chosenMood )
         console.log( moodCount.length ) 
     };
 
-    pickActivities = ( e ) => {
-        const { chosenActivities } = this.state 
+    pickActivities = e => {
+        const { chosenActivities } = this.state;
         
-        let clickedActivity = e.target.id
+        let clickedActivity = e.target.id;
         
         // Cannot prevent default because event needs to bubble up for bootstrap, instead return
-        //e.preventDefault()
-        if ( clickedActivity === "" ) return
+        // e.preventDefault()
+        if ( clickedActivity === "" ) return;
 
         if ( chosenActivities.includes( clickedActivity ) ) {
-            let uniqueActivities = chosenActivities.filter( ( activity ) => {
+            let uniqueActivities = chosenActivities.filter( activity => {
                 return activity !== clickedActivity
             })
-            
+
             this.setState({
                 chosenActivities: uniqueActivities
             })
@@ -135,20 +150,61 @@ class App extends Component {
                 console.log( this.state.chosenActivities )
             })  
         }
-    } 
+    }; 
+
+    getColorOfMood = mood => {
+        const { moodList, chosenMood } = this.state;
+
+        const moodContainer = moodList.find( el => el.label === mood )
+
+        if ( !moodContainer ) {
+            return 
+        } else {
+            return moodContainer.color
+        }
+    }
+
+    deleteEntry = key => {
+        const moodLog = this.getMoodLog();
+
+        const remainingEntries = moodLog.filter( entry => key !== `${entry.date}_${entry.mood}` )
+
+        const updatedEntries = localStorage.setItem( 'moodLog', JSON.stringify( remainingEntries ))
+
+        this.setState({
+            entries: updatedEntries
+        })
+    }
+
+    editEntry = id => {
+        const { entryId } = this.state;
+        const moodLog = this.getMoodLog();
+
+        return moodLog.find( entry => id == `${entry.date}_${entry.mood}`?
+                                                    this.setState({
+                                                        entryId: id,
+                                                        chosenMood: entry.mood,
+                                                        chosenActivities: entry.activities,
+                                                        entryNote: entry.notes
+                                                    }, () => {
+                                                        console.log( `The mood is ${this.state.chosenMood}, activities are ${this.state.chosenActivities} and the added note is ${this.state.entryNote}` )
+                                                    })  
+                                                : null 
+                                        )
+    }
 
     resetValues = () => {
         this.setState({
             chosenMood: null,
             chosenActivities: []
         })
-    }
+    };
 
     handleDateChange = date => {
         this.setState({
             pickedDate: date
         })
-    }
+    };
     
     prepareBarChart = () => {
         const { moodList } = this.state
@@ -180,7 +236,7 @@ class App extends Component {
     };
 
     render() {
-        const { moodList, chosenMood, pickedDate, chosenActivities } = this.state
+        const { moodList, chosenMood, pickedDate, chosenActivities, entries, entryId, entryNote } = this.state
 
         return (
             <Container>
@@ -190,21 +246,21 @@ class App extends Component {
                     path="/" 
                     render={ (props) => 
                         <StartPage 
-                            chooseMood={ this.chooseMood } 
-                            moodList={ moodList }
-                            chosenMood={ chosenMood }
-                            pickedDate={ pickedDate }
-                            onChange={ this.handleDateChange }
+                        chooseMood={ this.chooseMood } 
+                        moodList={ moodList }
+                        chosenMood={ chosenMood }
+                        pickedDate={ pickedDate }
+                        onChange={ this.handleDateChange }
                         />
                     } 
-                />
-                <Route 
+                    />
+                {/* <Route 
                     exact 
                     path="/thought-detangler" 
                     render={ (props) => 
                         <ThoughtDetangler />
                     } 
-                />
+                /> */}
                 <Route 
                     exact 
                     path="/entries" 
@@ -213,7 +269,12 @@ class App extends Component {
                             getMoodLog={ this.getMoodLog }
                             moodList={ moodList }
                             chosenMood={ chosenMood }
+                            chosenActivities={ chosenActivities }
+                            basicActivities={ basicActivities }
                             pickedDate={ pickedDate }
+                            getColorOfMood={ this.getColorOfMood }
+                            deleteEntry={ this.deleteEntry }
+                            editEntry={ this.editEntry }
                         />
                     } 
                 />
@@ -227,17 +288,23 @@ class App extends Component {
                         />
                     } 
                 />
+
                 <EntryLogger 
-                        moodList={ moodList }
-                        chosenMood={ chosenMood }
-                        pickedDate={ pickedDate }
-                        moodCounter={ this.moodCounter }
-                        getMoodLog={ this.getMoodLog }
-                        basicActivities={ basicActivities }
-                        chosenActivities={ chosenActivities }
-                        pickActivities={ this.pickActivities }
-                        resetValues={ this.resetValues }
+                    moodList={ moodList }
+                    chosenMood={ chosenMood }
+                    pickedDate={ pickedDate }
+                    moodCounter={ this.moodCounter }
+                    getMoodLog={ this.getMoodLog }
+                    basicActivities={ basicActivities }
+                    chosenActivities={ chosenActivities }
+                    pickActivities={ this.pickActivities }
+                    resetValues={ this.resetValues }
+                    entries= { entries }
+                    entryId={ entryId }
+                    entryNote={ entryNote }
+                    editEntry={ this.editEntry }
                 />
+                {/* { this.getColorOfMood() } */}
             </Container>
         );
     }
