@@ -14,7 +14,7 @@
     "gh-pages": "^2.0.1",
     "immutable": "^4.0.0-rc.12",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.6",
     "react-bootstrap-sidebar": "0.0.1",
