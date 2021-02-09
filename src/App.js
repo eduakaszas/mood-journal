@@ -239,7 +239,7 @@ class App extends Component {
         const { moodList, chosenMood, pickedDate, chosenActivities, entries, entryId, entryNote } = this.state
 
         return (
-            <Container>
+            <Container className="app-container">
                 <Navigation />
                 <Route 
                     exact 

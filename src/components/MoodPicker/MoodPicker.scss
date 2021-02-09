@@ -1,46 +1,68 @@
-.mood-img {
-    height: 4.5em;
-    width: 4.5em;
+$main-blue: #585A79;
+$dark-blue: #3C3D53;
+$light-blue: #7D7FA1;
+$cream: #FFF0EA;
+$secondary-cream: #FFE4D3;
+
+.mood-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mood-link {
+    height: 5em;
+    width: 5em;
+    margin: .4em .4em;
+    z-index: 50;
+    cursor: pointer;
 
     @media (min-width: 768px) {
-        height: 5em;
-        width: 5em;
+        height: 6em;
+        width: 6em;
+        margin: 0 .8em;
     }
 }
 
+.mood-link::after {
+    content: '';
+    height: 5em;
+    width: 5em;
+    position: absolute;
+    background-color: $secondary-cream;
+    border-radius: 10px;
 
-// .mood-img {
-//         height: 5rem;
-//         width: 5rem;
-//         text-align: center;
-//         opacity: 0.5;
-//         cursor: pointer;
+    @media (min-width: 768px) {
+        height: 6em;
+        width: 6em;
+        -webkit-transition: background-color .5s ease-out;
+        -moz-transition: background-color .5s ease-out;
+        -o-transition: background-color .5s ease-out;
+        transition: background-color .5s ease-out;
+    }
+}
 
-//         @media (min-width: 768px) {
-//             height: 6.7rem;
-//             width: 6.7rem;
-//             margin: 0.4em;
-//         }
+.mood-link:hover::after  {
+    background-color: $light-blue;
+}
 
-//         @media (min-width: 992px) {
-//             -webkit-transform: perspective(1px) translateZ(0);
-//             transform: perspective(1px) translateZ(0);
-//             -webkit-transition-duration: 0.3s;
-//             transition-duration: 0.3s;
-//             -webkit-transition-property: transform;
-//             transition-property: transform;
-            
-//             .mood-img:hover {
-//                 opacity: 1.0;
-//                 -webkit-transform: scale(1.06);
-//                 transform: scale(1.06);;
-//             }
-//         }
-// }
-    
-    // li.mood img:hover {
-    //     opacity: 1.0;
-    //     -webkit-transform: scale(1.06);
-    //     transform: scale(1.06);;
-    // }
+.mood-link:active::after, 
+.mood-link:focus::after {
+    background-color: $main-blue!important;
+}
+
+.mood-img {
+    //display: none;
+    position: absolute;
+    margin: .7em .8em;
+    height: 3.5em;
+    width: 3.5em;
+    z-index: 100;
+
+    @media (min-width: 768px) {
+        height: 4em;
+        width: 4em;
+        margin: 1em 1em;
+    }
+}
 
