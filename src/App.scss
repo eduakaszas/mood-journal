@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500&family=Roboto&display=swap');
 $title-font: 'Crimson Pro', serif;
 $secondary-font: 'Roboto', sans-serif;
 
@@ -24,6 +24,7 @@ html, body {
     overflow: auto;
     background-color: $cream;
     font-family: $secondary-font;
+    font-weight: 400!important;
     color: $main-blue;
     //overflow-y: scroll;
 }

@@ -5,12 +5,14 @@ $cream: #FFF0EA;
 $secondary-cream: #FFE4D3;
 
 h1.page-title {
-    font-size: 2.5em;
+    font-size: 2.2em;
     margin-bottom: .8em;
-    
+    padding-top: 3.5em;
+
     @media (min-width: 768px) {
         font-size: 2.8em;
-        margin: 2em 0 .8em 0;
+        margin: .8em 0;
+        padding-top: 1em;
     }
 }
 
@@ -45,9 +47,6 @@ h1.page-title {
     }
 
     &:hover {
-        // color: #0c5449;
-        // background-color: #f6f3ed;
-
         &::after {
             -webkit-transform: translateX(4px);
             -moz-transform: translateX(4px);

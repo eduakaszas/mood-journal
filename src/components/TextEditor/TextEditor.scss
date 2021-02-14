@@ -18,8 +18,9 @@ h1.page-title {
 }
 
 .text-editor {
-    margin: 2.5em;
+    margin: 1.7em 1em;
     height: 7em;
+    width: 95%;
     max-height: 7em;
     padding: .7em;
     font-size: 1.1rem;
@@ -29,13 +30,14 @@ h1.page-title {
     border-radius: 10px;
 
     @media (min-width: 768px) {
-        .text-editor {
+            margin: 1.5em 6.5em;
             font-size: 1.3rem;
             //overflow: hidden;
-            min-height: 100px;
-            max-height: 100px;
+            width: 75%;
+            height: 8em;
+            // min-height: 100px;
+            // max-height: 100px;
             border-radius: 4px;
-        }
     }
 }
 

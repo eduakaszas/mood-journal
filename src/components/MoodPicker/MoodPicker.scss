@@ -35,15 +35,15 @@ $secondary-cream: #FFE4D3;
     @media (min-width: 768px) {
         height: 6em;
         width: 6em;
-        -webkit-transition: background-color .5s ease-out;
-        -moz-transition: background-color .5s ease-out;
-        -o-transition: background-color .5s ease-out;
-        transition: background-color .5s ease-out;
+        -webkit-transition: background-color .4s ease-out;
+        -moz-transition: background-color .4s ease-out;
+        -o-transition: background-color .4s ease-out;
+        transition: background-color .4s ease-out;
     }
 }
 
 .mood-link:hover::after  {
-    background-color: $light-blue;
+    background-color: $main-blue;
 }
 
 .mood-link:active::after, 
@@ -54,9 +54,9 @@ $secondary-cream: #FFE4D3;
 .mood-img {
     //display: none;
     position: absolute;
-    margin: .7em .8em;
-    height: 3.5em;
-    width: 3.5em;
+    margin: .9em;
+    height: 3.2em;
+    width: 3.2em;
     z-index: 100;
 
     @media (min-width: 768px) {

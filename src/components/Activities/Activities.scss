@@ -10,9 +10,10 @@ $cream: #FFF0EA;
 $secondary-cream: #FFE4D3;
 
 .activity-icon-background {
+    margin-bottom: .5em!important;
     padding: .8em;
-    width: 3em;
-    height: 3em;
+    width: 3.5em;
+    height: 3.5em;
     border-radius: 10px;
     border: none;
     background-color: $secondary-cream;
@@ -26,12 +27,20 @@ $secondary-cream: #FFE4D3;
     &:hover {
         color: $secondary-cream;
         background-color: $main-blue;
+
+        @media (min-width: 768px) {
+            -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
+        }
     }
 }
 
-.activity-icon {
+.activity-icon-background.btn.btn-primary .activity-icon {
+    margin-top: 0.2em;
     color: $main-blue;
-    font-size: 1.1em;
+    font-size: 1.2em;
 
     @media (min-width: 768px) {
         margin-top: 0.3em;
@@ -60,4 +69,10 @@ $secondary-cream: #FFE4D3;
     color: $secondary-cream;
     background-color: $main-blue;
     border: 1.2px solid $main-blue
+}
+
+.col-md-1 {
+    @media (min-width: 768px) {
+        margin: 0 .4em
+    }
 }

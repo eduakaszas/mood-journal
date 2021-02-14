@@ -22,9 +22,9 @@ export class OptionsMenu extends Component {
 
                     <Dropdown.Menu>
                         <LinkContainer to="/">
-                            <Dropdown.Item onClick={ editEntry }>Edit</Dropdown.Item>
+                            <Dropdown.Item onClick={ editEntry }> Edit </Dropdown.Item>
                         </LinkContainer>
-                        <Dropdown.Item onClick={ deleteEntry }>Delete</Dropdown.Item>
+                        <Dropdown.Item onClick={ deleteEntry }> Delete </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>

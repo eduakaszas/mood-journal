@@ -1,3 +1,9 @@
+$main-blue: #585A79;
+$dark-blue: #3C3D53;
+$light-blue: #7D7FA1;
+$cream: #FFF0EA;
+$secondary-cream: #FFE4D3;
+
 .dropdown {
     position: relative;
 }
@@ -22,10 +28,19 @@ padding-top: 0 !important;
 }
 
 .options-icon {
-    color: #000;
+    color: $main-blue;
+}
+
+.dropdown-item {
+    color: $cream;
 }
 
 .dropdown-item.active, .dropdown-item:active {
-    background-color: #FFF;
-    color: #000;
+    background-color: $main-blue;
+    color: $cream;
+}
+
+.dropdown-menu.show.dropdown-menu-right {
+    background-color: $light-blue;
+    color: $cream;
 }
