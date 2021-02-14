@@ -30,7 +30,8 @@
     "react-spring": "^8.0.19",
     "slate": "^0.45.0",
     "slate-react": "^0.21.20",
-    "victory": "^32.2.0"
+    "victory": "^32.2.0",
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "react-scripts start",
