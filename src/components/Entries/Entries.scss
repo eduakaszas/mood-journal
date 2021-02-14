@@ -1,173 +1,82 @@
 $gray: #E0E2E7;
+$main-blue: #585A79;
+$dark-blue: #3C3D53;
+$light-blue: #7D7FA1;
+$cream: #FFF0EA;
+$secondary-cream: #FFE4D3;
 
-li.entry {
-    width: 100%;
-    height: auto;
-    border: 1px solid $gray;
-    border-radius: 5px;
-    list-style: none;
+ul.entries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 5em;
+    overflow: hidden;
 
-    .entry-img {
-        .entry-mood-img {
-            width: 3em;
-        }
-    }
-
-    .entry-text-content {
-        .entry-date {
-            font-size: 0.8em;
-            color: #666666;
-        }
-
-        .entry-mood {
-            font-size: 1.2em;
-            text-transform: uppercase;
-        }
+    @media (min-width: 768px) {
+        padding-top: 3em;
     }
 }
 
-// .dropdown-toggle.btn.btn-success {
-//     background-color: transparent;
-//     border: none;
-// }
+li.entry {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+    padding: .3em;
+    width: 90%;
+    max-height: 10em;
+    border: none;
+    border-radius: 10px;
+    list-style: none;
+    background-color: $secondary-cream;
 
-// .entries {
-//     width: 100%;
+    @media (min-width: 768px) {
+        width: 70%;
+        padding: .5em;
+    }
+}
 
-//     li.entry { 
-//         position: relative;
-//         list-style: none;
-//         overflow: hidden;
-//         overflow-wrap: break-word;
-//         height: 5em;
-//         max-height: 7em;
-//         padding: .5em;
-//         font-size: 1.1rem;
-//         border: 1px solid #E0E2E7;
-//         border-radius: 5px;
+.entry-img {
+    order: 1;
+    margin: .5em;
+}
 
-//         .date-entry {
-//             font-size: 0.5rem;
-//         }
+.entry-mood-img {
+    display: inline;
+    width: 2.5em;
 
-//         .text {
-//             position: absolute;
-//             margin-left: 20%;
+    @media (min-width: 768px) {
+        width: 3em;
+    }
+}
 
-//             .note-entry {
-//                 font-size: 1rem;
-//                 overflow: auto;
-//                 height: 70%;
-//             }
+.entry-text-content {
+    order: 2;
+    margin: .5em;
+}
 
-//             .activity-entry {
-//                 height: 30%;
-//                 font-size: 0.5rem;
-//             }
-//         }
+.entry-date {
+    display: inline;
+    font-size: 0.8em;
+}
 
-//         .img-entry {
-//             .entry-mood-img {
-//                 margin-top: 20%;
-//                 width: 3rem;
-//             }
-//         }
-//     }
-// }
+.entry-note {
+    font-size: .8em;
+}
 
-// // TABLET and up 
-// @media (min-width: 768px) {
-//     .entries {
-//         width: 100%;
-    
-//         li.entry {
-//             position: relative;
-//             list-style: none;
-//             background-color: $white;
-//             box-shadow: $white-box-shadow 0px 3px 5px 0px;
-//             border-radius: 4px;
-//             min-height: 140px;
-//             max-height: 140px;
-//             width: 80%;
-//             overflow: hidden;
-//             overflow-wrap: break-word;
-//             margin-left: 10%;
-    
-//             .date-entry {
-//                 font-size: 0.7rem;
-//             }
-    
-//             .text {
-//                 height: 80%;
-//                 margin-left: 20%;
-    
-//                 .note-entry {
-//                     position: absolute;
-//                     font-size: 1.2rem;
-//                     overflow: auto;
-//                     width: 100%;
-//                 }
-    
-//                 .activity-entry {
-//                     font-size: 0.7rem;
-//                     margin-top: 25%;
-//                 }
-//             }
-    
-//             .img-entry {
-//                 .entry-mood-img {
-//                     margin-top: 40%;
-//                     width: 4rem;
-//                 }
-//             }
-//         }
-//     }
-// }
+.entry-mood {
+    margin-bottom: .3em;
+    font-size: 1.3em;
+    font-weight: 400;
+}
 
-// // DEKSTOP and up
-// @media (min-width: 992px) {
-//     .entries {
-//         width: 100%;
-    
-//         li.entry {
-//             position: relative;
-//             list-style: none;
-//             background-color: $white;
-//             box-shadow: $white-box-shadow 0px 3px 5px 0px;
-//             border-radius: 4px;
-//             min-height: 160px;
-//             max-height: 160px;
-//             width: 80%;
-//             overflow: hidden;
-//             overflow-wrap: break-word;
-//             margin-left: 10%;
-    
-//             .date-entry {
-//                 font-size: 0.7rem;
-//             }
-    
-//             .text {
-//                 height: 80%;
-//                 margin-left: 20%;
-    
-//                 .note-entry {
-//                     font-size: 1.4rem;
-//                     overflow: auto;
-//                     width: 100%;
-//                 }
-    
-//                 .activity-entry {
-//                     margin-top: 20%;
-//                     font-size: 0.7rem;
-//                 }
-//             }
-    
-//             .img-entry {
-//                 .entry-mood-img {
-//                     margin-top: 35%;
-//                     width: 4.5rem;
-//                 }
-//             }
-//         }
-//     }
-// }
+.activity-entry {
+    margin: .2em 0;
+}
+
+.options {
+    position: absolute;
+    margin: .5em;
+    right: 0;
+    order: 3;
+}

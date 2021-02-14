@@ -1,31 +1,61 @@
-// .container {
-//     div.title {
-//         font-size: 1.8em;
-//         font-weight: 500;
-        
-//         @media (min-width: 768px) {
-//             font-size: 2em;
-//         }
-//     }
+$main-blue: #585A79;
+$dark-blue: #3C3D53;
+$light-blue: #7D7FA1;
+$cream: #FFF0EA;
+$secondary-cream: #FFE4D3;
 
-//     .date {
-//         display: flex;
-//         flex-direction: row;
-//         justify-content: center;
-//         text-align: center;
-//     }
+h1.page-title {
+    font-size: 2.2em;
+    margin-bottom: .8em;
+    padding-top: 3.5em;
 
-//     img.next-button {
-//         width: 2.1em;
-//         cursor: pointer;
+    @media (min-width: 768px) {
+        font-size: 2.8em;
+        margin: .8em 0;
+        padding-top: 1em;
+    }
+}
 
-//         @media (min-width: 768px) {
-//             width: 2.2em;
-//         }
-//     }
-// }
+.button-container {
+    margin-top: 2.8em;
+    width: 100%;
+    text-align: center;
 
+    @media (min-width: 768px) {
+        margin-top: 3.8em;
+    }
+}
 
+.continue-button {
+    padding: .7em 1.1em;
+    border: none;
+    border-radius: 10px;
+    color: $cream;
+    background-color: $main-blue;
+}
+
+.arrow {
+    &::after {
+        display: inline-block;
+        padding-left: 8px;
+        content: "\0279E"; // arrow right unicode
+        -webkit-transition: transform 0.3s ease-out;
+        -moz-transition: transform 0.3s ease-out;
+        -ms-transition: transform 0.3s ease-out;
+        -o-transition: transform 0.3s ease-out;
+        transition: transform 0.3s ease-out;
+    }
+
+    &:hover {
+        &::after {
+            -webkit-transform: translateX(4px);
+            -moz-transform: translateX(4px);
+            -ms-transform: translateX(4px);
+            -o-transform: translateX(4px);
+            transform: translateX(4px);
+        }
+    }
+}
 /*
 Extra small (xs) devices (portrait phones, less than 576px)
 No media query since this is the default in Bootstrap

@@ -11,14 +11,14 @@ export class TextEditor extends React.Component {
         
         return (
             <Container fluid>
-                <div className="page-title mb-4"> What have you been up to? </div>
+                <h1 className="page-title"> What have you been up to? </h1>
                 <Activities 
                     pickActivities={ pickActivities }
                     basicActivities={ basicActivities }
                     chosenActivities={ chosenActivities }
                 />
                 <Editor 
-                    className="text-editor mt-4 mb-4"
+                    className="text-editor"
                     value={ this.props.value } 
                     placeholder="Enter thoughts"
                     onChange={ this.props.onChange } 
@@ -27,8 +27,16 @@ export class TextEditor extends React.Component {
                     renderMark={ this.props.renderMark }
                 />
                 <div className="text-center">
-                    <Link to="/"><button onClick={ storeItems } className="save-button"> Save </button></Link>                
-                    <Link to="/"><button className="back-button"> Back </button></Link>
+                    <Link to="/">
+                        <button className="back-button"> 
+                            Back 
+                        </button>
+                    </Link>
+                    <Link to="/">
+                        <button onClick={ storeItems } className="save-button"> 
+                            Save 
+                        </button>
+                    </Link>                
                 </div>
             </Container>
         ); 

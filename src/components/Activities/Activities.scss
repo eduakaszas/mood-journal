@@ -3,112 +3,76 @@ $pink: #E36372;
 $gray: #E0E2E7;
 $black: #1A2E35;
 
+$main-blue: #585A79;
+$dark-blue: #3C3D53;
+$light-blue: #7D7FA1;
+$cream: #FFF0EA;
+$secondary-cream: #FFE4D3;
+
 .activity-icon-background {
+    margin-bottom: .5em!important;
     padding: .8em;
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    border: 1.2px solid $gray;
-    background-color: transparent;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 10px;
+    border: none;
+    background-color: $secondary-cream;
     cursor: pointer;
 
     @media (min-width: 768px) {
-        width: 3.5em;
-        height: 3.5em;
+        width: 4em;
+        height: 4em;
     }
 
     &:hover {
-        color: $white;
-        background-color: $pink;
-        border: 1.2px solid $pink
-    }
-
-    .activity-icon {
-        color: $black;
-        font-size: 1.1em;
+        color: $secondary-cream;
+        background-color: $main-blue;
 
         @media (min-width: 768px) {
-            margin-top: 0.1em;
-            font-size: 1.3em;
+            -webkit-transition: background-color .5s ease-out;
+            -moz-transition: background-color .5s ease-out;
+            -o-transition: background-color .5s ease-out;
+            transition: background-color .5s ease-out;
         }
+    }
+}
 
-        :active {
-            font-size: 1.1em;
-        }
+.activity-icon-background.btn.btn-primary .activity-icon {
+    margin-top: 0.2em;
+    color: $main-blue;
+    font-size: 1.2em;
+
+    @media (min-width: 768px) {
+        margin-top: 0.3em;
+        font-size: 1.6em;
+    }
+
+    :active {
+        font-size: 1.1em;
     }
 }
 
 .activity-icon-background.active.btn.btn-primary {
     & > * { 
-    color: $white!important;
-    background-color: $pink;
-    border: 1.2px solid $pink
+    color: $secondary-cream !important;
+    background-color: $main-blue;
     }
 }
 
 .activity-icon-background.btn.btn-primary:hover {
     & > * {
-        color: $white;
+        color: $secondary-cream;
     }
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-    color: $white;
-    background-color: $pink;
-    border: 1.2px solid $pink
+    color: $secondary-cream;
+    background-color: $main-blue;
+    border: 1.2px solid $main-blue
 }
 
-//PHONE
-// .activity-list {
-//     display: inline;
-// }
-
-// .activity-icon {
-//     font-size: 1.3rem;
-// }
-
-// .activity-icon-background {
-//     margin: 0 .7em .7em 0 !important;
-//     width: 50px;
-//     height: 50px;
-//     border-radius: 50%;
-//     line-height: 2.5;
-//     border: 1.2px solid $gray;
-//     background: transparent;
-//     color: $black;
-// }
-
-// .activity-icon-background:hover {
-//     background: #EA8691 !important;
-//     outline: none !important;
-//     border: 1.2px solid #EA8691 !important;
-// }
-// .activity-icon-background.btn.active {
-//     background: $pink !important;
-//     color: $white !important;
-//     outline: none !important;
-//     border: 1.2px solid $pink !important;
-// }
-
-// .activity-icon-background:focus, .activity-icon-background:active, .activity-icon-background:not(:disabled):not(.disabled):active {
-//     outline: none;
-// }
-
-
-// //TABLET
-// @media (min-width: 768px) {
-//     .activityTitle {
-//         font-size: 1.4rem;
-//     }
-    
-//     .activity-icon {
-//         font-size: 1.5rem;
-//     }
-
-//     .activity-icon-background  {
-//         width: 60px;
-//         height: 60px;
-//         line-height: 3.2;
-//     }
-
-// }
+.col-md-1 {
+    @media (min-width: 768px) {
+        margin: 0 .4em
+    }
+}

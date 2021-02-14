@@ -43,44 +43,42 @@ export class Entries extends Component {
                 })
 
                 return (
-                    <li key={ `${entry.date}_${entry.mood}` } className="entry mb-3 p-3">
-                        <OptionsMenu 
-                            deleteEntry={ () => deleteEntry(`${entry.date}_${entry.mood}`) } 
-                            editEntry={ () => editEntry(`${entry.date}_${entry.mood}`) } 
-                        />
-                        <div className="entry-img d-inline-block align-top"> { displayedImage } </div>
-                        <div className="entry-text-content d-inline-block w-75 ml-3">
+                    <li key={ `${entry.date}_${entry.mood}` } className="entry">
+                        <div className="entry-img"> { displayedImage } </div>
+                        <div className="entry-text-content">
                             <div className="entry-date mb-2"> 
                                 { new Date( entry.date ).toLocaleDateString('en-GB') } 
                             </div>
-                            <div className="entry-mood mb-2" style={{ color: getColorOfMood(entry.mood) }}> { entry.mood } </div>
+                            <h4 className="entry-mood"> 
+                                { entry.mood } 
+                            </h4>
                             <div className="activity-entry"> 
                                 { entry.activities.map(x => <ActivityLogo
-                                                                key={`${entry.date}_${x}`}
-                                                                activity={x} 
-                                                                basicActivities={ basicActivities }
-                                                                />
-                                                                )}
+                                                                    key={`${entry.date}_${x}`}
+                                                                    activity={x} 
+                                                                    basicActivities={ basicActivities }
+                                                                    />
+                                                                    )}
                                 {/* { entry.activities.join("\xa0\xa0\xa0\xa0") }  */}
                             </div>
                             { entry.notes 
-                                ?  <div className="entry-note mt-3" value={ entry.notes }> { entry.notes } </div>
+                                ?  <div className="entry-note" value={ entry.notes }> { entry.notes } </div>
                                 : null
                             }
                         </div>
-                        {/* <button className="delete-button inline float-right align-top"
-                                type="button"
-                                onClick={ () => deleteEntry(`${entry.date}_${entry.mood}`) }
-                        > 
-                            x 
-                        </button> */}
+                        <div className="options">
+                            <OptionsMenu 
+                                deleteEntry={ () => deleteEntry(`${entry.date}_${entry.mood}`) } 
+                                editEntry={ () => editEntry(`${entry.date}_${entry.mood}`) } 
+                            />
+                        </div>
                     </li>
                 )
             })
 
             return displayedEntries
         }
-}
+    }
 
     render() {
         return (

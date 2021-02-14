@@ -1,41 +1,40 @@
 import React, { Component } from 'react';
 
 import { Route } from "react-router-dom";
-import Container from 'react-bootstrap/Container';
 import { Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
-import { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive } from './components/compIndex.js';
+import { Awesome, Happy, Okay, Sad, Angry } from './components/compIndex.js';
 import './App.scss';
 
 let moodList = [
     { 
-        src: AwesomeActive,
-        activeSrc: AwesomeActive,
+        src: Awesome,
+        activeSrc: Awesome,
         label: "Awesome",
         color: "#A2C084"
     },
     { 
-        src: HappyActive,
-        activeSrc: HappyActive,
+        src: Happy,
+        activeSrc: Happy,
         label: "Happy",
         color: "#F6EC65"
     },
     { 
-        src: OkayActive,
-        activeSrc: OkayActive,
+        src: Okay,
+        activeSrc: Okay,
         label: "Okay",
         color: "#FFBB5B"
     },
     { 
-        src: AngryActive,
-        activeSrc: AngryActive,
-        label: "Angry",
-        color: "#E36371"
-    },
-    { 
-        src: SadActive,
-        activeSrc: SadActive,
+        src: Sad,
+        activeSrc: Sad,
         label: "Sad",
         color: "#92AEC7"
+    },
+    { 
+        src: Angry,
+        activeSrc: Angry,
+        label: "Angry",
+        color: "#E36371"
     }
 ];
 
@@ -239,7 +238,7 @@ class App extends Component {
         const { moodList, chosenMood, pickedDate, chosenActivities, entries, entryId, entryNote } = this.state
 
         return (
-            <Container>
+            <div>
                 <Navigation />
                 <Route 
                     exact 
@@ -305,7 +304,7 @@ class App extends Component {
                     editEntry={ this.editEntry }
                 />
                 {/* { this.getColorOfMood() } */}
-            </Container>
+            </div>
         );
     }
 }

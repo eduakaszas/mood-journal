@@ -1,12 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap');
-$main-font: 'Work Sans', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500&family=Roboto&display=swap');
+$title-font: 'Crimson Pro', serif;
+$secondary-font: 'Roboto', sans-serif;
 
-$background: #FCFBF8;
+$main-blue: #585A79;
+$dark-blue: #3C3D53;
+$light-blue: #7D7FA1;
+$cream: #FFF0EA;
+$secondary-cream: #FFE4D3;
 
 * {
     margin: 0;
     padding: 0;
-    font-family: $main-font;
+    font-family: $secondary-font;
 }
 
 html {
@@ -17,14 +22,24 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: $background;
-    background-color: #fff;
-    font-family: $main-font;
+    background-color: $cream;
+    font-family: $secondary-font;
+    font-weight: 400!important;
+    color: $main-blue;
     //overflow-y: scroll;
 }
 
 body {
     overflow-y: scroll;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $title-font;
+}
+
+button {
+    font-family: $title-font;
+    font-size: 1.1em;
 }
 
 .page-title {

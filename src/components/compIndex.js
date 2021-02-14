@@ -32,18 +32,18 @@ import { OptionsMenu } from './OptionsMenu/OptionsMenu';
 // import SadActive from './img/sad_blue.svg'
 // import AngryActive from './img/angry_red.svg'
 
-import Awesome from './img/inactive_very_happy.svg'
-import Happy from './img/inactive_happy.svg'
-import Okay from './img/inactive_okay.svg'
-import Sad from './img/inactive_sad.svg'
-import Angry from './img/inactive_angry.svg'
-import AwesomeActive from './img/inactive_very_happy.svg'
-import HappyActive from './img/inactive_happy.svg'
-import OkayActive from './img/inactive_okay.svg'
-import SadActive from './img/inactive_sad.svg'
-import AngryActive from './img/inactive_angry.svg'
+import Awesome from './img/very_happy.svg'
+import Happy from './img/happy_face.svg'
+import Okay from './img/neutral.svg'
+import Sad from './img/sad_face.svg'
+import Angry from './img/angry.svg'
+// import AwesomeActive from './img/inactive_very_happy.svg'
+// import HappyActive from './img/inactive_happy.svg'
+// import OkayActive from './img/inactive_okay.svg'
+// import SadActive from './img/inactive_sad.svg'
+// import AngryActive from './img/inactive_angry.svg'
 
 
 
 export { OptionsMenu, ActivityLogo, ThoughtDetangler, SituationForm, InitialThought, Pros, Cons, BalancedThought, Stats, Navigation, Activities, Entries, EntryLogger, MoodDatePicker, BarChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock };
-export { Awesome, Happy, Okay, Sad, Angry, AwesomeActive, HappyActive, OkayActive, SadActive, AngryActive }
+export { Awesome, Happy, Okay, Sad, Angry }

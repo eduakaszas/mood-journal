@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import { MoodPicker, MoodDatePicker } from '../../components/compIndex';
+import { Link } from 'react-router-dom';
 import './StartPage.scss';
 
 export class StartPage extends Component {
@@ -11,7 +11,7 @@ export class StartPage extends Component {
 
         return (
             <Container fluid>
-                <div className='page-title mb-4'> How are you feeling today? </div>
+                <h1 className='page-title'> How are you feeling today? </h1>
                 {/* <div className='date m-5'>
                     <div> Date: </div>
                     <MoodDatePicker 
@@ -24,6 +24,13 @@ export class StartPage extends Component {
                     moodList={ moodList } 
                     chosenMood={ chosenMood }
                 />
+                <div className="button-container">
+                    <Link to='/editor' >
+                        <button className="continue-button arrow">
+                            Continue
+                        </button>
+                    </Link>
+                </div>
             </Container>
         ) 
     }
