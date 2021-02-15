@@ -40,7 +40,7 @@ export class EntryLogger extends Component {
 
     // stores mood and date of mood item that is clicked on
     storeItems = () => {
-        const { chosenMood, pickedDate, chosenActivities, entries, editEntry, entryId } = this.props
+        const { chosenMood, pickedDate, chosenActivities, entryId } = this.props
         const { textEditorNote } = this.state
         
         let moodDatas = this.props.getMoodLog()
@@ -60,7 +60,7 @@ export class EntryLogger extends Component {
         let index;
         
         if ( entryId ) {
-            index = moodDatas.findIndex( entry => entryId == `${entry.date}_${entry.mood}`);
+            index = moodDatas.findIndex( entry => entryId === `${entry.date}_${entry.mood}`);
 
             if ( index !== -1 ) {
                 moodDatas[index] = newMoodItem;

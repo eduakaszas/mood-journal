@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from "react-router-dom";
 import './OptionsMenu.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';

@@ -14,7 +14,7 @@ library.add( faBriefcase, faVolleyballBall, faUsers, faUtensils, faShoppingCart,
 
 export class Activities extends Component {
     displayActivities() {
-        const { basicActivities, pickActivities, chosenActivities } = this.props
+        const { basicActivities, pickActivities } = this.props
 
         return basicActivities.map( activity => {
             return  <Col xs={3} md={1}>

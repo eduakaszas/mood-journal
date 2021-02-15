@@ -3,7 +3,7 @@ import "./ThoughtDetangler.scss"
 
 export class InitialThought extends Component {
     render() {
-        const { title, onSubmit, onClick, onChange, name } = this.props
+        const { title, onClick, onChange, name } = this.props
 
         return (
             <div className="initial-thought-adder mb-4">

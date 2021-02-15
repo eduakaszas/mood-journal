@@ -60,7 +60,7 @@ export class ThoughtDetangler extends Component {
     displayComponent = () => {
         const { situation, initialThought, pros, cons, balancedThought } = this.state
 
-        if ( situation == '' ) {
+        if ( situation === '' ) {
             return <SituationForm 
                         title='Identify the situation (where? when? who?)'
                         name='situation'
@@ -68,7 +68,7 @@ export class ThoughtDetangler extends Component {
                         onSubmit={ this.onSubmit }
                         onClick={ this.onClick }
                     />
-        } else if ( situation !== '' && initialThought == '' ) {
+        } else if ( situation !== '' && initialThought === '' ) {
             return <InitialThought 
                         title='What thought went through your head initially?'
                         name='initialThought'
@@ -76,7 +76,7 @@ export class ThoughtDetangler extends Component {
                         onSubmit={ this.onSubmit }
                         onClick={ this.onClick }
                     />
-        } else if ( initialThought !== '' && pros == '' ) {
+        } else if ( initialThought !== '' && pros === '' ) {
             return <Pros 
                         title="What is in favour of this thought?"
                         name='pros'
@@ -84,7 +84,7 @@ export class ThoughtDetangler extends Component {
                         onSubmit={ this.onSubmit }
                         onClick={ this.onClick }
                     /> 
-        } else if ( pros !== '' && cons == '' ) {
+        } else if ( pros !== '' && cons === '' ) {
             return <Cons
                         title="What is against this thought?"
                         name='cons'
@@ -92,7 +92,7 @@ export class ThoughtDetangler extends Component {
                         onSubmit={ this.onSubmit }
                         onClick={ this.onClick }
                     />
-        } else if ( cons !== '' && balancedThought == '' ) {
+        } else if ( cons !== '' && balancedThought === '' ) {
             return <BalancedThought />
         }
     }
