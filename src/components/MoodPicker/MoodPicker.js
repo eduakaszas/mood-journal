@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import './MoodPicker.scss';
 
 export class MoodPicker extends Component {
     displayMoodList() {
-        const { chooseMood, moodList, chosenMood, chosenActivities } = this.props;
+        const { chooseMood, moodList, chosenMood } = this.props;
 
         const displayedMoods = moodList.map( mood => {
             let src;
@@ -20,6 +19,7 @@ export class MoodPicker extends Component {
                 <a 
                     key={ `${ mood.label }_${ src }` } 
                     className="mood-link"
+                    href="#"
                 >
                     <img 
                         src={ src }

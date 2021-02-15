@@ -96,7 +96,7 @@ class App extends Component {
         const { chosenMood } = this.state;
         let clickedMood = e.target.id;
         
-        if ( chosenMood == clickedMood ) {
+        if ( chosenMood === clickedMood ) {
             clickedMood = null
         }
         
@@ -152,7 +152,7 @@ class App extends Component {
     }; 
 
     getColorOfMood = mood => {
-        const { moodList, chosenMood } = this.state;
+        const { moodList } = this.state;
 
         const moodContainer = moodList.find( el => el.label === mood )
 
@@ -176,10 +176,9 @@ class App extends Component {
     }
 
     editEntry = id => {
-        const { entryId } = this.state;
         const moodLog = this.getMoodLog();
 
-        return moodLog.find( entry => id == `${entry.date}_${entry.mood}`?
+        return moodLog.find( entry => id === `${entry.date}_${entry.mood}`?
                                                     this.setState({
                                                         entryId: id,
                                                         chosenMood: entry.mood,

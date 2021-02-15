@@ -7,7 +7,7 @@ import { Activities } from '../../components/compIndex'
 
 export class TextEditor extends React.Component {
     render() {
-        const { storeItems, basicActivities, pickActivities, chosenActivities, storeOrEditEntry } = this.props
+        const { storeItems, basicActivities, pickActivities, chosenActivities } = this.props
         
         return (
             <Container fluid>

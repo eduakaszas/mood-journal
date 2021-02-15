@@ -5,7 +5,7 @@ import './Entries.scss'
 
 export class Entries extends Component {
     displayEntryItems() {
-        const { moodList, basicActivities, getColorOfMood, deleteEntry, editEntry } = this.props
+        const { moodList, basicActivities, deleteEntry, editEntry } = this.props
 
         let moodData = this.props.getMoodLog()
         console.log( moodData )
