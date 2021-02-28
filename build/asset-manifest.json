@@ -1,22 +1,22 @@
 {
 	"files": {
-		"main.css": "/mood-journal/static/css/main.70ca4a5a.chunk.css",
-		"main.js": "/mood-journal/static/js/main.6059c109.chunk.js",
-		"main.js.map": "/mood-journal/static/js/main.6059c109.chunk.js.map",
-		"index.html": "/mood-journal/index.html",
-		"precache-manifest.7f1af1b381566013b6f26c4d57057abc.js": "/mood-journal/precache-manifest.7f1af1b381566013b6f26c4d57057abc.js",
-		"service-worker.js": "/mood-journal/service-worker.js",
-		"static/css/2.d7c4ec33.chunk.css.map": "/mood-journal/static/css/2.d7c4ec33.chunk.css.map",
-		"static/css/main.70ca4a5a.chunk.css.map": "/mood-journal/static/css/main.70ca4a5a.chunk.css.map",
-		"static/media/angry.svg": "/mood-journal/static/media/angry.a165287a.svg",
-		"static/media/happy_face.svg": "/mood-journal/static/media/happy_face.cc2cdf94.svg",
-		"static/media/neutral.svg": "/mood-journal/static/media/neutral.9c6f16cb.svg",
-		"static/media/sad_face.svg": "/mood-journal/static/media/sad_face.043c3d49.svg",
-		"static/media/very_happy.svg": "/mood-journal/static/media/very_happy.4ec67b09.svg"
+		"main.css": "/static/css/main.70ca4a5a.chunk.css",
+		"main.js": "/static/js/main.6059c109.chunk.js",
+		"main.js.map": "/static/js/main.6059c109.chunk.js.map",
+		"index.html": "/index.html",
+		"precache-manifest.7f1af1b381566013b6f26c4d57057abc.js": "/precache-manifest.7f1af1b381566013b6f26c4d57057abc.js",
+		"service-worker.js": "/service-worker.js",
+		"static/css/2.d7c4ec33.chunk.css.map": "/static/css/2.d7c4ec33.chunk.css.map",
+		"static/css/main.70ca4a5a.chunk.css.map": "/static/css/main.70ca4a5a.chunk.css.map",
+		"static/media/angry.svg": "/static/media/angry.a165287a.svg",
+		"static/media/happy_face.svg": "/static/media/happy_face.cc2cdf94.svg",
+		"static/media/neutral.svg": "/static/media/neutral.9c6f16cb.svg",
+		"static/media/sad_face.svg": "/static/media/sad_face.043c3d49.svg",
+		"static/media/very_happy.svg": "/static/media/very_happy.4ec67b09.svg"
 	},
 	"entrypoints": [
-		"/static/js/runtime~main.45066458.js",
-		"/static/js/runtime~main.45066458.js.map",
+		"static/js/runtime~main.45066458.js",
+		"static/js/runtime~main.45066458.js.map",
 		"static/css/2.d7c4ec33.chunk.css",
 		"static/js/2.5335a2e3.chunk.js",
 		"static/js/2.5335a2e3.chunk.js.map"
