@@ -1,28 +1,20 @@
 {
-	"files": {
-		"main.css": "/static/css/main.70ca4a5a.chunk.css",
-		"main.js": "/static/js/main.6059c109.chunk.js",
-		"main.js.map": "/static/js/main.6059c109.chunk.js.map",
-		"index.html": "/index.html",
-		"runtime~main.js": "/static/js/runtime~main.45066458.js",
-        "runtime~main.js.map": "/static/js/runtime~main.45066458.js.map",
-		"precache-manifest.7f1af1b381566013b6f26c4d57057abc.js": "/precache-manifest.7f1af1b381566013b6f26c4d57057abc.js",
-		"service-worker.js": "/service-worker.js",
-		"static/css/2.d7c4ec33.chunk.css": "/static/css/2.d7c4ec33.chunk.css",
-        "static/js/2.5335a2e3.chunk.js": "/static/js/2.5335a2e3.chunk.js",
-        "static/js/2.5335a2e3.chunk.js.map": "/static/js/2.5335a2e3.chunk.js.map",
-		"static/css/2.d7c4ec33.chunk.css.map": "/static/css/2.d7c4ec33.chunk.css.map",
-		"static/css/main.70ca4a5a.chunk.css.map": "/static/css/main.70ca4a5a.chunk.css.map",
-		"static/media/angry.svg": "/static/media/angry.a165287a.svg",
-		"static/media/happy_face.svg": "/static/media/happy_face.cc2cdf94.svg",
-		"static/media/neutral.svg": "/static/media/neutral.9c6f16cb.svg",
-		"static/media/sad_face.svg": "/static/media/sad_face.043c3d49.svg",
-		"static/media/very_happy.svg": "/static/media/very_happy.4ec67b09.svg"
-	},
-	"entrypoints": [
-		"static/js/runtime~main.45066458.js",
-		"static/css/2.d7c4ec33.chunk.css",
-		"static/js/2.5335a2e3.chunk.js",
-		"static/js/2.5335a2e3.chunk.js.map"
-	]
+  "main.css": "/static/css/main.70ca4a5a.chunk.css",
+  "main.js": "/static/js/main.c11f94e1.chunk.js",
+  "main.js.map": "/static/js/main.c11f94e1.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/css/2.9eb488e0.chunk.css": "/static/css/2.9eb488e0.chunk.css",
+  "static/js/2.b8b82585.chunk.js": "/static/js/2.b8b82585.chunk.js",
+  "static/js/2.b8b82585.chunk.js.map": "/static/js/2.b8b82585.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.a1b1b7b14952e23bed3066c823f59c6c.js": "/precache-manifest.a1b1b7b14952e23bed3066c823f59c6c.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/2.9eb488e0.chunk.css.map": "/static/css/2.9eb488e0.chunk.css.map",
+  "static/css/main.70ca4a5a.chunk.css.map": "/static/css/main.70ca4a5a.chunk.css.map",
+  "static/media/angry.svg": "/static/media/angry.a165287a.svg",
+  "static/media/happy_face.svg": "/static/media/happy_face.cc2cdf94.svg",
+  "static/media/neutral.svg": "/static/media/neutral.9c6f16cb.svg",
+  "static/media/sad_face.svg": "/static/media/sad_face.043c3d49.svg",
+  "static/media/very_happy.svg": "/static/media/very_happy.4ec67b09.svg"
 }
