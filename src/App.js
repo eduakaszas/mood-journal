@@ -224,9 +224,8 @@ class App extends Component {
 
         return moodList.map( entry => {
             const moods = moodLog.filter( item => {
-                if ( entry.label === item.mood ) {
-                    return true
-                }
+                
+                return entry.label === item.mood;
             })
             
             return { x: entry.label, y: moods.length }

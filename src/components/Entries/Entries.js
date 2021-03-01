@@ -30,7 +30,7 @@ export class Entries extends Component {
                     if ( entry.mood === item.label ) {
                         src = item.activeSrc
                     } else {
-                        return;
+                        return null;
                     }
 
                     return(
@@ -40,7 +40,7 @@ export class Entries extends Component {
                             key={ `${item.label}_${src}` }
                         />
                     )
-                })
+                }).filter( x => x );
 
                 return (
                     <li key={ `${entry.date}_${entry.mood}` } className="entry">
