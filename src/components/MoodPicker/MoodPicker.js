@@ -19,7 +19,7 @@ export class MoodPicker extends Component {
                 <a 
                     key={ `${ mood.label }_${ src }` } 
                     className="mood-link"
-                    href="#"
+                    href="/#"
                 >
                     <img 
                         src={ src }
