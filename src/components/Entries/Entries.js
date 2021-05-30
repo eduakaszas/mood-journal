@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 import { ActivityLogo, OptionsMenu } from '../../components/compIndex.js';
+import { connect } from 'react-redux';
 import './Entries.scss'
 
-export class Entries extends Component {
-    displayEntryItems() {
-        const { moodList, basicActivities, deleteEntry, editEntry } = this.props
+class Entries extends Component {
+    displayEntryItems(moodData) {
+        const { moodList, basicActivities, deleteEntry, editEntry, entries } = this.props;
 
-        let moodData = this.props.getMoodLog()
+        console.log( this.props.entries )
         console.log( moodData )
 
-        if ( moodData === null ) {
+        if ( entries.length === 0 ) {
             return <h1> No entries </h1>
         } else {
             let displayedEntries = moodData
@@ -43,7 +44,7 @@ export class Entries extends Component {
                 }).filter( x => x );
 
                 return (
-                    <li key={ `${entry.date}_${entry.mood}` } className="entry">
+                    <li key={ entry._id } className="entry">
                         <div className="entry-img"> { displayedImage } </div>
                         <div className="entry-text-content">
                             <div className="entry-date mb-2"> 
@@ -68,8 +69,8 @@ export class Entries extends Component {
                         </div>
                         <div className="options">
                             <OptionsMenu 
-                                deleteEntry={ () => deleteEntry(`${entry.date}_${entry.mood}`) } 
-                                editEntry={ () => editEntry(`${entry.date}_${entry.mood}`) } 
+                                deleteEntry={ () => deleteEntry(entry._id) } 
+                                editEntry={ () => editEntry(entry._id) } 
                             />
                         </div>
                     </li>
@@ -84,9 +85,18 @@ export class Entries extends Component {
         return (
             <Container fluid>
                 <ul className="entries">
-                    { this.displayEntryItems() }
+                    { this.displayEntryItems(this.props.entries) }
                 </ul>
             </Container>
         )
     } 
 }
+
+const mapStateToProps = state => {
+    // console.log(state)
+    return {
+        entries: state.entries.entries
+    };
+};
+
+export default connect(mapStateToProps)(Entries);

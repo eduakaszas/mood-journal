@@ -42,6 +42,11 @@ export class Navigation extends Component {
                             Entries 
                         </Link>
                     </li>
+                    <li className={ this.getMenuItemClasses() } onClick={ this.toggleHamburgerMenu }>
+                        <Link to="/login" className="nav-link">
+                            Login
+                        </Link>
+                    </li>
                 </ul>
             </div>
         )

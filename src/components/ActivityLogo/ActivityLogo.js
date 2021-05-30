@@ -13,12 +13,18 @@ export class ActivityLogo extends Component {
 
         if ( icon ) return makeIcon(icon);
 
+        // console.log(basicActivities);
+        // console.log(activity);
+
         const activityImage = basicActivities.find( el => {
 
-            return el.label === activity
-        }).faClass;
+            return el.label.toLowerCase() === activity.toLowerCase()
+        })
+        if(!activityImage) {
+            return
+        } 
 
-        return makeIcon(activityImage)
+        return makeIcon(activityImage.faClass)
     }
 
     render() {
@@ -29,4 +35,5 @@ export class ActivityLogo extends Component {
         )
     }
 }
+
 

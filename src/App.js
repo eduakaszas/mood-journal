@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 import { Route } from "react-router-dom";
-import { Stats, Navigation, Entries, EntryLogger, StartPage } from './components/compIndex.js';
+import { Navigation, Entries, EntryLogger, StartPage, LoginPage } from './components/compIndex.js';
 import { Awesome, Happy, Okay, Sad, Angry } from './components/compIndex.js';
+import { setEntries, deleteEntry } from './store/modules/entries/actions';
+import { connect } from 'react-redux';
 import './App.scss';
 
 let moodList = [
@@ -83,7 +85,7 @@ class App extends Component {
         this.state = {
             moodList: moodList,
             chosenMood: null,
-            pickedDate: Date.now(),
+            pickedDate: null,
             chosenActivities: [],
             entryNote: null,
             entries: null,
@@ -91,6 +93,18 @@ class App extends Component {
         };
         
     };
+
+    componentDidMount = () => {
+        fetch('http://localhost:8080/entries')
+        .then( response => {
+            // console.log( response);
+            return response.json();
+        })
+        .then( data => {
+            console.log(data);
+            this.props.dispatch(setEntries(data))
+        });
+    }
     
     chooseMood = e => {
         const { chosenMood } = this.state;
@@ -103,24 +117,23 @@ class App extends Component {
         this.setState({
             chosenMood: clickedMood
         }, () => { 
-            console.log( this.state.chosenMood )
+            console.log( this.state.chosenMood );
         })
     };
 
-    //function for getting moodLog from the localStorage
-    getMoodLog = () => JSON.parse(localStorage.getItem( 'moodLog' ));
+    getMoodLog = () => {
+        return this.props.entries
+    }
     
     // count how many times a mood item is clicked on
-    moodCounter = () => {
-        const { chosenMood } = this.state;
+    // moodCounter = () => {
+    //     const { chosenMood } = this.state;
         
-        const moodLog = this.getMoodLog();
+    //     const moodLog = this.getMoodLog();
         
-        // if mood item in localStorage is the same as the item that is clicked,
-        // ( aka the state ), return it 
-        const moodCount = moodLog.filter( e => e.mood === chosenMood )
-        console.log( moodCount.length ) 
-    };
+    //     const moodCount = moodLog.filter( e => e.mood === chosenMood );
+    //     // console.log( moodCount.length );
+    // };
 
     pickActivities = e => {
         const { chosenActivities } = this.state;
@@ -133,20 +146,20 @@ class App extends Component {
 
         if ( chosenActivities.includes( clickedActivity ) ) {
             let uniqueActivities = chosenActivities.filter( activity => {
-                return activity !== clickedActivity
-            })
+                return activity !== clickedActivity;
+            });
 
             this.setState({
                 chosenActivities: uniqueActivities
-            })
+            });
             
         } else {
-            let updatedActivities = chosenActivities.concat( clickedActivity )
+            let updatedActivities = chosenActivities.concat( clickedActivity );
 
             this.setState({
                 chosenActivities: updatedActivities
             }, () => {
-                console.log( this.state.chosenActivities )
+                console.log( this.state.chosenActivities );
             })  
         }
     }; 
@@ -154,47 +167,54 @@ class App extends Component {
     getColorOfMood = mood => {
         const { moodList } = this.state;
 
-        const moodContainer = moodList.find( el => el.label === mood )
+        const moodContainer = moodList.find( el => el.label === mood );
 
         if ( !moodContainer ) {
             return 
         } else {
             return moodContainer.color
         }
-    }
+    };
 
     deleteEntry = key => {
-        const moodLog = this.getMoodLog();
-
-        const remainingEntries = moodLog.filter( entry => key !== `${entry.date}_${entry.mood}` )
-
-        const updatedEntries = localStorage.setItem( 'moodLog', JSON.stringify( remainingEntries ))
-
-        this.setState({
-            entries: updatedEntries
+        fetch('http://localhost:8080/entry', {
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({key})
+        }).then(response => {
+            console.log(response)
+            return response.text();
+        }).then( data => {
+            console.log(data)
+            console.log(key)
+            this.props.dispatch(deleteEntry(key))
         })
-    }
+    };
 
     editEntry = id => {
-        const moodLog = this.getMoodLog();
-
-        return moodLog.find( entry => id === `${entry.date}_${entry.mood}`?
-                                                    this.setState({
-                                                        entryId: id,
-                                                        chosenMood: entry.mood,
-                                                        chosenActivities: entry.activities,
-                                                        entryNote: entry.notes
-                                                    }, () => {
-                                                        console.log( `The mood is ${this.state.chosenMood}, activities are ${this.state.chosenActivities} and the added note is ${this.state.entryNote}` )
-                                                    })  
-                                                : null 
-                                        )
+        let moodDatas = this.getMoodLog();
+        // first need to pull entires from redux and then call do the put method,
+        // because I only update the entry once I hit save
+        console.log(id)
+        return moodDatas.find( 
+            entry => entry._id === id ?
+                this.setState({
+                    entryId: id,
+                    chosenMood: entry.mood,
+                    chosenActivities: entry.activities,
+                    entryNote: entry.notes
+                }, () => {
+                    console.log( `Mood: ${this.state.chosenMood}, Activities: ${this.state.chosenActivities}, Note: ${this.state.entryNote}, ID: ${this.state.entryId}` )
+                })  
+            : null 
+        )
     }
 
     resetValues = () => {
         this.setState({
             chosenMood: null,
-            chosenActivities: []
+            chosenActivities: [],
+            entryId: null
         })
     };
 
@@ -213,13 +233,6 @@ class App extends Component {
             return moodList.map( entry => {
                 return { x: entry.label, y: 0 }
             })
-
-            /*
-                if in oneliner you want to return an object, wrap it in '()',
-                otherwise the {} of the object will clash with the {} of the function
-                
-                return moodList.map( entry => ( { x: entry.label, y : 0 } ) )
-            */
         }
 
         return moodList.map( entry => {
@@ -241,7 +254,7 @@ class App extends Component {
                 <Route 
                     exact 
                     path="/" 
-                    render={ (props) => 
+                    render={ props => 
                         <StartPage 
                         chooseMood={ this.chooseMood } 
                         moodList={ moodList }
@@ -251,17 +264,10 @@ class App extends Component {
                         />
                     } 
                     />
-                {/* <Route 
-                    exact 
-                    path="/thought-detangler" 
-                    render={ (props) => 
-                        <ThoughtDetangler />
-                    } 
-                /> */}
                 <Route 
                     exact 
                     path="/entries" 
-                    render={ (props) => 
+                    render={ props => 
                         <Entries 
                             getMoodLog={ this.getMoodLog }
                             moodList={ moodList }
@@ -276,15 +282,23 @@ class App extends Component {
                     } 
                 />
                 <Route 
+                    exact
+                    path="/login"
+                    render={ props => 
+                        <LoginPage 
+                        />
+                    }
+                />
+                {/* <Route 
                     path="/stats" 
-                    render={ (props) => 
+                    render={ props => 
                         <Stats
                             moodCounter={ this.moodCounter }
                             moodLog={ this.getMoodLog() }
                             barData={ this.prepareBarChart() }
                         />
                     } 
-                />
+                /> */}
 
                 <EntryLogger 
                     moodList={ moodList }
@@ -301,10 +315,16 @@ class App extends Component {
                     entryNote={ entryNote }
                     editEntry={ this.editEntry }
                 />
-                {/* { this.getColorOfMood() } */}
             </div>
         );
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        entries: state.entries.entries
+    };
+};
+
+export default connect(mapStateToProps)(App);
+
