@@ -12,7 +12,8 @@ import EntryLogger from './EntryLogger';
 import Entries from './Entries/Entries';
 import { Activities } from './Activities/Activities';
 import { ActivityLogo } from './ActivityLogo/ActivityLogo';
-import { Navigation } from './Navigation/Navigation';
+import Navigation from './Navigation/Navigation';
+import SignOutModal from './SignOutModal/SignOutModal';
 import { Stats } from './Stats/Stats';
 import { ThoughtDetangler } from './ThoughtDetangler/ThoughtDetangler';
 import { SituationForm } from './ThoughtDetangler/SituationForm';
@@ -29,5 +30,5 @@ import Sad from './img/sad_face.svg'
 import Angry from './img/angry.svg'
 
 
-export { LoginPage, OptionsMenu, ActivityLogo, ThoughtDetangler, SituationForm, InitialThought, Pros, Cons, BalancedThought, Stats, Navigation, Activities, Entries, EntryLogger, MoodDatePicker, BarChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock };
+export { SignOutModal, LoginPage, OptionsMenu, ActivityLogo, ThoughtDetangler, SituationForm, InitialThought, Pros, Cons, BalancedThought, Stats, Navigation, Activities, Entries, EntryLogger, MoodDatePicker, BarChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock };
 export { Awesome, Happy, Okay, Sad, Angry }

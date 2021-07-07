@@ -4,8 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
-import ToggleButton from 'react-bootstrap/ToggleButton';
 import './Activities.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faBriefcase, faVolleyballBall, faUsers, faUtensils, faShoppingCart, faHeart, faBook } from '@fortawesome/free-solid-svg-icons'
@@ -14,7 +12,7 @@ library.add( faBriefcase, faVolleyballBall, faUsers, faUtensils, faShoppingCart,
 
 export class Activities extends Component {
     displayActivities() {
-        const { basicActivities, pickActivities, activityBackground } = this.props
+        const { basicActivities, pickActivities } = this.props
 
         return basicActivities.map( activity => {
             return  <Col xs={3} md={1}>

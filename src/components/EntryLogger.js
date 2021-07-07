@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import { Value } from 'slate';
 import { Route } from "react-router-dom";
 // import { setEntries } from '../../store/modules/entries/actions';
-import { setEntries, addEntry, editEntry } from './../store/modules/entries/actions';
+import { addEntry, editEntry } from './../store/modules/entries/actions';
 import { connect } from 'react-redux';
 import { TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock } from './compIndex.js';
 import './TextEditor/TextEditor.scss';
@@ -54,7 +54,8 @@ class EntryLogger extends Component {
             mood: chosenMood, 
             date: Date.now(), 
             notes: textEditorNote, 
-            activities: chosenActivities
+            activities: chosenActivities,
+            userId: this.props.userId
         };
         
         // if localStorage is empty, create an array
@@ -65,15 +66,13 @@ class EntryLogger extends Component {
         let index;
         console.log(entryId)
         console.log(newMoodItem)
+
+        const token = JSON.parse(localStorage.getItem('token'))
+
+        // fetch(`http://localhost:8080/entry?secret_token=${token}`)
         
         if ( entryId ) {
-            // index = moodDatas.findIndex( entry => entryId === entry.id);
-            // console.log( index );
-
-            // if ( index !== -1 ) {
-            //     moodDatas[index] = newMoodItem;
-            // }
-            fetch('http://localhost:8080/entry', {
+            fetch(`http://localhost:8080/entry?secret_token=${token}`, {
                 method: 'put',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({_id : entryId, ...newMoodItem})
@@ -83,6 +82,8 @@ class EntryLogger extends Component {
             }).then( data => {
                 console.log(data)
                 this.props.dispatch(editEntry({...newMoodItem, _id : entryId}))
+                
+
             }).then(() => {
                 // resetting state
                 resetValues();
@@ -98,7 +99,7 @@ class EntryLogger extends Component {
             // push new mood item to localStorage
             // moodDatas.push( newMoodItem );
             console.log(newMoodItem);
-            fetch('http://localhost:8080/entry', {
+            fetch(`http://localhost:8080/entry?secret_token=${token}`, {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(newMoodItem)
@@ -224,7 +225,8 @@ class EntryLogger extends Component {
 const mapStateToProps = state => {
     // console.log(state)
     return {
-        entries: state.entries.entries
+        entries: state.entries.entries,
+        userId: state.user.userId
     };
 };
 

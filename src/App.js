@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 import { Route } from "react-router-dom";
-import { Navigation, Entries, EntryLogger, StartPage, LoginPage } from './components/compIndex.js';
+import { Navigation, Entries, EntryLogger, StartPage, LoginPage, SignOutModal } from './components/compIndex.js';
 import { Awesome, Happy, Okay, Sad, Angry } from './components/compIndex.js';
 import { setEntries, deleteEntry } from './store/modules/entries/actions';
+import { loginSuccess } from './store/modules/user/actions';
 import { connect } from 'react-redux';
 import './App.scss';
 
@@ -89,21 +90,17 @@ class App extends Component {
             chosenActivities: [],
             entryNote: null,
             entries: null,
-            entryId: null
+            entryId: null,
+            isModalOpen: false
         };
         
     };
 
     componentDidMount = () => {
-        fetch('http://localhost:8080/entries')
-        .then( response => {
-            // console.log( response);
-            return response.json();
-        })
-        .then( data => {
-            console.log(data);
-            this.props.dispatch(setEntries(data))
-        });
+        this.refreshToken();
+
+        // @TODO: only execute setInterval when logged in
+        setInterval(this.refreshToken, 5000)
     }
     
     chooseMood = e => {
@@ -177,7 +174,9 @@ class App extends Component {
     };
 
     deleteEntry = key => {
-        fetch('http://localhost:8080/entry', {
+        const token = JSON.parse(localStorage.getItem('token'));
+
+        fetch(`http://localhost:8080/entry?secret_token=${token}`, {
             method: 'delete',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({key})
@@ -245,22 +244,96 @@ class App extends Component {
         })
     };
 
+    openModal = () => {
+        this.setState({
+            // ...this.state,
+            isModalOpen : true
+        })
+        console.log( "Modal open")
+    };
+
+    closeModal = () => {
+        this.setState({
+            // ...this.state,
+            isModalOpen : false
+        })
+    };
+
+    refreshEntries = () => {
+        const { userId } = this.props;
+        const token = JSON.parse(localStorage.getItem('token'))
+
+        fetch(`http://localhost:8080/entries?userId=${userId}&secret_token=${token}`)
+        .then( response => {
+            // console.log( response);
+            return response.json();
+        })
+        .then( data => {
+            console.log(data);
+            this.props.dispatch(setEntries(data))
+        });
+    }
+
+    refreshToken = () => {
+        const accessToken = JSON.parse(localStorage.getItem('token'))
+        const refreshToken = JSON.parse(localStorage.getItem('refresh-token'))
+        console.log( accessToken )
+        console.log( refreshToken )
+
+        if ( accessToken ) {
+            fetch('http://localhost:8080/token', {
+                    method: 'post',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ refreshToken })
+                }).then(response => {
+                    console.log(response.status)
+                    if ( response.status === 200 ) {
+                        return response.json();
+                    }
+                    throw response.status
+                    // return response.json();
+                }).then( data => {
+                    localStorage.setItem('token', JSON.stringify(data.token));
+                    this.props.dispatch(loginSuccess({ username: data.username, userId: data.userId }));
+                })
+            // setInterval( () => {
+            //     fetch('http://localhost:8080/token', {
+            //         method: 'post',
+            //         headers: {'Content-Type': 'application/json'},
+            //         body: JSON.stringify(refreshToken)
+            //     }).then(response => {
+            //         console.log(response)
+            //         return response.json();
+            //     })
+            //     // .then( data => {
+            //     //     console.log(data)
+            //     // })
+            // }, 2000 )
+
+        } else {
+            return;
+        }
+    }
+
     render() {
-        const { moodList, chosenMood, pickedDate, chosenActivities, entries, entryId, entryNote } = this.state
+        const { moodList, chosenMood, pickedDate, chosenActivities, entries, entryId, entryNote, isModalOpen } = this.state
 
         return (
             <div>
-                <Navigation />
+                <Navigation 
+                    isModalOpen={ isModalOpen }
+                    openModal={ this.openModal }
+                />
                 <Route 
                     exact 
                     path="/" 
                     render={ props => 
                         <StartPage 
-                        chooseMood={ this.chooseMood } 
-                        moodList={ moodList }
-                        chosenMood={ chosenMood }
-                        pickedDate={ pickedDate }
-                        onChange={ this.handleDateChange }
+                            chooseMood={ this.chooseMood } 
+                            moodList={ moodList }
+                            chosenMood={ chosenMood }
+                            pickedDate={ pickedDate }
+                            onChange={ this.handleDateChange }
                         />
                     } 
                     />
@@ -278,6 +351,7 @@ class App extends Component {
                             getColorOfMood={ this.getColorOfMood }
                             deleteEntry={ this.deleteEntry }
                             editEntry={ this.editEntry }
+                            refreshEntries={ this.refreshEntries }
                         />
                     } 
                 />
@@ -286,6 +360,7 @@ class App extends Component {
                     path="/login"
                     render={ props => 
                         <LoginPage 
+                            refreshEntries={ this.refreshEntries }
                         />
                     }
                 />
@@ -315,6 +390,15 @@ class App extends Component {
                     entryNote={ entryNote }
                     editEntry={ this.editEntry }
                 />
+
+                {
+                    isModalOpen ? 
+                        <SignOutModal 
+                            isModalOpen={ isModalOpen }
+                            closeModal={ this.closeModal }
+                        />
+                        : null
+                }
             </div>
         );
     }
@@ -322,9 +406,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        entries: state.entries.entries
+        entries: state.entries.entries,
+        userId: state.user.userId
     };
 };
 
 export default connect(mapStateToProps)(App);
-

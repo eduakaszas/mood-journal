@@ -9,12 +9,14 @@ class Entries extends Component {
         const { moodList, basicActivities, deleteEntry, editEntry, entries } = this.props;
 
         console.log( this.props.entries )
-        console.log( moodData )
+        console.log( this.props.userId )
+        // console.log( moodData )
 
         if ( entries.length === 0 ) {
             return <h1> No entries </h1>
         } else {
             let displayedEntries = moodData
+            // .filter( entry => entry.userId === this.props.userId )
             .sort(( a, b ) => {
                 if ( a.date > b.date ) {
                     return -1
@@ -81,12 +83,23 @@ class Entries extends Component {
         }
     }
 
+
     render() {
+
+        console.log(this.props.userId)
+        console.log(this.props.entries)
         return (
             <Container fluid>
-                <ul className="entries">
-                    { this.displayEntryItems(this.props.entries) }
-                </ul>
+                {
+                    this.props.isLoggedIn ?
+                    <div>
+                        <button onClick={ this.props.refreshEntries }> Click </button>
+                        <ul className="entries">
+                            { this.displayEntryItems(this.props.entries) }
+                        </ul>
+                    </div>
+                    : <h1> You're not logged in </h1>
+                }
             </Container>
         )
     } 
@@ -95,7 +108,9 @@ class Entries extends Component {
 const mapStateToProps = state => {
     // console.log(state)
     return {
-        entries: state.entries.entries
+        entries: state.entries.entries,
+        isLoggedIn: state.user.isLoggedIn,
+        userId: state.user.userId
     };
 };
 

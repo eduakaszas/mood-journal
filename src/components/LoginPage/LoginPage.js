@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { loginSuccess, loginFailure } from '../../store/modules/user/actions';
 import { connect } from 'react-redux';
 import './LoginPage.scss';
@@ -8,10 +8,11 @@ import './LoginPage.scss';
 const initialState = {
     username: '',
     password: '',
-    loginSubmitted: false
+    loginSubmitted: false,
+    userId: ''
 }
 
-class LoginPage extends React.Component {
+class LoginPage extends Component {
     constructor(props) {
         super(props)
 
@@ -38,7 +39,6 @@ class LoginPage extends React.Component {
         if( !(username && password)) {
             return;
         }
-        console.log( username, password )
 
         fetch('http://localhost:8080/login', {
             method: 'post',
@@ -46,17 +46,25 @@ class LoginPage extends React.Component {
             body: JSON.stringify({ username: username, password: password })
         }).then(response => {
             console.log(response.status)
+            console.log(response)
 
-            if ( response.status === 401 ) {
-                this.props.dispatch(loginFailure())
-            } else if ( response.status === 200 ){
-                console.log("logged in!")
-                this.props.dispatch(loginSuccess(username));
-                this.setState(initialState)
-            }
-            return response.text();
+            if ( response.status !== 200 ) {
+                throw response.status
+            } 
+
+            return response.json();
         }).then( data => {
             console.log(data)
+            this.props.dispatch(loginSuccess({ username: username, userId: data.userId }));
+            this.setState(initialState)
+            localStorage.setItem('token', JSON.stringify(data.token))
+            localStorage.setItem('refresh-token', JSON.stringify(data.refreshToken))
+            // this will fail bc userId is not yet fully stored adter dispatching above, when I call for entries 
+            this.props.refreshEntries()
+
+        }).catch(error => {
+            console.log("error:" + error)
+            this.props.dispatch(loginFailure())
         })
     }
 
@@ -69,37 +77,35 @@ class LoginPage extends React.Component {
     };
 
     render() {
-        const { username, password, submitted } = this.state;
-        const { isLoggedIn, error } = this.props;
+        const { username, password } = this.state;
+        const { error } = this.props;
         
         return (
             <Container fluid>
                 {
                     error 
                         ? <div className="login-error"> { error } </div> 
-                        // : <Redirect to="/entries" />
                         : null
                 }
-            <form action="" method="get" className="login-form" onSubmit={ this.login }>
-                <div className="form-field">
-                    <label> Username: </label>
-                    <input type="text" name="username" id="username-input" value={ username } onChange={ this.handleChange } required/>
-                </div>
-                <div className="form-field">
-                    <label> Password: </label>
-                    <input type="password" name="password" id="password-input" value={ password} onChange={ this.handleChange } required/>
-                </div>
-                <div className="form-field">
-                    <input type="submit" value="Log in" />
-                </div>
-            </form>
+                <form action="" method="get" className="login-form" onSubmit={ this.login }>
+                    <div className="form-field">
+                        <label> Username: </label>
+                        <input type="text" name="username" id="username-input" value={ username } onChange={ this.handleChange } required/>
+                    </div>
+                    <div className="form-field">
+                        <label> Password: </label>
+                        <input type="password" name="password" id="password-input" value={ password} onChange={ this.handleChange } required/>
+                    </div>
+                    <div className="form-field">
+                        <input type="submit" value="Log in" />
+                    </div>
+                </form>
         </Container>
         )
     }
 }
 
 const mapStateToProps = ({user}) => {
-    // console.log(state)
     return {
         username: user.username,
         isLoggedIn: user.isLoggedIn,
