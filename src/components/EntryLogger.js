@@ -1,8 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import { Value } from 'slate';
 import { Route } from "react-router-dom";
+// import { setEntries } from '../../store/modules/entries/actions';
+import { addEntry, editEntry } from './../store/modules/entries/actions';
+import { connect } from 'react-redux';
 import { TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock } from './compIndex.js';
 import './TextEditor/TextEditor.scss';
 
@@ -25,81 +28,110 @@ const initialValue = Value.fromJSON({
             },
         ],
     },
-})
-export class EntryLogger extends Component {
+});
+
+class EntryLogger extends Component {
     // Set initial value when app is first constructed
     state = {
         value: initialValue,
         textEditorNote: null
-    }
+    };
 
     onChange = ({ value }) => {
         this.setState({ value });
-        this.storeCurrentNote( this.state.value.document.text )
-    }
+        this.storeCurrentNote( this.state.value.document.text );
+    };
 
     // stores mood and date of mood item that is clicked on
     storeItems = () => {
-        const { chosenMood, pickedDate, chosenActivities, entryId } = this.props
-        const { textEditorNote } = this.state
+        const { chosenMood, pickedDate, chosenActivities, entryId, resetValues } = this.props;
+        const { textEditorNote } = this.state;
         
-        let moodDatas = this.props.getMoodLog()
+        let moodDatas = this.props.getMoodLog();
+        console.log( moodDatas )
 
         const newMoodItem = { 
             mood: chosenMood, 
-            date: pickedDate, 
+            date: Date.now(), 
             notes: textEditorNote, 
-            activities: chosenActivities 
-        }
+            activities: chosenActivities,
+            userId: this.props.userId
+        };
         
         // if localStorage is empty, create an array
         if ( moodDatas === null ) {
             moodDatas = [ ]
-        }
+        };
 
         let index;
+        console.log(entryId)
+        console.log(newMoodItem)
+
+        const token = JSON.parse(localStorage.getItem('token'))
+
+        // fetch(`http://localhost:8080/entry?secret_token=${token}`)
         
         if ( entryId ) {
-            index = moodDatas.findIndex( entry => entryId === `${entry.date}_${entry.mood}`);
+            fetch(`http://localhost:8080/entry?secret_token=${token}`, {
+                method: 'put',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({_id : entryId, ...newMoodItem})
+            }).then(response => {
+                console.log(response)
+                return response.text();
+            }).then( data => {
+                console.log(data)
+                this.props.dispatch(editEntry({...newMoodItem, _id : entryId}))
+                
 
-            if ( index !== -1 ) {
-                moodDatas[index] = newMoodItem;
-            }
-        }
-        console.log( index )
+            }).then(() => {
+                // resetting state
+                resetValues();
+                this.resetEditor();
+            })
+        };
+
+        
 
         if ( !entryId || index === -1 ) {
-            console.log( 'pickedDate' )
-            console.log( pickedDate )
+            console.log( 'pickedDate' );
+            console.log( pickedDate );
             // push new mood item to localStorage
-            moodDatas.push( newMoodItem )
-        }
+            // moodDatas.push( newMoodItem );
+            console.log(newMoodItem);
+            fetch(`http://localhost:8080/entry?secret_token=${token}`, {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(newMoodItem)
+            }).then(response => {
+                console.log(response)
+                return response.json();
+            }).then( data => {
+                console.log(data)
+                this.setState({
+                    entryId: data._id
+                })
+                this.props.dispatch(addEntry(data))
+            }).then(() => {
+                // resetting state
+                resetValues();
+                this.resetEditor();
+            })
+        };
         
-        // update MoodLog by setting it
-        const entryItems = localStorage.setItem( 'moodLog', JSON.stringify( moodDatas ))
-
-        this.setState({
-            entries: entryItems
-        })
-        
-        this.props.moodCounter()
-
-        // resetting value
-        this.props.resetValues()
-        this.resetEditor()
     };
 
     storeCurrentNote = note => {
         this.setState({
             textEditorNote: note
         })
-    }
+    };
     
     resetEditor = () => {
         this.setState({
             value: initialValue
         })
-    }
+    };
 
     // Define a new handler which prints the key that was pressed.
     onKeyDown = ( event, editor, next ) => {
@@ -133,7 +165,7 @@ export class EntryLogger extends Component {
             default:
                 return next()
         }
-    }
+    };
 
     // Method to render marks
     renderMark = ( props, editor, next ) => {
@@ -165,11 +197,12 @@ export class EntryLogger extends Component {
     }
 
     render() {
-        const { basicActivities, pickActivities, chosenActivities, entryId } = this.props
+        const { basicActivities, pickActivities, chosenActivities, entryId } = this.props;
         
         return (
             <Container>
-                <Route path="/editor" render={ (props) => <TextEditor 
+                <Route path="/editor" render={ props => 
+                    <TextEditor 
                         storeItems={ this.storeItems }
                         storeCurrentNote={ this.storeCurrentNote }
                         value={ this.state.value } 
@@ -182,8 +215,19 @@ export class EntryLogger extends Component {
                         chosenActivities={ chosenActivities }
                         entryId={ entryId }
                         storeOrEditEntry={ this.storeOrEditEntry }
-                />} />
+                    />
+                }/>
             </Container>
         )
     }
-}
+};
+
+const mapStateToProps = state => {
+    // console.log(state)
+    return {
+        entries: state.entries.entries,
+        userId: state.user.userId
+    };
+};
+
+export default connect(mapStateToProps)(EntryLogger);

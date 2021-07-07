@@ -17,13 +17,17 @@ export class StartPage extends Component {
                     moodList={ moodList } 
                     chosenMood={ chosenMood }
                 />
-                <div className="button-container">
-                    <Link to='/editor' >
-                        <button className="continue-button arrow">
-                            Continue
-                        </button>
-                    </Link>
-                </div>
+                {
+                    chosenMood !== null ?
+                        <div className="button-container">
+                            <Link to='/editor' >
+                                <button className="continue-button arrow">
+                                    Continue
+                                </button>
+                            </Link>
+                        </div> 
+                        : null
+                }
             </Container>
         ) 
     }

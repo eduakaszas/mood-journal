@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container';
 import { ActivityLogo, OptionsMenu } from '../../components/compIndex.js';
+import { connect } from 'react-redux';
 import './Entries.scss'
 
-export class Entries extends Component {
-    displayEntryItems() {
-        const { moodList, basicActivities, deleteEntry, editEntry } = this.props
+class Entries extends Component {
+    displayEntryItems(moodData) {
+        const { moodList, basicActivities, deleteEntry, editEntry, entries } = this.props;
 
-        let moodData = this.props.getMoodLog()
-        console.log( moodData )
+        console.log( this.props.entries )
+        console.log( this.props.userId )
+        // console.log( moodData )
 
-        if ( moodData === null ) {
+        if ( entries.length === 0 ) {
             return <h1> No entries </h1>
         } else {
             let displayedEntries = moodData
+            // .filter( entry => entry.userId === this.props.userId )
             .sort(( a, b ) => {
                 if ( a.date > b.date ) {
                     return -1
@@ -43,7 +46,7 @@ export class Entries extends Component {
                 }).filter( x => x );
 
                 return (
-                    <li key={ `${entry.date}_${entry.mood}` } className="entry">
+                    <li key={ entry._id } className="entry">
                         <div className="entry-img"> { displayedImage } </div>
                         <div className="entry-text-content">
                             <div className="entry-date mb-2"> 
@@ -68,8 +71,8 @@ export class Entries extends Component {
                         </div>
                         <div className="options">
                             <OptionsMenu 
-                                deleteEntry={ () => deleteEntry(`${entry.date}_${entry.mood}`) } 
-                                editEntry={ () => editEntry(`${entry.date}_${entry.mood}`) } 
+                                deleteEntry={ () => deleteEntry(entry._id) } 
+                                editEntry={ () => editEntry(entry._id) } 
                             />
                         </div>
                     </li>
@@ -80,13 +83,35 @@ export class Entries extends Component {
         }
     }
 
+
     render() {
+
+        console.log(this.props.userId)
+        console.log(this.props.entries)
         return (
             <Container fluid>
-                <ul className="entries">
-                    { this.displayEntryItems() }
-                </ul>
+                {
+                    this.props.isLoggedIn ?
+                    <div>
+                        <button onClick={ this.props.refreshEntries }> Click </button>
+                        <ul className="entries">
+                            { this.displayEntryItems(this.props.entries) }
+                        </ul>
+                    </div>
+                    : <h1> You're not logged in </h1>
+                }
             </Container>
         )
     } 
 }
+
+const mapStateToProps = state => {
+    // console.log(state)
+    return {
+        entries: state.entries.entries,
+        isLoggedIn: state.user.isLoggedIn,
+        userId: state.user.userId
+    };
+};
+
+export default connect(mapStateToProps)(Entries);

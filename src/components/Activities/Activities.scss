@@ -12,17 +12,18 @@ $secondary-cream: #FFE4D3;
 .activity-icon-background {
     margin-bottom: .5em!important;
     padding: .8em;
-    width: 3.5em;
-    height: 3.5em;
+    width: 3em;
+    height: 3em;
     border-radius: 10px;
     border: none;
     background-color: $secondary-cream;
+    color: $main-blue;
     cursor: pointer;
 
-    @media (min-width: 768px) {
-        width: 4em;
-        height: 4em;
-    }
+    // @media (min-width: 768px) {
+    //     width: 3.2em;
+    //     height: 3.2em;
+    // }
 
     &:hover {
         color: $secondary-cream;
@@ -35,44 +36,42 @@ $secondary-cream: #FFE4D3;
             transition: background-color .5s ease-out;
         }
     }
-}
 
-.activity-icon-background.btn.btn-primary .activity-icon {
-    margin-top: 0.2em;
-    color: $main-blue;
-    font-size: 1.2em;
-
-    @media (min-width: 768px) {
-        margin-top: 0.3em;
-        font-size: 1.6em;
-    }
-
-    :active {
-        font-size: 1.1em;
+    &:focus {
+        outline: none;
     }
 }
 
-.activity-icon-background.active.btn.btn-primary {
-    & > * { 
-    color: $secondary-cream !important;
-    background-color: $main-blue;
-    }
-}
+// .activity-icon {
+//     color: $main-blue;
 
-.activity-icon-background.btn.btn-primary:hover {
-    & > * {
-        color: $secondary-cream;
-    }
-}
+//     &:hover {
+//         color: $secondary-cream
+//     }
+// }
 
-.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-    color: $secondary-cream;
-    background-color: $main-blue;
-    border: 1.2px solid $main-blue
-}
+// .activity-icon-background.active.btn.btn-primary {
+//     & > * { 
+//     color: $secondary-cream !important;
+//     background-color: $main-blue;
+//     }
+// }
 
-.col-md-1 {
-    @media (min-width: 768px) {
-        margin: 0 .4em
-    }
-}
+// .activity-icon-background.btn.btn-primary:hover {
+//     & > * {
+//         color: $secondary-cream;
+//     }
+// }
+
+// .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+//     color: $secondary-cream;
+//     background-color: $main-blue;
+//     border: 1.2px solid $main-blue
+// }
+
+// .col-md-1 {
+//     @media (min-width: 768px) {
+//         margin: 0 .4em
+//     }
+// }
+
