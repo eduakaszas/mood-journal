@@ -16,7 +16,6 @@ class Entries extends Component {
             return <h1> No entries </h1>
         } else {
             let displayedEntries = moodData
-            // .filter( entry => entry.userId === this.props.userId )
             .sort(( a, b ) => {
                 if ( a.date > b.date ) {
                     return -1
@@ -62,7 +61,6 @@ class Entries extends Component {
                                                                     basicActivities={ basicActivities }
                                                                     />
                                                                     )}
-                                {/* { entry.activities.join("\xa0\xa0\xa0\xa0") }  */}
                             </div>
                             { entry.notes 
                                 ?  <div className="entry-note" value={ entry.notes }> { entry.notes } </div>
@@ -85,9 +83,6 @@ class Entries extends Component {
 
 
     render() {
-
-        console.log(this.props.userId)
-        console.log(this.props.entries)
         return (
             <Container fluid>
                 {
@@ -106,7 +101,6 @@ class Entries extends Component {
 }
 
 const mapStateToProps = state => {
-    // console.log(state)
     return {
         entries: state.entries.entries,
         isLoggedIn: state.user.isLoggedIn,

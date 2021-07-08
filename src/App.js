@@ -100,7 +100,7 @@ class App extends Component {
         this.refreshToken();
 
         // @TODO: only execute setInterval when logged in
-        setInterval(this.refreshToken, 5000)
+        setInterval(this.refreshToken, 5000);
     }
     
     chooseMood = e => {
@@ -296,19 +296,6 @@ class App extends Component {
                     localStorage.setItem('token', JSON.stringify(data.token));
                     this.props.dispatch(loginSuccess({ username: data.username, userId: data.userId }));
                 })
-            // setInterval( () => {
-            //     fetch('http://localhost:8080/token', {
-            //         method: 'post',
-            //         headers: {'Content-Type': 'application/json'},
-            //         body: JSON.stringify(refreshToken)
-            //     }).then(response => {
-            //         console.log(response)
-            //         return response.json();
-            //     })
-            //     // .then( data => {
-            //     //     console.log(data)
-            //     // })
-            // }, 2000 )
 
         } else {
             return;
