@@ -82,25 +82,29 @@ class LoginPage extends Component {
         
         return (
             <Container fluid>
-                {
-                    error 
-                        ? <div className="login-error"> { error } </div> 
-                        : null
-                }
-                <form action="" method="get" className="login-form" onSubmit={ this.login }>
-                    <div className="form-field">
-                        <label> Username: </label>
-                        <input type="text" name="username" id="username-input" value={ username } onChange={ this.handleChange } required/>
+                <div className="form-container">
+                    <div className="form-background">
+                        {
+                            error 
+                                ? <div className="login-error"> { error } </div> 
+                                : null
+                        }
+                        <form action="" method="get" className="login-form" onSubmit={ this.login }>
+                            <div className="form-field" id="username">
+                                <input type="text" name="username" id="username-input" value={ username } onChange={ this.handleChange } required/>
+                                <label for="username-input"> Username </label>
+                            </div>
+                            <div className="form-field" id="password">
+                                <input type="password" name="password" id="password-input" value={ password} onChange={ this.handleChange } required/>
+                                <label for="password-input"> Password </label>
+                            </div>
+                            <div className="form-field" id="login-button-container">
+                                <input type="submit" value="Log in" id="login-button"/>
+                            </div>
+                        </form>
                     </div>
-                    <div className="form-field">
-                        <label> Password: </label>
-                        <input type="password" name="password" id="password-input" value={ password} onChange={ this.handleChange } required/>
-                    </div>
-                    <div className="form-field">
-                        <input type="submit" value="Log in" />
-                    </div>
-                </form>
-        </Container>
+                </div>
+            </Container>
         )
     }
 }

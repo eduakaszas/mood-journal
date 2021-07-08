@@ -22,23 +22,26 @@ $secondary-cream: #FFE4D3;
         width: 6em;
         margin: 0 .8em;
     }
+
 }
 
-.mood-link::after {
-    content: '';
-    height: 5em;
-    width: 5em;
-    position: absolute;
-    background-color: $secondary-cream;
-    border-radius: 10px;
-
-    @media (min-width: 768px) {
-        height: 6em;
-        width: 6em;
-        -webkit-transition: background-color .4s ease-out;
-        -moz-transition: background-color .4s ease-out;
-        -o-transition: background-color .4s ease-out;
-        transition: background-color .4s ease-out;
+.mood-link {
+    &:after {
+        content: '';
+        height: 5em;
+        width: 5em;
+        position: absolute;
+        background-color: $secondary-cream;
+        border-radius: 10px;
+    
+        @media (min-width: 768px) {
+            height: 6em;
+            width: 6em;
+            -webkit-transition: background-color .4s ease-out;
+            -moz-transition: background-color .4s ease-out;
+            -o-transition: background-color .4s ease-out;
+            transition: background-color .4s ease-out;
+        }
     }
 }
 
