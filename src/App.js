@@ -58,7 +58,7 @@ let basicActivities = [
         faClass: "users"
     },
     { 
-        label: "Good meal",
+        label: "Food",
         num: "4", 
         faClass: "utensils"
     },
