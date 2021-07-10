@@ -29,6 +29,12 @@ h1.page-title {
     border: none;
     border-radius: 10px;
 
+    &:focus,
+    &:active {
+        box-shadow: 0 0 0 1px rgba(88, 90, 121, .5);
+        border-radius: 10px;
+    }
+
     @media (min-width: 768px) {
             margin: 1.5em 6.5em;
             font-size: 1.3rem;
@@ -36,10 +42,11 @@ h1.page-title {
             height: 8em;
             border-radius: 4px;
     }
+
 }
 
 .save-button {
-    padding: .7em 1.1em;
+    padding: .5em 1em;
     border: none;
     border-radius: 10px;
     color: $cream;

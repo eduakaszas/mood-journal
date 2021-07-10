@@ -9,69 +9,74 @@ $light-blue: #7D7FA1;
 $cream: #FFF0EA;
 $secondary-cream: #FFE4D3;
 
-.activity-icon-background {
-    margin-bottom: .5em!important;
-    padding: .8em;
-    width: 3em;
-    height: 3em;
-    border-radius: 10px;
-    border: none;
-    background-color: $secondary-cream;
-    color: $main-blue;
-    cursor: pointer;
+.activities {
+    label {
+        font-size: .8em;
+        padding: .5em .7em;
+        margin: .5em;
+        color: $main-blue;
+        cursor: pointer;
+        border: 2px solid $main-blue;
+        border-radius: 50px;
+        -webkit-transition: background-color .4s ease-out;
+        -moz-transition: background-color .4s ease-out;
+        -o-transition: background-color .4s ease-out;
+        transition: background-color .4s ease-out;
 
-    // @media (min-width: 768px) {
-    //     width: 3.2em;
-    //     height: 3.2em;
-    // }
-
-    &:hover {
-        color: $secondary-cream;
-        background-color: $main-blue;
+        &:before {
+            border-radius: 50%;
+            content: '';
+            position: absolute;
+        }
 
         @media (min-width: 768px) {
-            -webkit-transition: background-color .5s ease-out;
-            -moz-transition: background-color .5s ease-out;
-            -o-transition: background-color .5s ease-out;
-            transition: background-color .5s ease-out;
+            margin: 0 .5em;
         }
     }
 
-    &:focus {
-        outline: none;
+    input {
+        position: absolute;
+        cursor: pointer;
+        visibility: hidden;
     }
+
+    input:checked ~ label,
+    input:hover ~ label {
+        color: $cream;
+        background-color: $main-blue;
+    }
+    // margin-bottom: .5em!important;
+    // padding: .8em;
+    // width: 3em;
+    // height: 3em;
+    // border-radius: 10px;
+    // border: none;
+    // background-color: $secondary-cream;
+    // color: $main-blue;
+    // cursor: pointer;
+
+    // &:hover {
+    //     color: $secondary-cream;
+    //     background-color: $main-blue;
+
+    //     @media (min-width: 768px) {
+    //         -webkit-transition: background-color .5s ease-out;
+    //         -moz-transition: background-color .5s ease-out;
+    //         -o-transition: background-color .5s ease-out;
+    //         transition: background-color .5s ease-out;
+    //     }
+    // }
+
+    // &:focus,
+    // &:active {
+    //     outline: none;
+    //     background-color: $main-blue;
+    //     color: $secondary-cream;
+    // }
 }
 
-// .activity-icon {
-//     color: $main-blue;
+.activities label {
+    // border: 1px solid $main-blue;
+}
 
-//     &:hover {
-//         color: $secondary-cream
-//     }
-// }
-
-// .activity-icon-background.active.btn.btn-primary {
-//     & > * { 
-//     color: $secondary-cream !important;
-//     background-color: $main-blue;
-//     }
-// }
-
-// .activity-icon-background.btn.btn-primary:hover {
-//     & > * {
-//         color: $secondary-cream;
-//     }
-// }
-
-// .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
-//     color: $secondary-cream;
-//     background-color: $main-blue;
-//     border: 1.2px solid $main-blue
-// }
-
-// .col-md-1 {
-//     @media (min-width: 768px) {
-//         margin: 0 .4em
-//     }
-// }
 
