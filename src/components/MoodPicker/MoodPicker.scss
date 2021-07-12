@@ -10,30 +10,22 @@ $secondary-cream: #FFE4D3;
     justify-content: center;
 }
 
-.mood-link {
-    height: 5em;
-    width: 5em;
-    margin: .4em .4em;
-    z-index: 50;
-    cursor: pointer;
-
-    @media (min-width: 768px) {
-        height: 6em;
-        width: 6em;
-        margin: 0 .8em;
-    }
-
-}
-
-.mood-link {
-    &:after {
-        content: '';
+.mood-item {
+    label {
         height: 5em;
         width: 5em;
-        position: absolute;
+        margin: .4em .4em;
         background-color: $secondary-cream;
         border-radius: 10px;
-    
+        z-index: 50;
+        cursor: pointer;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: $main-blue;
+        }
+
         @media (min-width: 768px) {
             height: 6em;
             width: 6em;
@@ -43,19 +35,20 @@ $secondary-cream: #FFE4D3;
             transition: background-color .4s ease-out;
         }
     }
-}
 
-.mood-link:hover::after  {
-    background-color: $main-blue;
-}
+    input {
+        cursor: pointer;
+        visibility: hidden;
+    }
 
-.mood-link:active::after, 
-.mood-link:focus::after {
-    background-color: $main-blue!important;
+    input:checked ~ label,
+    input:hover ~ label {
+        background-color: $main-blue;
+        border-radius: 10px;
+    }
 }
 
 .mood-img {
-    //display: none;
     position: absolute;
     margin: .9em;
     height: 3.2em;
