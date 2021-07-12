@@ -21,7 +21,7 @@ export class StartPage extends Component {
                     chosenMood !== null ?
                         <div className="button-container">
                             <Link to='/editor' >
-                                <button className="continue-button arrow">
+                                <button className="continue-button">
                                     Continue
                                 </button>
                             </Link>
@@ -32,4 +32,5 @@ export class StartPage extends Component {
         ) 
     }
 };
+
 

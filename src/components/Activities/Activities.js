@@ -19,7 +19,7 @@ export class Activities extends Component {
                                 type="checkbox"
                                 onClick={ pickActivities }
                         />
-                        <label for={ activity.label }>
+                        <label htmlFor={ activity.label }>
                             { activity.label }
                             {/* <FontAwesomeIcon icon={ activity.faClass } className="activity-icon"/> */}
                         </label>

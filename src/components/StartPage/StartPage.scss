@@ -17,9 +17,11 @@ h1.page-title {
 }
 
 .button-container {
+    display: flex;
     margin-top: 2.8em;
     width: 100%;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
 
     @media (min-width: 768px) {
         margin-top: 3.8em;
@@ -27,11 +29,19 @@ h1.page-title {
 }
 
 .continue-button {
-    padding: .7em 1.1em;
+    padding: .7em 1em;
     border: none;
     border-radius: 10px;
     color: $cream;
     background-color: $main-blue;
+    -webkit-transition: background-color .4s ease-out;
+    -moz-transition: background-color .4s ease-out;
+    -o-transition: background-color .4s ease-out;
+    transition: background-color .4s ease-out;
+
+    &:hover {
+        background-color: $dark-blue;
+    }
 }
 
 .arrow {

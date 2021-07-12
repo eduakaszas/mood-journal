@@ -16,19 +16,26 @@ export class MoodPicker extends Component {
             }
             
             return (
-                <a 
-                    key={ `${ mood.label }_${ src }` } 
-                    className="mood-link"
-                    href="/#"
+                <div 
+                    className="mood-item"
+                    key={ mood.label }
+                    onClick={ chooseMood }
                 >
-                    <img 
-                        src={ src }
+                    <input 
+                        type="radio"
                         id={ mood.label } 
-                        alt={ mood.label } 
-                        onClick={ chooseMood }
-                        className="mood-img"
+                        name="mood-input"
                     />
-                </a>
+                    <label htmlFor={ mood.label } >
+                        <img 
+                            src={ src }
+                            // id={ mood.label } 
+                            alt={ mood.label } 
+                            onClick={ chooseMood }
+                            className="mood-img"
+                        />
+                    </label>
+                </div>
             ) 
         })
 
