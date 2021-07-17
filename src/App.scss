@@ -1,12 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500&family=Roboto&display=swap');
-$title-font: 'Crimson Pro', serif;
-$secondary-font: 'Roboto', sans-serif;
-
-$main-blue: #585A79;
-$dark-blue: #3C3D53;
-$light-blue: #7D7FA1;
-$cream: #FFF0EA;
-$secondary-cream: #FFE4D3;
+@import './sass/main.scss';
 
 * {
     margin: 0;
@@ -34,7 +26,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: $title-font;
+    font-family: $title-font!important;
 }
 
 button {
