@@ -1,0 +1,21 @@
+// Fonts
+$title-font: 'Crimson Pro', sans-serif;
+$secondary-font: 'Roboto', sans-serif;
+
+// Colors 
+$main-blue: #585A79;
+$dark-blue: #3C3D53;
+$light-blue: #7D7FA1;
+$cream: #FFF0EA;
+$secondary-cream: #FFE4D3;
+
+// Breakpoints
+$breakpoints: (
+    'small': ( mind-width: 576px ),
+    'medium': ( mind-width: 768px ),
+    'large': ( mind-width: 992px ),
+    'extra-large': ( mind-width: 1200px )
+);
+
+// Borders
+$border-radius: 10px;
