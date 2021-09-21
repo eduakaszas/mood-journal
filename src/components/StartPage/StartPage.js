@@ -21,7 +21,7 @@ export class StartPage extends Component {
                     chosenMood !== null ?
                         <div className="button-container">
                             <Link to='/editor' >
-                                <button className="continue-button">
+                                <button className="cta-button">
                                     Continue
                                 </button>
                             </Link>

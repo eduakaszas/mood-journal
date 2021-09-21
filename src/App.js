@@ -97,6 +97,7 @@ class App extends Component {
     };
 
     componentDidMount = () => {
+        this.openModal();
         this.refreshToken();
 
         // @TODO: only execute setInterval when logged in

@@ -1,0 +1,36 @@
+@import '../../sass/abstracts/variables';
+@import '../../sass/base/typography';
+
+.cta-button {
+    padding: .5em 1em;
+    border: none;
+    border-radius: 10px;
+    color: $cream;
+    background-color: $main-blue;
+    font-family: $title-font;
+    -webkit-transition: background-color .4s ease-out;
+    -moz-transition: background-color .4s ease-out;
+    -o-transition: background-color .4s ease-out;
+    transition: background-color .4s ease-out;
+
+    &:hover {
+        background-color: $dark-blue;
+        color: $cream;
+    }
+}
+
+.back-button {
+    padding: .6em 1em;
+    border: none;
+    border-radius: 10px;
+    color: $main-blue;
+    background-color: $cream;
+    text-decoration: underline;
+    font-family: $secondary-font;
+
+    &:hover {
+        color: $main-blue;
+        background-color: transparent;
+        text-decoration: none;
+    }
+}

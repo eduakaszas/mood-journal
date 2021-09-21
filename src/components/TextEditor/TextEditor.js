@@ -33,7 +33,7 @@ export class TextEditor extends React.Component {
                         </button>
                     </Link>
                     <Link to="/">
-                        <button onClick={ storeItems } className="save-button"> 
+                        <button onClick={ storeItems } className="cta-button"> 
                             Save 
                         </button>
                     </Link>                

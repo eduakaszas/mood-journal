@@ -18,14 +18,23 @@ class SignOutModal extends Component {
         return (
             <div>
                 <Modal show= { this.props.isModalOpen }>
+                    <Modal.Header closeButton/>
                     <Modal.Body>
                         Are you sure you'd like to sign out?
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={ this.props.closeModal }>
+                        <Button 
+                            variant="secondary" 
+                            onClick={ this.props.closeModal }
+                            className="back-button"
+                        >
                             Dismiss
                         </Button>
-                        <Button variant="primary" onClick={ this.signOut }>
+                        <Button 
+                            variant="primary" 
+                            onClick={ this.signOut }
+                            className="cta-button"
+                        >
                             Sign out
                         </Button>
                     </Modal.Footer>
