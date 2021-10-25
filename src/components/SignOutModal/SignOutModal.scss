@@ -1,43 +1,42 @@
 @import '../../sass/main.scss';
 
 .modal-content {
-    background-color: $cream;
-    border-radius: 10px;
+  background-color: $cream;
+  border-radius: 10px;
 }
 
 .modal-header {
-    border-bottom: none;
-    background-color: $main-blue;
+  border-bottom: none;
+  background-color: $main-blue;
 }
 
 .close {
-    color: $cream;
-    text-shadow: none;
-    font-weight: normal;
-    opacity: 1;
-    font-size: 1.3em;
+  color: $cream;
+  text-shadow: none;
+  font-weight: normal;
+  opacity: 1;
+  font-size: 1.3em;
 
-    &:hover {
-        color: $secondary-cream;
-        opacity: 1;
-    }
-}
-
-.close:not(:disabled):not(.disabled):focus, 
-.close:not(:disabled):not(.disabled):hover {
+  &:hover {
     color: $secondary-cream;
     opacity: 1;
+  }
 }
 
-.btn-secondary:not(:disabled):not(.disabled).active, 
-.btn-secondary:not(:disabled):not(.disabled):active, 
-.show>.btn-secondary.dropdown-toggle {
-    color: $main-blue;
-    opacity: 1;
-    background-color: $cream;
+.close:not(:disabled):not(.disabled):focus,
+.close:not(:disabled):not(.disabled):hover {
+  color: $secondary-cream;
+  opacity: 1;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show > .btn-secondary.dropdown-toggle {
+  color: $main-blue;
+  opacity: 1;
+  background-color: $cream;
 }
 
 .modal-footer {
-    border-top: none;
+  border-top: none;
 }
-

@@ -1,82 +1,82 @@
-$gray: #E0E2E7;
-$main-blue: #585A79;
-$dark-blue: #3C3D53;
-$light-blue: #7D7FA1;
-$cream: #FFF0EA;
-$secondary-cream: #FFE4D3;
+$gray: #e0e2e7;
+$main-blue: #585a79;
+$dark-blue: #3c3d53;
+$light-blue: #7d7fa1;
+$cream: #fff0ea;
+$secondary-cream: #ffe4d3;
 
 ul.entries {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 5em;
-    overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 5em;
+  overflow: hidden;
 
-    @media (min-width: 768px) {
-        padding-top: 3em;
-    }
+  @media (min-width: 768px) {
+    padding-top: 3em;
+  }
 }
 
 li.entry {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1em;
-    padding: .3em;
-    width: 90%;
-    max-height: 10em;
-    border: none;
-    border-radius: 10px;
-    list-style: none;
-    background-color: $secondary-cream;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+  padding: 0.3em;
+  width: 90%;
+  max-height: 10em;
+  border: none;
+  border-radius: 10px;
+  list-style: none;
+  background-color: $secondary-cream;
 
-    @media (min-width: 768px) {
-        width: 70%;
-        padding: .5em;
-    }
+  @media (min-width: 768px) {
+    width: 70%;
+    padding: 0.5em;
+  }
 }
 
 .entry-img {
-    order: 1;
-    margin: .5em;
+  order: 1;
+  margin: 0.5em;
 }
 
 .entry-mood-img {
-    display: inline;
-    width: 2.5em;
+  display: inline;
+  width: 2.5em;
 
-    @media (min-width: 768px) {
-        width: 3em;
-    }
+  @media (min-width: 768px) {
+    width: 3em;
+  }
 }
 
 .entry-text-content {
-    order: 2;
-    margin: .5em;
+  order: 2;
+  margin: 0.5em;
 }
 
 .entry-date {
-    display: inline;
-    font-size: 0.8em;
+  display: inline;
+  font-size: 0.8em;
 }
 
 .entry-note {
-    font-size: .8em;
+  font-size: 0.8em;
 }
 
 .entry-mood {
-    margin-bottom: .3em;
-    font-size: 1.3em;
-    font-weight: 400;
+  margin-bottom: 0.3em;
+  font-size: 1.3em;
+  font-weight: 400;
 }
 
 .activity-entry {
-    margin: .2em 0;
+  margin: 0.2em 0;
 }
 
 .options {
-    position: absolute;
-    margin: .5em;
-    right: 0;
-    order: 3;
+  position: absolute;
+  margin: 0.5em;
+  right: 0;
+  order: 3;
 }

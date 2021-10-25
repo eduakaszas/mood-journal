@@ -20,7 +20,7 @@ const initialValue = Value.fromJSON({
                         object: 'text',
                         leaves: [
 /*                             {
-                                text: 'Bitch ass paragraph.',
+                                text: 'Paragraph.',
                             },  */
                         ],
                     },
@@ -46,18 +46,18 @@ class EntryLogger extends Component {
     storeItems = () => {
         const { chosenMood, pickedDate, chosenActivities, entryId, resetValues } = this.props;
         const { textEditorNote } = this.state;
-        
+
         let moodDatas = this.props.getMoodLog();
         console.log( moodDatas )
 
-        const newMoodItem = { 
-            mood: chosenMood, 
-            date: Date.now(), 
-            notes: textEditorNote, 
+        const newMoodItem = {
+            mood: chosenMood,
+            date: Date.now(),
+            notes: textEditorNote,
             activities: chosenActivities,
             userId: this.props.userId
         };
-        
+
         // if localStorage is empty, create an array
         if ( moodDatas === null ) {
             moodDatas = [ ]
@@ -70,9 +70,10 @@ class EntryLogger extends Component {
         const token = JSON.parse(localStorage.getItem('token'))
 
         // fetch(`http://localhost:8080/entry?secret_token=${token}`)
-        
+
         if ( entryId ) {
-            fetch(`http://localhost:8080/entry?secret_token=${token}`, {
+            // fetch(`http://localhost:8080/entry?secret_token=${token}`, {
+            fetch(`http://localhost:3001/v1/entry`, {
                 method: 'put',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({_id : entryId, ...newMoodItem})
@@ -82,7 +83,7 @@ class EntryLogger extends Component {
             }).then( data => {
                 console.log(data)
                 this.props.dispatch(editEntry({...newMoodItem, _id : entryId}))
-                
+
 
             }).then(() => {
                 // resetting state
@@ -91,15 +92,14 @@ class EntryLogger extends Component {
             })
         };
 
-        
-
         if ( !entryId || index === -1 ) {
             console.log( 'pickedDate' );
             console.log( pickedDate );
             // push new mood item to localStorage
             // moodDatas.push( newMoodItem );
             console.log(newMoodItem);
-            fetch(`http://localhost:8080/entry?secret_token=${token}`, {
+            // fetch(`http://localhost:8080/entry?secret_token=${token}`, {
+            fetch(`http://localhost:3001/v1/entry`, {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(newMoodItem)
@@ -118,7 +118,7 @@ class EntryLogger extends Component {
                 this.resetEditor();
             })
         };
-        
+
     };
 
     storeCurrentNote = note => {
@@ -126,7 +126,7 @@ class EntryLogger extends Component {
             textEditorNote: note
         })
     };
-    
+
     resetEditor = () => {
         this.setState({
             value: initialValue
@@ -139,7 +139,7 @@ class EntryLogger extends Component {
         if ( !event.ctrlKey ) return next();
 
         //Decide what to do based on the key code
-        switch ( event.key ) 
+        switch ( event.key )
         {
             case 'b':
                 event.preventDefault()
@@ -169,7 +169,7 @@ class EntryLogger extends Component {
 
     // Method to render marks
     renderMark = ( props, editor, next ) => {
-        switch ( props.mark.type ) 
+        switch ( props.mark.type )
         {
             case 'bold':
                 return <BoldMark { ...props } />
@@ -190,7 +190,7 @@ class EntryLogger extends Component {
         switch ( props.node.type ) {
             case 'code':
                 return <CodeBlock { ...props } />
-        
+
             default:
                 return next()
         }
@@ -198,15 +198,15 @@ class EntryLogger extends Component {
 
     render() {
         const { basicActivities, pickActivities, chosenActivities, entryId } = this.props;
-        
+
         return (
             <Container>
-                <Route path="/editor" render={ props => 
-                    <TextEditor 
+                <Route path="/editor" render={ props =>
+                    <TextEditor
                         storeItems={ this.storeItems }
                         storeCurrentNote={ this.storeCurrentNote }
-                        value={ this.state.value } 
-                        onChange={ this.onChange } 
+                        value={ this.state.value }
+                        onChange={ this.onChange }
                         onKeyDown={ this.onKeyDown }
                         renderNode={ this.renderNode }
                         renderMark={ this.renderMark }

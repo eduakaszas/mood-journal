@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,WAAW,CAAC;EACR,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,OAAO;CAClB;;AAED;;;;;;;;;;;;;;;;EAgBE",
-    "sources": [
-        "StartPage.scss"
-    ],
-    "names": [],
-    "file": "StartPage.css"
-}

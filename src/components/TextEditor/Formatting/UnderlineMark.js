@@ -1,7 +1,3 @@
-import React from 'react'
+import React from 'react';
 
-export const UnderlineMark = props => (
-    <u>
-        { props.children }
-    </u>
-);
+export const UnderlineMark = (props) => <u>{props.children}</u>;

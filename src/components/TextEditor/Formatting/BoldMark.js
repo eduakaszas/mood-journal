@@ -1,8 +1,3 @@
-import React from 'react'
+import React from 'react';
 
-export const BoldMark = props => (
-    <strong>
-        { props.children }
-    </strong>
-);
-
+export const BoldMark = (props) => <strong>{props.children}</strong>;

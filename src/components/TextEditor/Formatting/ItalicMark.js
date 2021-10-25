@@ -1,7 +1,3 @@
-import React from 'react'
+import React from 'react';
 
-export const ItalicMark = props => (
-    <em>
-        { props.children }
-    </em>
-);
+export const ItalicMark = (props) => <em>{props.children}</em>;

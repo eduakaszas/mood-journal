@@ -1,82 +1,48 @@
-$white: #FFFFFF;
-$pink: #E36372;
-$gray: #E0E2E7;
-$black: #1A2E35;
+$white: #ffffff;
+$pink: #e36372;
+$gray: #e0e2e7;
+$black: #1a2e35;
 
-$main-blue: #585A79;
-$dark-blue: #3C3D53;
-$light-blue: #7D7FA1;
-$cream: #FFF0EA;
-$secondary-cream: #FFE4D3;
+$main-blue: #585a79;
+$dark-blue: #3c3d53;
+$light-blue: #7d7fa1;
+$cream: #fff0ea;
+$secondary-cream: #ffe4d3;
 
 .activities {
-    label {
-        font-size: .8em;
-        padding: .5em .7em;
-        margin: .5em;
-        color: $main-blue;
-        cursor: pointer;
-        border: 2px solid $main-blue;
-        border-radius: 50px;
-        -webkit-transition: background-color .4s ease-out;
-        -moz-transition: background-color .4s ease-out;
-        -o-transition: background-color .4s ease-out;
-        transition: background-color .4s ease-out;
+  label {
+    font-size: 0.8em;
+    padding: 0.5em 0.7em;
+    margin: 0.5em;
+    color: $main-blue;
+    cursor: pointer;
+    border: 2px solid $main-blue;
+    border-radius: 50px;
+    -webkit-transition: background-color 0.3s ease-out;
+    -moz-transition: background-color 0.3s ease-out;
+    -o-transition: background-color 0.3s ease-out;
+    transition: background-color 0.3s ease-out;
 
-        &:before {
-            border-radius: 50%;
-            content: '';
-            position: absolute;
-        }
-
-        @media (min-width: 768px) {
-            margin: 0 .5em;
-        }
+    &:before {
+      border-radius: 50%;
+      content: '';
+      position: absolute;
     }
 
-    input {
-        position: absolute;
-        cursor: pointer;
-        visibility: hidden;
+    @media (min-width: 768px) {
+      margin: 0 0.5em;
     }
+  }
 
-    input:checked ~ label,
-    input:hover ~ label {
-        color: $cream;
-        background-color: $main-blue;
-    }
-    // margin-bottom: .5em!important;
-    // padding: .8em;
-    // width: 3em;
-    // height: 3em;
-    // border-radius: 10px;
-    // border: none;
-    // background-color: $secondary-cream;
-    // color: $main-blue;
-    // cursor: pointer;
+  input {
+    position: absolute;
+    cursor: pointer;
+    visibility: hidden;
+  }
 
-    // &:hover {
-    //     color: $secondary-cream;
-    //     background-color: $main-blue;
-
-    //     @media (min-width: 768px) {
-    //         -webkit-transition: background-color .5s ease-out;
-    //         -moz-transition: background-color .5s ease-out;
-    //         -o-transition: background-color .5s ease-out;
-    //         transition: background-color .5s ease-out;
-    //     }
-    // }
-
-    // &:focus,
-    // &:active {
-    //     outline: none;
-    //     background-color: $main-blue;
-    //     color: $secondary-cream;
-    // }
+  input:checked ~ label,
+  input:hover ~ label {
+    color: $cream;
+    background-color: $main-blue;
+  }
 }
-
-.activities label {
-    // border: 1px solid $main-blue;
-}
-
-

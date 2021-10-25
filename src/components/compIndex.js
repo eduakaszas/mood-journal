@@ -15,20 +15,36 @@ import { ActivityLogo } from './ActivityLogo/ActivityLogo';
 import Navigation from './Navigation/Navigation';
 import SignOutModal from './SignOutModal/SignOutModal';
 import { Stats } from './Stats/Stats';
-import { ThoughtDetangler } from './ThoughtDetangler/ThoughtDetangler';
-import { SituationForm } from './ThoughtDetangler/SituationForm';
-import { InitialThought } from './ThoughtDetangler/InitialThought';
-import { Pros } from './ThoughtDetangler/Pros';
-import { Cons } from './ThoughtDetangler/Cons';
-import { BalancedThought } from './ThoughtDetangler/BalancedThought';
 import { OptionsMenu } from './OptionsMenu/OptionsMenu';
 
-import Awesome from './img/very_happy.svg'
-import Happy from './img/happy_face.svg'
-import Okay from './img/neutral.svg'
-import Sad from './img/sad_face.svg'
-import Angry from './img/angry.svg'
+import Awesome from './img/very_happy.svg';
+import Happy from './img/happy_face.svg';
+import Okay from './img/neutral.svg';
+import Sad from './img/sad_face.svg';
+import Angry from './img/angry.svg';
 
-
-export { SignOutModal, LoginPage, OptionsMenu, ActivityLogo, ThoughtDetangler, SituationForm, InitialThought, Pros, Cons, BalancedThought, Stats, Navigation, Activities, Entries, EntryLogger, MoodDatePicker, BarChart, MoodPicker, StartPage, TextEditor, BoldMark, ItalicMark, UnderlineMark, CodeBlock };
-export { Awesome, Happy, Okay, Sad, Angry }
+export {
+  SignOutModal,
+  LoginPage,
+  OptionsMenu,
+  ActivityLogo,
+  Stats,
+  Navigation,
+  Activities,
+  Entries,
+  EntryLogger,
+  MoodDatePicker,
+  BarChart,
+  MoodPicker,
+  StartPage,
+  TextEditor,
+  BoldMark,
+  ItalicMark,
+  UnderlineMark,
+  CodeBlock,
+  Awesome,
+  Happy,
+  Okay,
+  Sad,
+  Angry,
+};

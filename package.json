@@ -37,6 +37,7 @@
     "slate": "^0.45.1",
     "slate-react": "^0.21.24",
     "victory": "^32.3.7",
+    "webpack": "^4.28.3",
     "yarn": "^1.22.10"
   },
   "scripts": {

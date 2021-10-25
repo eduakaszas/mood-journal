@@ -1,46 +1,51 @@
-$main-blue: #585A79;
-$dark-blue: #3C3D53;
-$light-blue: #7D7FA1;
-$cream: #FFF0EA;
-$secondary-cream: #FFE4D3;
+$main-blue: #585a79;
+$dark-blue: #3c3d53;
+$light-blue: #7d7fa1;
+$cream: #fff0ea;
+$secondary-cream: #ffe4d3;
 
 .dropdown {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-toggle.btn.btn-success {
-padding-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .dropdown-toggle::after {
-    display: none;
+  display: none;
 }
 
-.dropdown-toggle.btn.btn-success, .dropdown-toggle.btn.btn-success:active, .dropdown-toggle.btn.btn-success:focus {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    box-shadow: none;
+.dropdown-toggle.btn.btn-success,
+.dropdown-toggle.btn.btn-success:active,
+.dropdown-toggle.btn.btn-success:focus {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
-.btn-success:not(:disabled):not(.disabled).active:focus, .btn-success:not(:disabled):not(.disabled):active:focus, .show>.btn-success.dropdown-toggle:focus {
-    box-shadow: none;
+.btn-success:not(:disabled):not(.disabled).active:focus,
+.btn-success:not(:disabled):not(.disabled):active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: none;
 }
 
 .options-icon {
-    color: $main-blue;
+  color: $main-blue;
 }
 
 .dropdown-item {
-    color: $cream;
+  color: $cream;
 }
 
-.dropdown-item.active, .dropdown-item:active {
-    background-color: $main-blue;
-    color: $cream;
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $main-blue;
+  color: $cream;
 }
 
 .dropdown-menu.show.dropdown-menu-right {
-    background-color: $light-blue;
-    color: $cream;
+  background-color: $light-blue;
+  color: $cream;
 }

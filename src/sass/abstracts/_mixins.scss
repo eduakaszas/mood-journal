@@ -1,6 +1,6 @@
-/// Mixin to center content horizontally and vertically 
+/// Mixin to center content horizontally and vertically
 @mixin centerAlign {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

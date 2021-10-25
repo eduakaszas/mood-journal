@@ -1,78 +1,78 @@
 $error: #e25656;
-$main-blue: #585A79;
-$dark-blue: #3C3D53;
-$light-blue: #7D7FA1;
-$cream: #FFF0EA;
-$secondary-cream: #FFE4D3;
+$main-blue: #585a79;
+$dark-blue: #3c3d53;
+$light-blue: #7d7fa1;
+$cream: #fff0ea;
+$secondary-cream: #ffe4d3;
 
 .login-error {
-    color: $error
+  color: $error;
 }
 
 .form-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .form-background {
-    background-color: $secondary-cream;
-    border-radius: 10px;
-    padding: 1em 1em 0em;
-    margin-top: 2em;
+  background-color: $secondary-cream;
+  border-radius: 10px;
+  padding: 1em 1em 0em;
+  margin-top: 2em;
 }
 
 #login-button-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #login-button {
-    margin-top: 1em;
-    padding: .5em 1em;
-    border: none;
-    border-radius: 10px;
-    color: $cream;
-    background-color: $main-blue;
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 10px;
+  color: $cream;
+  background-color: $main-blue;
 }
 
 .form-field {
-    display: flex;
-    flex-direction: column;
-    margin: 2em 1em;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 2em 1em;
+  position: relative;
 }
 
 .form-field label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: #fff;
-    transition: 0.2s all;
-    cursor: text;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  transition: 0.2s all;
+  cursor: text;
 }
 
 .form-field input {
-    padding: .2em;
-    background: none;
-    border: 0;
-    border-bottom: 2px solid #fff;;
+  padding: 0.2em;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  color: $dark-blue;
+
+  &:invalid {
+    outline: 0;
+  }
+
+  &:focus,
+  &:valid {
+    border-color: $dark-blue;
+    outline: 0;
+  }
+
+  &:focus ~ label,
+  &:valid ~ label {
+    font-size: 1rem;
+    top: -24px;
     color: $dark-blue;
-
-    &:invalid {
-        outline: 0;
-    }
-
-    &:focus,
-    &:valid {
-        border-color: $dark-blue;
-        outline: 0;
-    }
-
-    &:focus~label,
-    &:valid~label {
-        font-size: 1rem;
-        top: -24px;
-        color: $dark-blue;
-    }
+  }
 }

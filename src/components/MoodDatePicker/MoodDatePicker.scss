@@ -1,22 +1,27 @@
 $text-color: #212529;
-$selected-date-background: #BDE5AE;
-$selected-date-text: #FCFBF8;
+$selected-date-background: #bde5ae;
+$selected-date-text: #fcfbf8;
 
 .react-datepicker__input-container {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .react-datepicker__input-container input {
-    border: none;
-    border-radius: 2px;
-    background-color: transparent;
-    color: $text-color;
-    //text-align: left;
-    cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  background-color: transparent;
+  color: $text-color;
+  //text-align: left;
+  cursor: pointer;
 }
 
-.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range {
-    border-radius: 0.3rem;
-    background-color: $selected-date-background !important;
-    color: $selected-date-text !important;
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range {
+  border-radius: 0.3rem;
+  background-color: $selected-date-background !important;
+  color: $selected-date-text !important;
 }
