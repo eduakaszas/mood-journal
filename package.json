@@ -36,7 +36,7 @@
     "redux-devtools-extension": "^2.13.9",
     "slate": "^0.45.1",
     "slate-react": "^0.21.24",
-    "victory": "^32.3.7",
+    "victory": "^36.6.8",
     "yarn": "^1.22.10"
   },
   "scripts": {
